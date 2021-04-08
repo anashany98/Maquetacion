@@ -1,0 +1,148 @@
+.web {
+  display: flex;
+  order: 2;
+  flex-direction: row;
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  order: 2;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.two-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3em;
+}
+
+.form {
+  width: 40%;
+  padding: 1em;
+  text-align: left;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 1em;
+  color: black;
+}
+
+/*  */
+.form-group {
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.label-container {
+  margin-bottom: 0.5em;
+  width: 100%;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 1em;
+}
+
+.input-container {
+  width: 100%;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 1em;
+}
+
+.input-container input {
+  border: 0.1em solid #000000;
+  border-radius: 0.2em;
+  padding: 0.5em;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+}
+
+.table {
+  padding: 2%;
+  color: black;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 0.1em solid #000000;
+  padding: 0.2em;
+  font-size: 1.2em;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: "Noto Sans TC", sans-serif;
+  border-collapse: collapse;
+  color: black;
+}
+
+tr {
+  border: 0.1em solid #000000;
+  width: 31%;
+  padding: 0.2em;
+  font-size: 1em;
+  text-align: left;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+#sendbutton {
+  cursor: pointer;
+  border-radius: 0.3em;
+  transition-duration: 0.4s;
+  font-size: 0.7em;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+#sendbutton:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.edit-button {
+  width: 50%;
+  height: 50%;
+  color: #0044ff;
+  text-transform: uppercase;
+  background: transparent;
+  cursor: pointer;
+  margin-right: 1em;
+  border-radius: 0.3em;
+}
+
+.delete-button {
+  width: 50%;
+  height: 50%;
+  color: #ff0000;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0.3em;
+}
+
+.sidebar {
+  padding: 1em;
+  height: 100%;
+}
+
+.sidebar li {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 3em;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  color: #ce6464;
+}

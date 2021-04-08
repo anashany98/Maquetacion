@@ -1,0 +1,24 @@
+.web{
+    display:flex;
+    order:  2;
+    flex-direction: row;
+    height: 100%;
+
+}
+
+.main{
+    display:flex;
+    order:  2;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+.two-columns{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3em;
+    
+
+}

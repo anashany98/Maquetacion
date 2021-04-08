@@ -1,0 +1,124 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\FaqCategoryRequest;
+use App\Models\DB\FaqCategory;
+
+class FaqCategoryController extends Controller
+{
+    protected $faq_category;
+
+    function __construct(FaqCategory $faq_category)
+    {
+        $this->faq_category = $faq_category;
+    }
+
+    public function indexJson(Request $request)
+    {
+        $length = $request->input('length');
+        $orderBy = $request->input('column'); 
+        $orderByDir = $request->input('dir', 'asc');
+        $searchValue = $request->input('search');
+        
+        $query = $this->faq_category->eloquentQuery($orderBy, $orderByDir, $searchValue);
+        $data = $query->paginate($length);
+        
+        return new DataTableCollectionResource($data);
+    }
+
+    public function index()
+    {
+
+        $view = View::make('admin.faqs_categories.index')
+        ->with('faqs_categories', $this->faq_category->where('active', 1)->get())
+        ->with('faq_category', $this->faq_category);
+
+        if(request()->ajax()) {
+
+            // $faqs = $this->faq->where('active', 1)->get();
+            // return response()->json($faqs);
+            
+            // $sections = $view->renderSections(); 
+    
+            // return response()->json([
+            //     'table' => $sections['table'],
+            //     'form' => $sections['form'],
+            // ]); 
+        }
+
+        return $view;
+    }
+
+    public function create()
+    {
+
+        $view = View::make('admin.faqs_categories.index')
+        ->with('faqs_categories', $this->faq_category->where('active', 1)->get())
+        ->with('faq_category', $faq_category)
+        ->renderSections();
+
+        return response()->json([
+            'form' => $view['form']
+        ]);
+    }
+
+    public function store(FaqCategoryRequest $request)
+    {            
+        $faq_category = $this->faq_category->updateOrCreate([
+            'id' => request('id')],[
+            'name' => request('name'),
+            'active' => 1,
+        ]);
+
+        $view = View::make('admin.faqs_categories.index')
+        ->with('faqs_categories', $this->faq_category->where('active', 1)->get())
+        ->with('faq_category', $faq_category)
+        ->renderSections();        
+
+        return response()->json([
+            'table' => $view['table'],
+            'form' => $view['form'],
+            'id' => $faq_category->id,
+        ]);
+    }
+
+    public function show(FaqCategory $faq_category)
+    {
+        $view = View::make('admin.faqs_categories.index')
+        ->with('faqs_categories', $this->faq_category->where('active', 1)->get())
+        ->with('faq_category', $faq_category); 
+        
+        if(request()->ajax()) {
+
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'form' => $sections['form'],
+            ]); 
+        }
+                
+        return $view;
+    }
+
+    public function destroy(FaqCategory $faq_category)
+    {
+        $faq_category->active = 0;
+        $faq_category->save();
+
+        $view = View::make('admin.faqs_categories.index')
+            ->with('faqs_categories', $this->faq_category->where('active', 1)->get())
+            ->with('faq_category', $faq_category)
+            ->renderSections();
+        
+        return response()->json([
+            'table' => $view['table'],
+            'form' => $view['form']
+        ]);
+    }
+}

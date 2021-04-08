@@ -165,6 +165,10 @@ return [
         /*
          * Package Service Providers...
          */
+        Jenssegers\Agent\AgentServiceProvider::class,
+
+        // Custom View Composers 
+        App\Providers\ViewComposerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -174,6 +178,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\AgentServiceProvider::class,
 
     ],
 
@@ -189,8 +194,8 @@ return [
     */
 
     'aliases' => [
-
-        'App' => Illuminate\Support\Facades\App::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'App' => Illuminate\Support\Facades\App::class, 
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

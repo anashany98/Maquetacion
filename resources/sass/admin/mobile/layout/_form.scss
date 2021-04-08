@@ -1,0 +1,51 @@
+.form {
+    width: 90%;
+    padding: 1.2%;
+    font-size: 1.2em;  
+    text-align: left;
+    font-family: 'Press Start 2P';
+    font-size: 0.7em;
+    color: rgb(0, 0, 0);
+}                                                                                                                                                                  /*  */
+
+.form-group{
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.label-container{
+    margin-bottom: 0.5em;
+    width: 100%;
+    font-family: 'Press Start 2P';
+    font-size: 1em;
+}
+
+.input-container{
+    width: 100%;
+    font-family: 'Press Start 2P';
+    font-size: 1em;
+}
+
+.input-container input{
+    border: 0.1em solid #000000;
+    border-radius: 0.2em;
+    padding: 0.5em;
+    width: 100%;
+}
+
+.button{
+    width: 100%;
+}
+
+#sendbutton{
+    cursor: pointer;
+    border-radius: 0.7em;
+    transition-duration: 0.4s;
+    font-size: 0.7em;
+    font-family: 'Press Start 2P';
+}
+
+#sendbutton:hover{
+    background-color: #4CAF50; 
+    color: white;
+}

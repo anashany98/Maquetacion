@@ -1,0 +1,37 @@
+.form {
+    width: 40%;
+    padding: 1em;  
+    text-align: left;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 1em;
+    color: rgb(0, 0, 0);
+}                                                                                                                                                                  /*  */
+
+.form-group{
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.label-container{
+    margin-bottom: 0.5em;
+    width: 100%;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 1em;
+}
+
+.input-container{
+    width: 100%;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 1em;
+}
+
+.input-container input{
+    border: 0.1em solid #000000;
+    border-radius: 0.2em;
+    padding: 0.5em;
+    width: 100%;
+}
+
+.button{
+    width: 100%;
+}
