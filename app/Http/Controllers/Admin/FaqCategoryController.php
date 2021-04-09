@@ -40,16 +40,13 @@ class FaqCategoryController extends Controller
         ->with('faq_category', $this->faq_category);
 
         if(request()->ajax()) {
-
-            // $faqs = $this->faq->where('active', 1)->get();
-            // return response()->json($faqs);
             
-            // $sections = $view->renderSections(); 
+            $sections = $view->renderSections(); 
     
-            // return response()->json([
-            //     'table' => $sections['table'],
-            //     'form' => $sections['form'],
-            // ]); 
+            return response()->json([
+                'table' => $sections['table'],
+                'form' => $sections['form'],
+            ]); 
         }
 
         return $view;

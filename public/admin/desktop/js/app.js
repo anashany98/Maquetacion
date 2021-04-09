@@ -1894,26 +1894,31 @@ __webpack_require__(/*! ./sidebar */ "./resources/js/admin/desktop/sidebar.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderCkeditor": () => (/* binding */ renderCkeditor)
+/* harmony export */ });
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0__);
 
 
 __webpack_require__(/*! @ckeditor/ckeditor5-build-classic/build/translations/es.js */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/translations/es.js");
 
-window.ckeditors = [];
-document.querySelectorAll('.ckeditor').forEach(function (ckeditor) {
-  _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(ckeditor, {
-    toolbar: {
-      items: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', 'undo', 'redo']
-    },
-    language: 'es',
-    licenseKey: ''
-  }).then(function (classicEditor) {
-    ckeditors[ckeditor.name] = classicEditor;
-  })["catch"](function (error) {
-    console.error(error);
+var renderCkeditor = function renderCkeditor() {
+  window.ckeditors = [];
+  document.querySelectorAll('.ckeditor').forEach(function (ckeditor) {
+    _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default().create(ckeditor, {
+      toolbar: {
+        items: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', 'undo', 'redo']
+      },
+      language: 'es',
+      licenseKey: ''
+    }).then(function (classicEditor) {
+      ckeditors[ckeditor.name] = classicEditor;
+    })["catch"](function (error) {
+      console.error(error);
+    });
   });
-});
+};
 
 /***/ }),
 
@@ -1925,17 +1930,34 @@ document.querySelectorAll('.ckeditor').forEach(function (ckeditor) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderForm": () => (/* binding */ renderForm),
+/* harmony export */   "renderTable": () => (/* binding */ renderTable)
+/* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ckeditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/desktop/ckeditor.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 var table = document.getElementById("table");
 var form = document.getElementById("form");
-
 var renderForm = function renderForm() {
   var forms = document.querySelectorAll(".admin-form");
   var labels = document.querySelectorAll('.label-container');
@@ -1958,16 +1980,22 @@ var renderForm = function renderForm() {
   sendButton.addEventListener("click", function (event) {
     event.preventDefault();
     forms.forEach(function (form) {
-      var data = new FormData(form); // if( ckeditors != 'null'){
-      //     Object.entries(ckeditors).forEach(([key, value]) => {
-      //         data.append(key, value.getData());
-      //     });
-      // }
+      var data = new FormData(form);
+
+      if (ckeditors != 'null') {
+        Object.entries(ckeditors).forEach(function (_ref) {
+          var _ref2 = _slicedToArray(_ref, 2),
+              key = _ref2[0],
+              value = _ref2[1];
+
+          data.append(key, value.getData());
+        });
+      }
 
       var url = form.action;
 
       var sendPostRequest = /*#__PURE__*/function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
           var errors, errorMessage;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
             while (1) {
@@ -2008,15 +2036,15 @@ var renderForm = function renderForm() {
         }));
 
         return function sendPostRequest() {
-          return _ref.apply(this, arguments);
+          return _ref3.apply(this, arguments);
         };
       }();
 
       sendPostRequest();
     });
   });
+  (0,_ckeditor__WEBPACK_IMPORTED_MODULE_1__.renderCkeditor)();
 };
-
 var renderTable = function renderTable() {
   var editButtons = document.querySelectorAll(".edit-button");
   var deleteButtons = document.querySelectorAll(".delete-button");
@@ -2025,7 +2053,7 @@ var renderTable = function renderTable() {
       var url = editButton.dataset.url;
 
       var sendEditRequest = /*#__PURE__*/function () {
-        var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
@@ -2055,7 +2083,7 @@ var renderTable = function renderTable() {
         }));
 
         return function sendEditRequest() {
-          return _ref2.apply(this, arguments);
+          return _ref4.apply(this, arguments);
         };
       }();
 
@@ -2067,7 +2095,7 @@ var renderTable = function renderTable() {
       var url = deleteButton.dataset.url;
 
       var sendDeleteRequest = /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
             while (1) {
               switch (_context3.prev = _context3.next) {
@@ -2097,7 +2125,7 @@ var renderTable = function renderTable() {
         }));
 
         return function sendDeleteRequest() {
-          return _ref3.apply(this, arguments);
+          return _ref5.apply(this, arguments);
         };
       }();
 
@@ -2105,7 +2133,6 @@ var renderTable = function renderTable() {
     });
   });
 };
-
 renderForm();
 renderTable();
 
@@ -2121,18 +2148,19 @@ renderTable();
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _crudTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./crudTable */ "./resources/js/admin/desktop/crudTable.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
-    axios = _require["default"];
 
 var sidebarItems = document.querySelectorAll(".sidebar-item");
 var form = document.getElementById("form");
 var table = document.getElementById("table");
+var sideButton = document.querySelectorAll(".sidebutton");
+var sidebar = document.querySelectorAll(".sidebar");
 sidebarItems.forEach(function (sidebarItem) {
   sidebarItem.addEventListener("click", function () {
     var url = sidebarItem.dataset.url;
@@ -2149,7 +2177,9 @@ sidebarItems.forEach(function (sidebarItem) {
                 return axios.get(url).then(function (response) {
                   form.innerHTML = response.data.form;
                   table.innerHTML = response.data.table;
-                  console.log(response.data.form);
+                  window.history.pushState('', '', url);
+                  (0,_crudTable__WEBPACK_IMPORTED_MODULE_1__.renderForm)();
+                  (0,_crudTable__WEBPACK_IMPORTED_MODULE_1__.renderTable)();
                 });
 
               case 4:
@@ -2175,6 +2205,28 @@ sidebarItems.forEach(function (sidebarItem) {
     }();
 
     RefreshRequest();
+  });
+});
+sideButton.forEach(function (sideButton) {
+  sideButton.addEventListener("click", function () {
+    var activeElements = document.querySelectorAll(".active");
+
+    if (sideButton.classList.contains("active")) {
+      sideButton.classList.remove("active");
+      activeElements.forEach(function (activeElement) {
+        activeElement.classList.remove("active");
+      });
+    } else {
+      activeElements.forEach(function (activeElement) {
+        activeElement.classList.remove("active");
+      });
+      sideButton.classList.add("active");
+      sidebar.forEach(function (sidebar) {
+        if (sidebar.dataset.content == sideButton.dataset.button) {
+          sidebar.classList.add("active");
+        } else {}
+      });
+    }
   });
 });
 

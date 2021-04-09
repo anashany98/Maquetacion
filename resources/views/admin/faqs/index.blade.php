@@ -23,7 +23,9 @@
                 <label for="Respuesta Formulario">Description:</label>
             </div>
             <div class="input-container">    
-                <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor"></textarea>
+                <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
+                    {{isset($faq->description) ? $faq->description : ''}}
+                </textarea>
             </div>
         </div>
         <div class="input-container">
@@ -49,6 +51,7 @@
 @section('table')
 
     <table>
+
             <tr>
                 <th>Id</th>
                 <th>Title</th>
@@ -62,7 +65,7 @@
                 <td>{{$faq_element->id}}</td>
                 <td>{{$faq_element->title}}</td>
                 <td>{{$faq_element->description}}</td>
-                <td>{{$faq_element->category_id}}</td>
+                <td>{{$faq_element->category->name}}</td>
                 <td>
 
                     <div class="buttons">

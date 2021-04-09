@@ -1,7 +1,9 @@
+import {renderCkeditor} from './ckeditor';
+
 const table = document.getElementById("table");
 const form = document.getElementById("form");
 
-let renderForm = () => {
+export let renderForm = () => {
 
     let forms = document.querySelectorAll(".admin-form");
     let labels = document.querySelectorAll('.label-container');
@@ -36,12 +38,12 @@ let renderForm = () => {
             
             let data = new FormData(form);
 
-            // if( ckeditors != 'null'){
+            if( ckeditors != 'null'){
 
-            //     Object.entries(ckeditors).forEach(([key, value]) => {
-            //         data.append(key, value.getData());
-            //     });
-            // }
+                Object.entries(ckeditors).forEach(([key, value]) => {
+                    data.append(key, value.getData());
+                });
+            }
 
             let url = form.action;
     
@@ -74,10 +76,12 @@ let renderForm = () => {
             sendPostRequest();
         });
     });
+
+    renderCkeditor();
 };
 
 
-let renderTable = () => {
+export let renderTable = () => {
 
     let editButtons = document.querySelectorAll(".edit-button");
     let deleteButtons = document.querySelectorAll(".delete-button");

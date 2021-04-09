@@ -32,7 +32,6 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Options</th>
-                <th>Categorias</th>
             </tr>
 
         @foreach($faqs_categories as $faq_category_element)

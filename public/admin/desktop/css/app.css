@@ -1,12 +1,9 @@
 .web {
-  display: flex;
-  order: 2;
-  flex-direction: row;
-  height: 100%;
+  height: 10%;
 }
 
 .main {
-  display: flex;
+  height: 90%;
   order: 2;
   flex-direction: row;
   justify-content: space-around;
@@ -58,10 +55,17 @@
   width: 100%;
 }
 
+#h3 {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 1em;
+}
+
 .table {
   padding: 2%;
   color: black;
   border-collapse: collapse;
+  overflow-wrap: break-word;
+  table-layout: fixed;
 }
 
 td, th {
@@ -75,6 +79,8 @@ td, th {
   font-family: "Noto Sans TC", sans-serif;
   border-collapse: collapse;
   color: black;
+  overflow-wrap: break-word;
+  table-layout: fixed;
 }
 
 tr {
@@ -84,6 +90,8 @@ tr {
   font-size: 1em;
   text-align: left;
   font-family: "Noto Sans TC", sans-serif;
+  overflow-wrap: break-word;
+  table-layout: fixed;
 }
 
 .buttons {
@@ -117,6 +125,9 @@ tr {
   cursor: pointer;
   margin-right: 1em;
   border-radius: 0.3em;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .delete-button {
@@ -126,23 +137,56 @@ tr {
   background: transparent;
   cursor: pointer;
   border-radius: 0.3em;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .sidebar {
-  padding: 1em;
   height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f35e5e;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 2em;
+  text-align: center;
 }
 
 .sidebar li {
-  padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 3em;
-  color: #818181;
+  font-size: 2em;
+  color: black;
   display: block;
   transition: 0.3s;
   cursor: pointer;
 }
 
 .sidebar li:hover {
+  color: #3c81af;
+}
+
+.sidebutton {
+  cursor: pointer;
+  color: black;
+  width: 4%;
+  height: 2%;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  border: none;
+  background: none;
+  position: absolute;
+  z-index: 1000;
+}
+
+.sidebutton #hover {
   color: #ce6464;
+}
+
+.sidebar.active {
+  width: 20%;
 }
