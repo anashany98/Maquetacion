@@ -15,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['prefix' => 'admin'], function () {
+    
+    Route::resource('users', 'App\Http\Controllers\Admin\UserController', [
+        'parameters' => [
+            'users' => 'user', 
+        ],
+        'names' => [
+            'index' => 'users',
+            'create' => 'users_create',
+            'edit' => 'users_edit',
+            'store' => 'users_store',
+            'destroy' => 'users_destroy',
+            'show' => 'users_show',
+        ]
+    ]);
+
 
     Route::resource('faqs/categorias', 'App\Http\Controllers\Admin\FaqCategoryController', [
         'parameters' => [
@@ -30,7 +45,6 @@ Route::group(['prefix' => 'admin'], function () {
         ]
     ]);
 
-    // Route::get('/faqs/json', 'App\Http\Controllers\Admin\FaqController@indexJson')->name('faqs_json');
     Route::resource('faqs', 'App\Http\Controllers\Admin\FaqController', [
         'names' => [
             'index' => 'faqs',
