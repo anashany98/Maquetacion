@@ -131,3 +131,22 @@ nav ul a:hover {
 .faq-description.active {
   max-height: 100vh;
 }
+
+.login {
+  padding: 2em;
+  margin: auto;
+  width: 50%;
+}
+
+.form-group {
+  margin: auto;
+  width: 50%;
+  font-family: "Noto Sans TC", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-icon {
+  width: 5em;
+  margin: auto;
+}

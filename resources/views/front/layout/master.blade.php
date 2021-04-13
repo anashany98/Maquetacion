@@ -19,6 +19,7 @@
 
         <div class="main-content">
             @yield("content")
+            @yield("login")
 
         </div>
 

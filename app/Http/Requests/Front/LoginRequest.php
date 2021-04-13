@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Validaciones del formulario de la sección FAQ's
+| Validaciones del formulario de la sección Usuarios
 |--------------------------------------------------------------------------
 |
 | **authorize: determina si el usuario debe estar autorizado para enviar el formulario. 
@@ -14,12 +14,18 @@
 |    
 */
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Front;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class UserRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
     public function authorize()
     {
         return true;
@@ -28,21 +34,16 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password'=> 'required',
-            'password_verified_at'=> 'required|same:password',
+            'email' => 'required',
+            'password' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'El usuario es obligatorio',
             'email.required' => 'El email es obligatorio',
-            'password.required' => 'Debe añadir una contraseña',
-            'password_verified_at.required' => 'La contraseña no coincide',
-
+            'password.required' => 'La contraseña es obligatoria'
         ];
     }
 }

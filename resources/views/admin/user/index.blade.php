@@ -11,10 +11,10 @@
             <input type="hidden" name="id" value="{{isset($user->id) ? $user->id : ''}}"> 
 
             <div class="label-container">
-                <label for="Name">name:</label>
+                <label for="Name">Name:</label>
             </div>
             <div class="input-container">    
-                <input type="text" id="name" name="name" value="{{isset($user->id) ? $faq->title : ''}}" class="input">
+                <input type="text" id="name" name="name" value="{{isset($user->id) ? $user->name : ''}}" class="input">
             </div>    
         </div>
 
@@ -32,19 +32,18 @@
                 <label for="Passwrord">Password:</label>
             </div>
             <div class="input-container">    
-                <input type="text" id="password" name="password" value="{{isset($user->password) ? $user->password : ''}}"class="input" >
-                    {{isset($user->passsword) ? $user->password : ''}}
+                <input type="password" id="password" name="password" value="{{isset($user->password) ? $user->password : ''}}"class="input" >
+                    {{isset($user->password) ? $user->password : ''}}
         
             </div>
         </div>
         <div class="form-group">   
             <div class="label-container">
-                <input for="Repeat-Password">Repeat Passwrord:</label>
+                <label for="password_verified_at">Passwrord Confirmation:</label>
             </div>
             <div class="input-container">    
-                <input type="text" id="repeat-password" name="repeat password" value="{{isset($user->password) ? $user->password : ''}}"class="input" >
+                <input type="password" id="passsword_verified_at" name="password_verified_at" value="{{isset($user->password) ? $user->password : ''}}"class="input" >
                     {{isset($user->password) ? $user->password : ''}}
-                
             </div>
         </div>
         {{-- <div class="input-container">
@@ -86,7 +85,7 @@
                 <td>
 
                     <div class="buttons">
-                        <button class="edit-button" data-url="{{route('users_show', ['faq' => $user->id])}}" > 
+                        <button class="edit-button" data-url="{{route('users_show', ['user' => $user->id])}}" > 
                             <svg  viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
                             </svg>

@@ -70,7 +70,7 @@ class UserController extends Controller
             'id' => request('id')],[
             'name' => request('name'),
             'email' => request('email'),
-            'password'=> request('password'),
+            'password'=> bcrypt(request('password')),
             'active' => 1,
         ]);
 
@@ -88,7 +88,7 @@ class UserController extends Controller
 
     public function show(user $user)
     {
-        $view = View::make('admin.users.index')
+        $view = View::make('admin.user.index')
         ->with('user', $user)
         ->with('users', $this->user->where('active', 1)->get());   
         

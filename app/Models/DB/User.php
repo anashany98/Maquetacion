@@ -2,14 +2,18 @@
 
 namespace App\Models\DB;
 
-class User extends DBModel
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
 {
+    use Notifiable;
 
-    protected $table = 'users';
+    protected $guarded = [];
 
-    public function users()
-    {
-        return $this->hasMany(User::class, 'user_id');
-    }
+    protected $table = "t_users";
 
 }
+
+
