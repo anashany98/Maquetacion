@@ -74,7 +74,7 @@ class CustomerController extends Controller
             'direction'=> request('direction'),
             'number'=> request('number'),
             'postal_code'=> request('postal_code'),
-            'country'=> request('country'),
+            'country_id' => request('country_id'),            
             'active' => 1,
         ]);
 

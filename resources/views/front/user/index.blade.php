@@ -11,9 +11,10 @@
         </div>     --}}
 
 
+        
         <div class="login-group">   
             <form id="login-form" method="POST" action="{{route('front_login_submit')}}">
-           
+        
                 {{ csrf_field() }}
 
                 <svg class="user-icon" viewBox="0 0 24 24">
@@ -23,24 +24,34 @@
                 <h2>Login</h2>
 
 
-                <div class=email-container>
+                <div class=login-container>
                     <label for="Email"></label>
-                    <input type="email" class="form-control" value="{{ old('email') }}" name="email" placeholder="Email"> 
-                </div>
-
-                <div class=password-container>
+                    <input type="email" class="form-control" value="{{ old('email') }}" name="email" placeholder="Email">
+                 
                     <label for="Passwrord"></label>
                     <input type='password' name="password" placeholder="Password">
-                </div>
 
-                <div class="login-group" >
                     <button type="submit">
                         Login         
                     </button>
+
                 </div>
 
+
+                <div class="button-group" >
+                    
+    
+                    <button type="submit">
+                        Forgot password?
+                    </button>
+
+                    <button type="submit">
+                        cancel
+                    </button>
+                </div>
             </form>
         </div>
+        
     </div>
 
 @endsection

@@ -47,10 +47,16 @@
 
             <div class="label-container">
                 <label for="Country">Country:</label>
+            </div>   
+            
+            <div class="input-container">
+                <select name="country_id" class="input-highlight">
+                    <option></option>
+                    @foreach($countries as $country)
+                        <option value="{{$country->id}}" {{$customer->country_id == $country->id ? 'selected':''}} class="country_id">{{ $country->name }}</option>
+                    @endforeach
+                </select>    
             </div>
-            <div class="input-container">    
-                <input type="text"  name="country" value="{{isset($customer->country) ? $customer->country : ''}}" class="input">
-            </div>    
         </div>
 
         <div class="button">

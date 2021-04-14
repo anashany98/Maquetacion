@@ -14,6 +14,11 @@ class ViewComposerServiceProvider extends ServiceProvider
             'admin.faqs.index'],
             'App\Http\ViewComposer\Admin\FaqsCategories'
         );
+
+        view()->composer([
+            'admin.customers.index'],
+            'App\Http\ViewComposer\Admin\Countries'
+        );
         
     }
 

@@ -32,7 +32,6 @@
             <select name="category_id" data-placeholder="Seleccione una categoría" class="input-highlight">
                 <option></option>
                     @foreach($faqs_categories as $faq_category_element)
-                        
                         <option value="{{$faq_category_element->id}}" 
                             {{$faq->category_id == $faq_category_element->id ? 'selected':''}} 
                             class="category_id">

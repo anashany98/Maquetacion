@@ -135,18 +135,33 @@ nav ul a:hover {
 .login {
   padding: 2em;
   margin: auto;
-  width: 50%;
+  width: 20%;
 }
 
-.form-group {
+.login-group {
   margin: auto;
-  width: 50%;
+  width: 100%;
   font-family: "Noto Sans TC", sans-serif;
   display: flex;
   flex-direction: column;
 }
 
+.login-group.active {
+  width: 100%;
+}
+
 .user-icon {
   width: 5em;
   margin: auto;
+}
+
+.button-group {
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button-group #hover {
+  opacity: 0.8;
 }
