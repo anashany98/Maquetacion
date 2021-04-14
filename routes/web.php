@@ -18,6 +18,22 @@ Route::group(['prefix' => 'admin'], function () {
     
 
 
+
+    Route::resource('customers', 'App\Http\Controllers\Admin\CustomerController', [
+        'parameters' => [
+            'customers' => 'customer', 
+        ],
+        'names' => [
+            'index' => 'customers',
+            'create' => 'customers_create',
+            'edit' => 'customers_edit',
+            'store' => 'customers_store',
+            'destroy' => 'customers_destroy',
+            'show' => 'customers_show',
+        ]
+    ]);
+
+
     Route::resource('users', 'App\Http\Controllers\Admin\UserController', [
         'parameters' => [
             'users' => 'user', 
