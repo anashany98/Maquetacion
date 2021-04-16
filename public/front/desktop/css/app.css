@@ -151,6 +151,7 @@ nav ul a:hover {
 }
 
 .user-icon {
+  width: 30%;
   width: 5em;
   margin: auto;
 }

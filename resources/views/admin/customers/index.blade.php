@@ -7,57 +7,72 @@
 
             {{ csrf_field() }}
             
+            <ul class=tab-content>
+                <li class=tab-item data-tab="content">content</li>
+                <li class=tab-item data-tab="images">images</li>
+            </ul>
+
             <input autocomplete="false" name="hidden" type="text" style="display:none;">
             <input type="hidden" name="id" value="{{isset($customer->id) ? $customer->id : ''}}"> 
 
-            <div class="label-container">
-                <label for="Name">Name:</label>
-            </div>
-            <div class="input-container">    
-                <input type="text"  name="name" value="{{isset($customer->name) ? $customer->name : ''}}" class="input">
-            </div>    
+            <div class="tab-panel" data-tab="content">
+                <div class="label-container">
+                    <label for="Name">Name:</label>
+                </div>
+                <div class="input-container">    
+                    <input type="text"  name="name" value="{{isset($customer->name) ? $customer->name : ''}}" class="input">
+                </div>    
 
-            <div class="label-container">
-                <label for="Email">Email:</label>
-            </div>
-            <div class="input-container">    
-                <input type="text"  name="email" value="{{isset($customer->email) ? $customer->email : ''}}" class="input">
-            </div>    
+                <div class="label-container">
+                    <label for="Email">Email:</label>
+                </div>
+                <div class="input-container">    
+                    <input type="text"  name="email" value="{{isset($customer->email) ? $customer->email : ''}}" class="input">
+                </div>    
 
-            <div class="label-container">
-                <label for="Direction">Direction:</label>
-            </div>
-            <div class="input-container">    
-                <input type="text"  name="direction" value="{{isset($customer->direction) ? $customer->direction : ''}}" class="input">
-            </div>    
+                <div class="label-container">
+                    <label for="Direction">Direction:</label>
+                </div>
+                <div class="input-container">    
+                    <input type="text"  name="direction" value="{{isset($customer->direction) ? $customer->direction : ''}}" class="input">
+                </div>    
 
-            <div class="label-container">
-                <label for="Postal Code">Postal Code</label>
-            </div>
-            <div class="input-container">    
-                <input type="text"  name="postal_code" value="{{isset($customer->postal_code) ? $customer->postal_code : ''}}" class="input">
-            </div>    
+                <div class="label-container">
+                    <label for="Postal Code">Postal Code</label>
+                </div>
+                <div class="input-container">    
+                    <input type="text"  name="postal_code" value="{{isset($customer->postal_code) ? $customer->postal_code : ''}}" class="input">
+                </div>    
 
-            <div class="label-container">
-                <label for="Number">Number:</label>
-            </div>
-            <div class="input-container">    
-                <input type="text"  name="number" value="{{isset($customer->number) ? $customer->number : ''}}" class="input">
-            </div>    
+                <div class="label-container">
+                    <label for="Number">Number:</label>
+                </div>
+                <div class="input-container">    
+                    <input type="text"  name="number" value="{{isset($customer->number) ? $customer->number : ''}}" class="input">
+                </div>    
 
-            <div class="label-container">
-                <label for="Country">Country:</label>
-            </div>   
+                <div class="label-container">
+                    <label for="Country">Country:</label>
+                </div>   
+                
+                <div class="input-container">
+                    <select name="country_id" class="input-highlight">
+                        <option></option>
+                        @foreach($countries as $country)
+                            <option value="{{$country->id}}" {{$customer->country_id == $country->id ? 'selected':''}} class="country_id">{{ $country->name }}</option>
+                        @endforeach
+                    </select>    
+                </div>
+            </div>
             
-            <div class="input-container">
-                <select name="country_id" class="input-highlight">
-                    <option></option>
-                    @foreach($countries as $country)
-                        <option value="{{$country->id}}" {{$customer->country_id == $country->id ? 'selected':''}} class="country_id">{{ $country->name }}</option>
-                    @endforeach
-                </select>    
+
+            <div class="tab-panel" data-tab="images">
+                Prueba
             </div>
-        </div>
+
+
+
+
 
         <div class="button">
             <input type="submit" value="Enviar" id="send-button">

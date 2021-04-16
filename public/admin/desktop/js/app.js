@@ -1884,6 +1884,10 @@ __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/desktop/ckeditor.js"
 
 __webpack_require__(/*! ./sidebar */ "./resources/js/admin/desktop/sidebar.js");
 
+__webpack_require__(/*! ./touch */ "./resources/js/admin/desktop/touch.js");
+
+__webpack_require__(/*! ./tab */ "./resources/js/admin/desktop/tab.js");
+
 /***/ }),
 
 /***/ "./resources/js/admin/desktop/ckeditor.js":
@@ -2228,6 +2232,47 @@ sideButton.forEach(function (sideButton) {
       });
     }
   });
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/desktop/tab.js":
+/*!*******************************************!*\
+  !*** ./resources/js/admin/desktop/tab.js ***!
+  \*******************************************/
+/***/ (() => {
+
+var tabsPanels = document.querySelectorAll(".tab-panel");
+var tabsItems = document.querySelectorAll(".tab-item");
+tabsItems.forEach(function (tabItem) {
+  tabsItems.addEventListener("click", function () {
+    var activeElements = document.querySelectorAll(".tab-active");
+    activeElements.forEach(function (activeElement) {
+      activeElements.classList.remove("tab-active");
+    });
+    tabItem.classList.ass("tab-active");
+    tabsPanels.forEach(function (tabPanel) {
+      if (tabsPanel.dataset.tab == tabItem.dataset.tab) {
+        tabPanel.classList.add("tab-active");
+      }
+    });
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/desktop/touch.js":
+/*!*********************************************!*\
+  !*** ./resources/js/admin/desktop/touch.js ***!
+  \*********************************************/
+/***/ (() => {
+
+var touch = document.querySelectorAll('touch');
+touch.addEventListener("touchstart", function () {
+  function handlerFunction(event) {
+    console.log(hola);
+    alert();
+  }
 });
 
 /***/ }),
