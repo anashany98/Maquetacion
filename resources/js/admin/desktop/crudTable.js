@@ -83,17 +83,26 @@ export let renderForm = () => {
 
 export let renderTable = () => {
 
-    let editButtons = document.querySelectorAll(".edit-button");
-    let deleteButtons = document.querySelectorAll(".delete-button");
+    let deleteButton = document.getElementById("delete-button");
+    let editButton = document.getElementById("edit-button");
+    let tableRows = document.querySelectorAll(".table-row");
 
-    editButtons.forEach(editButton => {
+    tableRows.forEach(tableRow => {
 
-        editButton.addEventListener("click", () => {
+        tableRow.addEventListener("click", () => {
+            editButton.dataset.elementId = tableRow.id;
+            deleteButton.dataset.elementId = tableRow.id;
+        });
+    });
 
-            let url = editButton.dataset.url;
+    editButton.addEventListener("click", () => {
+
+        if(editButton.dataset.elementId != null){
+
+            let url = editButton.dataset.url + '/' + editButton.dataset.elementId;
 
             let sendEditRequest = async () => {
-
+    
                 try {
                     await axios.get(url).then(response => {
                         form.innerHTML = response.data.form;
@@ -104,19 +113,20 @@ export let renderTable = () => {
                     console.error(error);
                 }
             };
-
+    
             sendEditRequest();
-        });
+        }
     });
 
-    deleteButtons.forEach(deleteButton => {
 
-        deleteButton.addEventListener("click", () => {
+    deleteButton.addEventListener("click", () => {
 
-            let url = deleteButton.dataset.url;
+        if(deleteButton.dataset.elementId != null){
+
+            let url = deleteButton.dataset.url + '/' + deleteButton.dataset.elementId;
 
             let sendDeleteRequest = async () => {
-
+    
                 try {
                     await axios.delete(url).then(response => {
                         table.innerHTML = response.data.table;
@@ -127,12 +137,11 @@ export let renderTable = () => {
                     console.error(error);
                 }
             };
-
+    
             sendDeleteRequest();
-        });
+        }
     });
 };
 
 renderForm();
 renderTable();
-

@@ -7,10 +7,10 @@
 
             {{ csrf_field() }}
             
-            <ul class=tab-content>
+            {{-- <ul class=tab-content>
                 <li class=tab-item data-tab="content">content</li>
                 <li class=tab-item data-tab="images">images</li>
-            </ul>
+            </ul> --}}
 
             <input autocomplete="false" name="hidden" type="text" style="display:none;">
             <input type="hidden" name="id" value="{{isset($customer->id) ? $customer->id : ''}}"> 
@@ -66,9 +66,9 @@
             </div>
             
 
-            <div class="tab-panel" data-tab="images">
+            {{-- <div class="tab-panel" data-tab="images">
                 Prueba
-            </div>
+            </div> --}}
 
 
 

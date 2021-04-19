@@ -2050,11 +2050,18 @@ var renderForm = function renderForm() {
   (0,_ckeditor__WEBPACK_IMPORTED_MODULE_1__.renderCkeditor)();
 };
 var renderTable = function renderTable() {
-  var editButtons = document.querySelectorAll(".edit-button");
-  var deleteButtons = document.querySelectorAll(".delete-button");
-  editButtons.forEach(function (editButton) {
-    editButton.addEventListener("click", function () {
-      var url = editButton.dataset.url;
+  var deleteButton = document.getElementById("delete-button");
+  var editButton = document.getElementById("edit-button");
+  var tableRows = document.querySelectorAll(".table-row");
+  tableRows.forEach(function (tableRow) {
+    tableRow.addEventListener("click", function () {
+      editButton.dataset.elementId = tableRow.id;
+      deleteButton.dataset.elementId = tableRow.id;
+    });
+  });
+  editButton.addEventListener("click", function () {
+    if (editButton.dataset.elementId != null) {
+      var url = editButton.dataset.url + '/' + editButton.dataset.elementId;
 
       var sendEditRequest = /*#__PURE__*/function () {
         var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -2092,11 +2099,11 @@ var renderTable = function renderTable() {
       }();
 
       sendEditRequest();
-    });
+    }
   });
-  deleteButtons.forEach(function (deleteButton) {
-    deleteButton.addEventListener("click", function () {
-      var url = deleteButton.dataset.url;
+  deleteButton.addEventListener("click", function () {
+    if (deleteButton.dataset.elementId != null) {
+      var url = deleteButton.dataset.url + '/' + deleteButton.dataset.elementId;
 
       var sendDeleteRequest = /*#__PURE__*/function () {
         var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
@@ -2134,7 +2141,7 @@ var renderTable = function renderTable() {
       }();
 
       sendDeleteRequest();
-    });
+    }
   });
 };
 renderForm();

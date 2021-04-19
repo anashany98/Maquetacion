@@ -2,9 +2,18 @@
     padding:2%;
     color: rgb(0, 0, 0);
     border-collapse: collapse;
-    overflow-wrap: break-word;
+    word-break: break-all;
     table-layout:fixed;
+    display: flex;
+    flex-direction: column-reverse;
+}
 
+.table-info{
+    overflow-wrap: break-word;
+    table-layout: fixed;
+    border-collapse: collapse;
+    background-color: hsl(0, 0%, 100%);
+    word-break: break-all;
 
     
 }
@@ -38,13 +47,21 @@ tr{
     table-layout:fixed;
 }
 
+tr:hover{
+
+    background-color: hsl(172, 62%, 62%)
+
+
+}
+
 .buttons{
     display: flex;
     flex-direction: row;
-    width:100%;
+    width:30%;
     height: 100%;
     cursor: pointer;
     justify-content: space-between;
+    
 }
 
 #sendbutton{

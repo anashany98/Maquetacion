@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Lora);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 .web {
   height: 10%;
 }
@@ -7,6 +9,8 @@
   order: 2;
   flex-direction: row;
   justify-content: space-around;
+  height: 100%;
+  background: linear-gradient(0deg, white 0%, #f35d5c 98%);
 }
 
 .two-columns {
@@ -64,8 +68,18 @@
   padding: 2%;
   color: black;
   border-collapse: collapse;
+  word-break: break-all;
+  table-layout: fixed;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.table-info {
   overflow-wrap: break-word;
   table-layout: fixed;
+  border-collapse: collapse;
+  background-color: white;
+  word-break: break-all;
 }
 
 td, th {
@@ -94,10 +108,14 @@ tr {
   table-layout: fixed;
 }
 
+tr:hover {
+  background-color: #62daca;
+}
+
 .buttons {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 30%;
   height: 100%;
   cursor: pointer;
   justify-content: space-between;
@@ -201,6 +219,67 @@ tr {
 
 .tab-panel.tab-active {
   display: block;
+}
+
+html, body, div,
+h1, h2, h3, h4, h5, h6,
+ul, li, ol, ul, p, img {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1;
+  font-size: 100%;
+  font-family: "Lora", serif;
+  line-height: 1.65;
+}
+
+#masterHeader {
+  font-family: "Roboto", sans-serif;
+  background: #f35e5e;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header a {
+  color: #fff;
+}
+
+h1 {
+  float: left;
+  font-size: 1.25em;
+  line-height: 3em;
+  margin-left: 5%;
+  text-transform: uppercase;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 10%;
+}
+
+.search-opener {
+  visibility: hidden;
+}
+
+.search-opener .active {
+  margin-top: 2em;
+  width: 20%;
+}
+
+.search-button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+select {
+  width: 30%;
 }
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */

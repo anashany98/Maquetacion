@@ -19,7 +19,7 @@
         </div>
 
         <div class="button">
-            <input type="submit" value="Enviar" id="send-button">
+            <input type="submit" value="Guardar" id="send-button">
         </div>
     </form> 
 
@@ -31,14 +31,14 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Options</th>
+                <th></th>
             </tr>
 
         @foreach($faqs_categories as $faq_category_element)
             <tr>
                 <td>{{$faq_category_element->id}}</td>
                 <td>{{$faq_category_element->name}}</td>
-                <td>
+                <td class="table-icons">
                     <div class="buttons">
                         <button class="edit-button" data-url="{{route('faqs_categories_show', ['faq_category' => $faq_category_element->id])}}" > 
                             <svg  viewBox="0 0 24 24">

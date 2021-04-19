@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Lora);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 .main {
   display: flex;
   order: 2;
@@ -185,6 +187,52 @@ tr:hover {
 
 .sidebar.active {
   width: 100%;
+}
+
+html, body, div,
+h1, h2, h3, h4, h5, h6,
+ul, li, ol, ul, p, img {
+  margin: 0;
+  padding: 0;
+}
+
+#masterHeader {
+  font-family: "Roboto", sans-serif;
+  background: #f35e5e;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header a {
+  color: #fff;
+}
+
+h1 {
+  float: left;
+  font-size: 0.7em;
+  line-height: 3em;
+  margin-left: 5%;
+  text-transform: uppercase;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  height: 10%;
+  padding: 3em;
+}
+
+.search-button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+select {
+  width: 50%;
 }
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */

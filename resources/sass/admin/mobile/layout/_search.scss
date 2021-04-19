@@ -1,0 +1,20 @@
+.filter-container{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    height: 10%;
+    padding: 3em;
+}
+
+.search-button{
+    cursor: pointer;
+    border: none;
+    background: none;
+
+}
+
+
+select{
+    width: 50%;
+
+}
