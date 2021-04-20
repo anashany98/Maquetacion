@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\FaqRequest;
 use App\Models\DB\Faq;
+use Debugbar;
 
 class FaqController extends Controller
 {
@@ -120,4 +121,64 @@ class FaqController extends Controller
             'form' => $view['form']
         ]);
     }
+
+
+    public function filter(Request $request){
+
+        $query = $this->faq->query();
+
+        $query->when(request('category_id'), function ($q, $category_id) {
+
+            if($category_id == 'all'){
+                return $q;
+            }
+            else {
+                return $q->where('category_id', $category_id);
+            }
+        });
+
+        $query->when(request('search'), function ($q, $search) {
+
+            if($search == null){
+                return $q;
+            }
+            else {
+                return $q->whereDate('title', 'like', "%$search%");
+            }
+        });
+
+        $query->when(request('created_at_from'), function ($q, $created_at_from) {
+
+            if($created_at_from == null){
+                return $q;
+            }
+            else {
+                return $q->whereDate('created_at', '>=', $created_at_from);
+            }
+        });
+
+        $query->when(request('created_at_since'), function ($q, $created_at_since) {
+
+            if($created_at_since == null){
+                return $q;
+            }
+            else {
+                return $q->whereDate('created_at', '<=', $created_at_since);
+            }
+        });
+
+        $faqs = $query->where('active', 1)->get();
+
+        $view = View::make('admin.faqs.index')
+            ->with('faqs', $faqs)
+            ->renderSections();
+
+        return response()->json([
+            'table' => $view['table'],
+        ]);
+    }
+
 }
+
+
+

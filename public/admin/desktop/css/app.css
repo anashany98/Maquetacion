@@ -261,25 +261,7 @@ h1 {
   flex-direction: column;
   width: 30%;
   height: 10%;
-}
-
-.search-opener {
-  visibility: hidden;
-}
-
-.search-opener .active {
-  margin-top: 2em;
-  width: 20%;
-}
-
-.search-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-}
-
-select {
-  width: 30%;
+  padding: 3em;
 }
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */

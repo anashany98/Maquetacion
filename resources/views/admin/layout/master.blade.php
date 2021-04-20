@@ -32,7 +32,7 @@
 
             <div class="main">
                 <div class="search-master">
-                     @include('admin.layout.partials.search')
+                     @include('admin.layout.partials.filter')
                 </div>
     
 

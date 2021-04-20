@@ -1884,9 +1884,8 @@ __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/desktop/ckeditor.js"
 
 __webpack_require__(/*! ./sidebar */ "./resources/js/admin/desktop/sidebar.js");
 
-__webpack_require__(/*! ./touch */ "./resources/js/admin/desktop/touch.js");
-
-__webpack_require__(/*! ./tab */ "./resources/js/admin/desktop/tab.js");
+__webpack_require__(/*! ./filter */ "./resources/js/admin/desktop/filter.js"); // require('./touch');
+// require('./tab');
 
 /***/ }),
 
@@ -2149,6 +2148,69 @@ renderTable();
 
 /***/ }),
 
+/***/ "./resources/js/admin/desktop/filter.js":
+/*!**********************************************!*\
+  !*** ./resources/js/admin/desktop/filter.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _crudTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./crudTable */ "./resources/js/admin/desktop/crudTable.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var filterButton = document.getElementById('filter-button');
+var filterForm = document.getElementById('filter-form');
+filterButton.addEventListener('click', function () {
+  var data = new FormData(filterForm);
+  var url = filterForm.action;
+
+  var sendPostRequest = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios.post(url, data).then(function (response) {
+                table.innerHTML = response.data.table;
+                (0,_crudTable__WEBPACK_IMPORTED_MODULE_1__.renderTable)();
+              });
+
+            case 3:
+              _context.next = 7;
+              break;
+
+            case 5:
+              _context.prev = 5;
+              _context.t0 = _context["catch"](0);
+
+            case 7:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 5]]);
+    }));
+
+    return function sendPostRequest() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  sendPostRequest();
+});
+
+/***/ }),
+
 /***/ "./resources/js/admin/desktop/sidebar.js":
 /*!***********************************************!*\
   !*** ./resources/js/admin/desktop/sidebar.js ***!
@@ -2239,47 +2301,6 @@ sideButton.forEach(function (sideButton) {
       });
     }
   });
-});
-
-/***/ }),
-
-/***/ "./resources/js/admin/desktop/tab.js":
-/*!*******************************************!*\
-  !*** ./resources/js/admin/desktop/tab.js ***!
-  \*******************************************/
-/***/ (() => {
-
-var tabsPanels = document.querySelectorAll(".tab-panel");
-var tabsItems = document.querySelectorAll(".tab-item");
-tabsItems.forEach(function (tabItem) {
-  tabsItems.addEventListener("click", function () {
-    var activeElements = document.querySelectorAll(".tab-active");
-    activeElements.forEach(function (activeElement) {
-      activeElements.classList.remove("tab-active");
-    });
-    tabItem.classList.ass("tab-active");
-    tabsPanels.forEach(function (tabPanel) {
-      if (tabsPanel.dataset.tab == tabItem.dataset.tab) {
-        tabPanel.classList.add("tab-active");
-      }
-    });
-  });
-});
-
-/***/ }),
-
-/***/ "./resources/js/admin/desktop/touch.js":
-/*!*********************************************!*\
-  !*** ./resources/js/admin/desktop/touch.js ***!
-  \*********************************************/
-/***/ (() => {
-
-var touch = document.querySelectorAll('touch');
-touch.addEventListener("touchstart", function () {
-  function handlerFunction(event) {
-    console.log(hola);
-    alert();
-  }
 });
 
 /***/ }),
