@@ -2143,6 +2143,20 @@ var renderTable = function renderTable() {
     }
   });
 };
+
+function sortTableByColumn(tables, column) {
+  var asc = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var dirModifier = asc ? 1 : -1;
+  var tBody = tables.tBodies[0];
+  var rows = Array.from(tBody.querySelectorAll("tr"));
+  var sortedRows = rows.sort(function (a, b) {
+    var aColText = a.querySelector("td:nth-child(".concat(column + 1, ")")).textContent.trim();
+    var bColText = b.querySelector("td:nth-child(".concat(column + 1, ")")).textContent.trim();
+    return aColText > bColText ? 1 * dirModifier : -1 * dirModifier;
+  });
+  console.log(sortedRows);
+}
+
 renderForm();
 renderTable();
 

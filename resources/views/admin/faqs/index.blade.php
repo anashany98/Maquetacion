@@ -60,22 +60,26 @@
 
     
     <table class="table-info">
-
-        <tr class="touch">
-            <th>Id</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Categories</th>
-        </tr>
-
-        @foreach($faqs as $faq_element)
-            <tr class="table-row" id="{{$faq_element->id}}">
-                <td>{{$faq_element->id}}</td>
-                <td>{{$faq_element->title}}</td>
-                <td>{{$faq_element->description}}</td>
-                <td>{{$faq_element->category->name}}</td>
+        
+        <thead >
+            <tr class="touch">
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Categories</th>
             </tr>
-        @endforeach     
+        </thead>
+
+        <tbody>
+            @foreach($faqs as $faq_element)
+                <tr class="table-row" id="{{$faq_element->id}}">
+                    <td>{{$faq_element->id}}</td>
+                    <td>{{$faq_element->title}}</td>
+                    <td>{{$faq_element->description}}</td>
+                    <td>{{$faq_element->category->name}}</td>
+                </tr>
+            @endforeach
+        </tbody>
 
         <div class="buttons">                     
             <button id="edit-button" class="edit-button" data-url="{{route('faqs')}}" > 

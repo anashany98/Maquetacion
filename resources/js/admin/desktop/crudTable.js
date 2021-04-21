@@ -141,7 +141,26 @@ export let renderTable = () => {
             sendDeleteRequest();
         }
     });
+
 };
+
+function sortTableByColumn(tables, column, asc = true)  {
+    
+    const dirModifier = asc ? 1 : -1;
+    const tBody = tables.tBodies[0];
+    const rows = Array.from(tBody.querySelectorAll("tr")); 
+
+    const sortedRows = rows.sort((a, b) => {
+        const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+        const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+
+        return aColText > bColText ?  ( 1 * dirModifier) : (-1 * dirModifier);
+        
+   });
+
+   console.log(sortedRows);
+}
+
 
 renderForm();
 renderTable();

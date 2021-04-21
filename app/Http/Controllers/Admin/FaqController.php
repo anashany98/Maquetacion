@@ -178,7 +178,33 @@ class FaqController extends Controller
         ]);
     }
 
+    // public function order()
+    // {
+    //     $faq = DB::table("t_faqs")
+    //                     ->orderBy('title', 'asc')
+    //                     ->get();
+  
+    // }
+
 }
+    
+//     public function sort ($column) 
+//     {
+//         $this->sortColumn =$column;
+//         $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
 
 
+
+//     }
+
+
+
+
+// $query->when(request ('title') ->get();
+                
+//                 = DB::table('t_faqs')
+//                 ->orderBy('title', 'desc')
+                
+
+//         )
 
