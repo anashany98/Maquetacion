@@ -34,9 +34,9 @@
                 <div class="search-master">
                      @include('admin.layout.partials.filter')
                 </div>
-    
 
                 @yield('content')
+
             </div>      
         </div>
 

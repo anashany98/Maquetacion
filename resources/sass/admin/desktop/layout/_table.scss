@@ -103,3 +103,26 @@ tr:hover{
     border: none;
     background: none;
 }
+
+.table-info th {
+    cursor: pointer;
+  }
+  
+  .table-info .th-sort-asc::after {
+    content: "\25b4";
+  }
+  
+  .table-info .th-sort-desc::after {
+    content: "\25be";
+  }
+  
+  .table-info .th-sort-asc::after,
+  .table-info .th-sort-desc::after {
+    margin-left: 5px;
+  }
+  
+  .table-info .th-sort-asc,
+  .table-info .th-sort-desc {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  

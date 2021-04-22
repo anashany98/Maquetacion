@@ -94,6 +94,11 @@
                 </svg>
             </button>
         </div>   
+
+        @if($agent->isDesktop())
+            @include('admin.layout.partials.pagination', ['items' => $faqs])
+        @endif
+
     </table>
    
 

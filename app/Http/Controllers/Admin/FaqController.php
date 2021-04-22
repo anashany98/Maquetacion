@@ -39,7 +39,7 @@ class FaqController extends Controller
 
         $view = View::make('admin.faqs.index')
                 ->with('faq', $this->faq)
-                ->with('faqs', $this->faq->where('active', 1)->get());
+                ->with('faqs', $this->faq->where('active', 1)->paginate(3));
 
         if(request()->ajax()) {
 
@@ -77,7 +77,7 @@ class FaqController extends Controller
         ]);
 
         $view = View::make('admin.faqs.index')
-        ->with('faqs', $this->faq->where('active', 1)->get())
+        ->with('faqs', $this->faq->where('active', 1)->paginate(3))
         ->with('faq', $faq)
         ->renderSections();        
 
@@ -92,7 +92,7 @@ class FaqController extends Controller
     {
         $view = View::make('admin.faqs.index')
         ->with('faq', $faq)
-        ->with('faqs', $this->faq->where('active', 1)->get());   
+        ->with('faqs', $this->faq->where('active', 1)->paginate(3));   
         
         if(request()->ajax()) {
 
@@ -113,7 +113,7 @@ class FaqController extends Controller
 
         $view = View::make('admin.faqs.index')
             ->with('faq', $this->faq)
-            ->with('faqs', $this->faq->where('active', 1)->get())
+            ->with('faqs', $this->faq->where('active', 1)->paginate(3))
             ->renderSections();
         
         return response()->json([
@@ -167,7 +167,7 @@ class FaqController extends Controller
             }
         });
 
-        $faqs = $query->where('active', 1)->get();
+        $faqs = $query->where('active', 1)->paginate(3);
 
         $view = View::make('admin.faqs.index')
             ->with('faqs', $faqs)
@@ -178,33 +178,7 @@ class FaqController extends Controller
         ]);
     }
 
-    // public function order()
-    // {
-    //     $faq = DB::table("t_faqs")
-    //                     ->orderBy('title', 'asc')
-    //                     ->get();
-  
-    // }
+    
 
 }
     
-//     public function sort ($column) 
-//     {
-//         $this->sortColumn =$column;
-//         $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
-
-
-
-//     }
-
-
-
-
-// $query->when(request ('title') ->get();
-                
-//                 = DB::table('t_faqs')
-//                 ->orderBy('title', 'desc')
-                
-
-//         )
-
