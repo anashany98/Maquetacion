@@ -2,10 +2,10 @@
     padding:2%;
     color: rgb(0, 0, 0);
     border-collapse: collapse;
-    word-break: break-all;
     table-layout:fixed;
     display: flex;
     flex-direction: column-reverse;
+    height: 100%;
 }
 
 .table-info{
@@ -57,11 +57,10 @@ tr:hover{
 .buttons{
     display: flex;
     flex-direction: row;
-    width:30%;
-    height: 100%;
     cursor: pointer;
     justify-content: space-between;
-    
+    flex-direction: row;
+    width: 15em;
 }
 
 #sendbutton{
@@ -125,4 +124,5 @@ tr:hover{
   .table-info .th-sort-desc {
     background: rgba(0, 0, 0, 0.1);
   }
+  
   

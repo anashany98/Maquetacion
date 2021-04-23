@@ -86,6 +86,7 @@ export let renderTable = () => {
     let deleteButton = document.getElementById("delete-button");
     let editButton = document.getElementById("edit-button");
     let tableRows = document.querySelectorAll(".table-row");
+    let paginationButtons = document.querySelectorAll('.pagination-table-button');
 
     tableRows.forEach(tableRow => {
 
@@ -185,6 +186,32 @@ export let renderTable = () => {
         })
     
     })
+
+
+    paginationButtons.forEach(paginationButton => {
+
+        paginationButton.addEventListener("click", () => {
+
+            let url = paginationButton.dataset.page;
+
+            let sendPaginationRequest = async () => {
+
+                try {
+                    await axios.get(url).then(response => {
+                        table.innerHTML = response.data.table;
+                        renderTable();
+                    });
+                    
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+
+            sendPaginationRequest();
+            
+        });
+    });
+
 
 };
 

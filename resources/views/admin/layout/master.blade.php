@@ -31,10 +31,7 @@
             @include("admin.layout.partials.sidebar")
 
             <div class="main">
-                <div class="search-master">
-                     @include('admin.layout.partials.filter')
-                </div>
-
+               
                 @yield('content')
 
             </div>      

@@ -69,10 +69,10 @@
   padding: 2%;
   color: black;
   border-collapse: collapse;
-  word-break: break-all;
   table-layout: fixed;
   display: flex;
   flex-direction: column-reverse;
+  height: 100%;
 }
 
 .table-info {
@@ -116,10 +116,10 @@ tr:hover {
 .buttons {
   display: flex;
   flex-direction: row;
-  width: 30%;
-  height: 100%;
   cursor: pointer;
   justify-content: space-between;
+  flex-direction: row;
+  width: 15em;
 }
 
 #sendbutton {
@@ -214,8 +214,6 @@ tr:hover {
   cursor: pointer;
   color: black;
   width: 4%;
-  height: 2%;
-  cursor: pointer;
   outline: none;
   padding: 0;
   border: none;
@@ -282,9 +280,38 @@ h1 {
 .filter-container {
   display: flex;
   flex-direction: column;
+  width: 0%;
+  height: 0%;
+  overflow-x: hidden;
+}
+
+.filter-container active {
   width: 30%;
-  height: 10%;
-  padding: 3em;
+}
+
+.filter-open-button {
+  cursor: pointer;
+  color: black;
+  height: 2%;
+  outline: none;
+  padding: 0;
+  border: none;
+  background: none;
+  width: 2%;
+}
+
+.pagination-table {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  align-items: flex-start;
+}
+
+.pagination-table-buttons {
+  display: flex;
+  justify-content: center;
+  width: 10em;
 }
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */

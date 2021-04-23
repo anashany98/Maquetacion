@@ -2060,6 +2060,7 @@ var renderTable = function renderTable() {
   var deleteButton = document.getElementById("delete-button");
   var editButton = document.getElementById("edit-button");
   var tableRows = document.querySelectorAll(".table-row");
+  var paginationButtons = document.querySelectorAll('.pagination-table-button');
   tableRows.forEach(function (tableRow) {
     tableRow.addEventListener("click", function () {
       editButton.dataset.elementId = tableRow.id;
@@ -2183,6 +2184,48 @@ var renderTable = function renderTable() {
       sortTableByColumn(tableElement, headerIndex, !currentIsAscendig);
     });
   });
+  paginationButtons.forEach(function (paginationButton) {
+    paginationButton.addEventListener("click", function () {
+      var url = paginationButton.dataset.page;
+
+      var sendPaginationRequest = /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.prev = 0;
+                  _context4.next = 3;
+                  return axios.get(url).then(function (response) {
+                    table.innerHTML = response.data.table;
+                    renderTable();
+                  });
+
+                case 3:
+                  _context4.next = 8;
+                  break;
+
+                case 5:
+                  _context4.prev = 5;
+                  _context4.t0 = _context4["catch"](0);
+                  console.error(_context4.t0);
+
+                case 8:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4, null, [[0, 5]]);
+        }));
+
+        return function sendPaginationRequest() {
+          return _ref6.apply(this, arguments);
+        };
+      }();
+
+      sendPaginationRequest();
+    });
+  });
 };
 renderForm();
 renderTable();
@@ -2209,6 +2252,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var filterButton = document.getElementById('filter-button');
 var filterForm = document.getElementById('filter-form');
+var filterOpenButton = document.getElementById('filter-open-button');
+var filterContainer = document.getElementsByClassName('.filter-container');
 filterButton.addEventListener('click', function () {
   var data = new FormData(filterForm);
   var url = filterForm.action;
@@ -2248,6 +2293,28 @@ filterButton.addEventListener('click', function () {
   }();
 
   sendPostRequest();
+});
+filterOpenButton.forEach(function (filterOpenButton) {
+  filterOpenButton.addEventListener("click", function () {
+    var activeElements = document.querySelectorAll(".active");
+
+    if (filterOpenButton.classList.contains("active")) {
+      filterOpenButton.classList.remove("active");
+      activeElements.forEach(function (activeElement) {
+        activeElement.classList.remove("active");
+      });
+    } else {
+      activeElements.forEach(function (activeElement) {
+        activeElement.classList.remove("active");
+      });
+      sideButton.classList.add("active");
+      filterContainer.forEach(function (filterContainer) {
+        if (filterContainer.dataset.content == filterOpenButton.dataset.button) {
+          filterContainer.classList.add("active");
+        } else {}
+      });
+    }
+  });
 });
 
 /***/ }),
