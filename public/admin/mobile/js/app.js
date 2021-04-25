@@ -1921,6 +1921,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ckeditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/mobile/ckeditor.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2122,6 +2130,81 @@ var renderTable = function renderTable() {
 
       sendDeleteRequest();
     }
+  });
+
+  function sortTableByColumn(tables, column) {
+    var asc = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    var dirModifier = asc ? 1 : -1;
+    var tBody = tables.tBodies[0];
+    var rows = Array.from(tBody.querySelectorAll("tr"));
+    var sortedRows = rows.sort(function (a, b) {
+      var aColText = a.querySelector("td:nth-child(".concat(column + 1, ")")).textContent.trim();
+      var bColText = b.querySelector("td:nth-child(".concat(column + 1, ")")).textContent.trim();
+      return aColText > bColText ? 1 * dirModifier : -1 * dirModifier;
+    });
+
+    while (tBody.firstChild) {
+      tBody.removeChild(tBody.firstChild);
+    }
+
+    tBody.append.apply(tBody, _toConsumableArray(sortedRows));
+    table.querySelectorAll("th").forEach(function (th) {
+      return th.classList.remove("th-sort-asc", "th-sort-desc");
+    });
+    table.querySelector("th:nth-child(".concat(column + 1, ")")).classList.toggle("th-sort-asc", asc);
+    table.querySelector("th:nth-child(".concat(column + 1, ")")).classList.toggle("th-sort-desc", !asc);
+  } // sortTableByColumn(document.querySelector("table.info"), 1, true);
+
+
+  document.querySelectorAll(".table-info th").forEach(function (headerCell) {
+    headerCell.addEventListener("click", function () {
+      var tableElement = headerCell.parentElement.parentElement.parentElement;
+      var headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
+      var currentIsAscendig = headerCell.classList.contains("th-sort-asc");
+      sortTableByColumn(tableElement, headerIndex, !currentIsAscendig);
+    });
+  });
+  paginationButtons.forEach(function (paginationButton) {
+    paginationButton.addEventListener("click", function () {
+      var url = paginationButton.dataset.page;
+
+      var sendPaginationRequest = /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.prev = 0;
+                  _context4.next = 3;
+                  return axios.get(url).then(function (response) {
+                    table.innerHTML = response.data.table;
+                    renderTable();
+                  });
+
+                case 3:
+                  _context4.next = 8;
+                  break;
+
+                case 5:
+                  _context4.prev = 5;
+                  _context4.t0 = _context4["catch"](0);
+                  console.error(_context4.t0);
+
+                case 8:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4, null, [[0, 5]]);
+        }));
+
+        return function sendPaginationRequest() {
+          return _ref6.apply(this, arguments);
+        };
+      }();
+
+      sendPaginationRequest();
+    });
   });
 };
 renderForm();

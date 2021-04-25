@@ -99,9 +99,9 @@
             </button>
         
         
-            @if($agent->isDesktop())
-                    @include('admin.layout.partials.pagination', ['items' => $faqs])
-            @endif
+           
+            @include('admin.layout.partials.pagination', ['items' => $faqs])
+           
 
             <div class="filter-open-button">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">

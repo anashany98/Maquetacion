@@ -37,6 +37,10 @@
             </div>      
         </div>
 
+        @if($agent->isMobile())
+            @include('admin.layout.partials.bottombar')
+        @endif
+
         @include("admin.layout.partials.js")
 
     </body>

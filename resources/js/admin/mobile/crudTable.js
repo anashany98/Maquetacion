@@ -141,6 +141,77 @@ export let renderTable = () => {
             sendDeleteRequest();
         }
     });
+
+    function sortTableByColumn(tables, column, asc = true)  {
+    
+        const dirModifier = asc ? 1 : -1;
+        const tBody = tables.tBodies[0];
+        const rows = Array.from(tBody.querySelectorAll("tr")); 
+        
+        const sortedRows = rows.sort((a, b) => {
+            const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+            const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+    
+            return aColText > bColText ?  ( 1 * dirModifier) : (-1 * dirModifier);
+            
+       });
+    
+       while (tBody.firstChild) {
+            tBody.removeChild(tBody.firstChild);
+       }
+    
+        tBody.append(...sortedRows);
+    
+        table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
+        table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
+        table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
+    
+    }
+    
+    // sortTableByColumn(document.querySelector("table.info"), 1, true);
+    
+    document.querySelectorAll(".table-info th").forEach(headerCell => {
+    
+        headerCell.addEventListener("click", () => {
+    
+            const tableElement = headerCell.parentElement.parentElement.parentElement;
+            const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
+            const currentIsAscendig = headerCell.classList.contains("th-sort-asc");
+            
+            sortTableByColumn(tableElement, headerIndex, !currentIsAscendig);  
+    
+    
+        
+        })
+    
+    })
+
+
+
+    paginationButtons.forEach(paginationButton => {
+
+        paginationButton.addEventListener("click", () => {
+
+            let url = paginationButton.dataset.page;
+
+            let sendPaginationRequest = async () => {
+
+                try {
+                    await axios.get(url).then(response => {
+                        table.innerHTML = response.data.table;
+                        renderTable();
+                    });
+                    
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+
+            sendPaginationRequest();
+            
+        });
+    });
+
 };
 
 renderForm();

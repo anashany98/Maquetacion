@@ -1,0 +1,16 @@
+.pagination-table{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    align-items: flex-start;
+
+}
+
+
+
+.pagination-table-buttons{
+    display: flex;
+    justify-content: center;
+    width: 10em;
+}
