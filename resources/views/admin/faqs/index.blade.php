@@ -5,8 +5,10 @@
 
 @extends('admin.layout.table-form')
 
+
 @section('form')
 
+   
     @isset($faq)
         <form  class="admin-form"id="user-form" action="{{route("faqs_store")}}" autocomplete="off">
             <div class="form-group">

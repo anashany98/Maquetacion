@@ -1870,6 +1870,16 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/admin/desktop/advisor.js":
+/*!***********************************************!*\
+  !*** ./resources/js/admin/desktop/advisor.js ***!
+  \***********************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\anas.hany\\git\\Maquetacion\\resources\\js\\admin\\desktop\\advisor.js: Unexpected token (10:0)\n\n\u001b[0m \u001b[90m  8 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m  9 |\u001b[39m         \u001b[36mlet\u001b[39m activeElements \u001b[33m=\u001b[39m document\u001b[33m.\u001b[39mquerySelectorAll(\u001b[32m\".active\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n    at Parser._raise (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:775:17)\n    at Parser.raiseWithData (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:768:17)\n    at Parser.raise (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:736:17)\n    at Parser.unexpected (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:9699:16)\n    at Parser.parseExprAtom (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:11091:20)\n    at Parser.parseExprSubscripts (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10668:23)\n    at Parser.parseUpdate (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10648:21)\n    at Parser.parseMaybeUnary (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10626:23)\n    at Parser.parseExprOps (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10487:23)\n    at Parser.parseMaybeConditional (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10461:23)");
+
+/***/ }),
+
 /***/ "./resources/js/admin/desktop/app.js":
 /*!*******************************************!*\
   !*** ./resources/js/admin/desktop/app.js ***!
@@ -1883,6 +1893,8 @@ __webpack_require__(/*! ./crudTable */ "./resources/js/admin/desktop/crudTable.j
 __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/desktop/ckeditor.js");
 
 __webpack_require__(/*! ./sidebar */ "./resources/js/admin/desktop/sidebar.js");
+
+__webpack_require__(/*! ./advisor */ "./resources/js/admin/desktop/advisor.js");
 
 __webpack_require__(/*! ./filter */ "./resources/js/admin/desktop/filter.js"); // require('./touch');
 // require('./tab');

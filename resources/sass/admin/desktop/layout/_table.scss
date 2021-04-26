@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column-reverse;
     height: 100%;
+    margin-top: 2em;
 }
 
 .table-info{
@@ -32,8 +33,6 @@ td ,th{
     overflow-wrap: break-word;
     table-layout:fixed;
     
-
-
 }
 
 tr{
@@ -61,6 +60,7 @@ tr:hover{
     justify-content: space-between;
     flex-direction: row;
     width: 15em;
+    padding: 1em;
 }
 
 #sendbutton{
