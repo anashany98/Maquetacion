@@ -6,4 +6,4 @@ sendButton.forEach(sendButton => {
 
     sendButton.addEventListener("click", () => {
 
-        let activeElements = document.querySelectorAll(".active");
+        // let activeElements = document.querySelectorAll(".active");
