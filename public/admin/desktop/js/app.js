@@ -1874,9 +1874,31 @@ module.exports = {
 /*!***********************************************!*\
   !*** ./resources/js/admin/desktop/advisor.js ***!
   \***********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\anas.hany\\git\\Maquetacion\\resources\\js\\admin\\desktop\\advisor.js: Unexpected token (10:0)\n\n\u001b[0m \u001b[90m  8 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m  9 |\u001b[39m         \u001b[36mlet\u001b[39m activeElements \u001b[33m=\u001b[39m document\u001b[33m.\u001b[39mquerySelectorAll(\u001b[32m\".active\"\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n    at Parser._raise (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:775:17)\n    at Parser.raiseWithData (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:768:17)\n    at Parser.raise (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:736:17)\n    at Parser.unexpected (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:9699:16)\n    at Parser.parseExprAtom (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:11091:20)\n    at Parser.parseExprSubscripts (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10668:23)\n    at Parser.parseUpdate (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10648:21)\n    at Parser.parseMaybeUnary (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10626:23)\n    at Parser.parseExprOps (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10487:23)\n    at Parser.parseMaybeConditional (C:\\Users\\anas.hany\\git\\Maquetacion\\node_modules\\@babel\\parser\\lib\\index.js:10461:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "showAdvisor": () => (/* binding */ showAdvisor)
+/* harmony export */ });
+var advisorContainer = document.getElementById('advisor-container');
+var advisor = document.querySelectorAll('.advisor');
+var showAdvisor = function showAdvisor(state, advisorText) {
+  advisor.forEach(function (advisor) {
+    if (advisor.classList.contains(state)) {
+      var advisorMessage = document.getElementById('advisor-description-' + state);
+      advisorContainer.classList.add('active');
+      advisor.classList.add('advisor-active');
+      advisorMessage.innerHTML = advisorText;
+      setTimeout(function () {
+        advisorContainer.classList.remove('active');
+        advisor.classList.remove('advisor-active');
+      }, 7000);
+    }
+
+    ;
+  });
+};
 
 /***/ }),
 
@@ -1895,6 +1917,8 @@ __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/desktop/ckeditor.js"
 __webpack_require__(/*! ./sidebar */ "./resources/js/admin/desktop/sidebar.js");
 
 __webpack_require__(/*! ./advisor */ "./resources/js/admin/desktop/advisor.js");
+
+__webpack_require__(/*! ./loading */ "./resources/js/admin/desktop/loading.js");
 
 __webpack_require__(/*! ./filter */ "./resources/js/admin/desktop/filter.js"); // require('./touch');
 // require('./tab');
@@ -1952,6 +1976,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ckeditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/desktop/ckeditor.js");
+/* harmony import */ var _advisor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./advisor */ "./resources/js/admin/desktop/advisor.js");
+/* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loading */ "./resources/js/admin/desktop/loading.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1977,6 +2003,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 var table = document.getElementById("table");
@@ -2024,21 +2052,25 @@ var renderForm = function renderForm() {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
-                  _context.prev = 0;
-                  _context.next = 3;
+                  (0,_loading__WEBPACK_IMPORTED_MODULE_3__.startWait)();
+                  _context.prev = 1;
+                  _context.next = 4;
                   return axios.post(url, data).then(function (response) {
                     form.id.value = response.data.id;
                     table.innerHTML = response.data.table;
+                    (0,_loading__WEBPACK_IMPORTED_MODULE_3__.stopWait)();
+                    (0,_advisor__WEBPACK_IMPORTED_MODULE_2__.showAdvisor)('success', response.data.message);
                     renderTable();
                   });
 
-                case 3:
-                  _context.next = 8;
+                case 4:
+                  _context.next = 10;
                   break;
 
-                case 5:
-                  _context.prev = 5;
-                  _context.t0 = _context["catch"](0);
+                case 6:
+                  _context.prev = 6;
+                  _context.t0 = _context["catch"](1);
+                  (0,_loading__WEBPACK_IMPORTED_MODULE_3__.stopWait)();
 
                   if (_context.t0.response.status == '422') {
                     errors = _context.t0.response.data.errors;
@@ -2046,16 +2078,16 @@ var renderForm = function renderForm() {
                     Object.keys(errors).forEach(function (key) {
                       errorMessage += '<li>' + errors[key] + '</li>';
                     });
-                    document.getElementById('error-container').classList.add('active');
-                    document.getElementById('errors').innerHTML = errorMessage;
+                    (0,_advisor__WEBPACK_IMPORTED_MODULE_2__.showAdvisor)('error', errorMessage); // document.getElementById('error-container').classList.add('active');
+                    // document.getElementById('errors').innerHTML = errorMessage;
                   }
 
-                case 8:
+                case 10:
                 case "end":
                   return _context.stop();
               }
             }
-          }, _callee, null, [[0, 5]]);
+          }, _callee, null, [[1, 6]]);
         }));
 
         return function sendPostRequest() {
@@ -2328,6 +2360,31 @@ filterOpenButton.forEach(function (filterOpenButton) {
     }
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/admin/desktop/loading.js":
+/*!***********************************************!*\
+  !*** ./resources/js/admin/desktop/loading.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "startWait": () => (/* binding */ startWait),
+/* harmony export */   "stopWait": () => (/* binding */ stopWait)
+/* harmony export */ });
+var spinner = document.getElementById('spinner');
+var overlay = document.getElementById('overlay');
+var startWait = function startWait() {
+  spinner.classList.add('spinner-active');
+  overlay.classList.add('overlay-active');
+};
+var stopWait = function stopWait() {
+  spinner.classList.remove('spinner-active');
+  overlay.classList.remove('overlay-active');
+};
 
 /***/ }),
 

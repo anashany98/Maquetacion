@@ -76,6 +76,13 @@ class FaqController extends Controller
             'active' => 1,
         ]);
 
+
+        if (request('id')){
+            $advisor = \Lang::get('admin/faqs.faq-update');
+        }else{
+            $advisor = \Lang::get('admin/faqs.faq-create');
+        }
+
         $view = View::make('admin.faqs.index')
         ->with('faqs', $this->faq->where('active', 1)->paginate(3))
         ->with('faq', $faq)
@@ -84,6 +91,7 @@ class FaqController extends Controller
         return response()->json([
             'table' => $view['table'],
             'form' => $view['form'],
+            'advisor' => $advisor,
             'id' => $faq->id,
         ]);
     }
@@ -111,6 +119,8 @@ class FaqController extends Controller
         $faq->active = 0;
         $faq->save();
 
+        $advisor = \Lang::get('admin/faqs.faq-delete');
+
         $view = View::make('admin.faqs.index')
             ->with('faq', $this->faq)
             ->with('faqs', $this->faq->where('active', 1)->paginate(3))
@@ -118,7 +128,8 @@ class FaqController extends Controller
         
         return response()->json([
             'table' => $view['table'],
-            'form' => $view['form']
+            'form' => $view['form'],
+            'advisor' => $advisor,
         ]);
     }
 

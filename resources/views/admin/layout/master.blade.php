@@ -15,15 +15,14 @@
     </head>    
 
     <body>
-
+        
         @include("front.layout.partials.header")
         
       
         <div class="wrap">
-
-            <div class="advisor-alert">
-                @include("admin.layout.partials.advisor")
-            </div>
+            
+            @include("admin.layout.partials.loading")
+            @include("admin.layout.partials.advisor")
 
             <button class="sidebutton">
                 <svg viewBox="0 0 24 24">

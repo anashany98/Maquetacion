@@ -50,23 +50,26 @@
                 </select>                   
             </div>
             <div class="button">
-                <input type="submit" value="Enviar" id="send-button">
+                  
+                <div class=reset-button>
+                    
+                </div>
+                <div class="send-button">
+                    <input type="submit" value="Enviar" id="send-button">
+                    
+                </div>
             </div>
         </form> 
         
     @endif
 
-@endsection
+@endsection 
 
 @section('table')
-    
-
     
     
     <table class="table-info">
         
-        
-       
         <thead >
             <tr class="touch">
                 <th>Id</th>

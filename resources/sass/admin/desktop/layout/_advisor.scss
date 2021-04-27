@@ -1,22 +1,20 @@
-.advisor-alert{
+.advisor-container{
 
     width: 23em;
     align-content: center;
-    position: absolute;
+    position: fixed;
     transition: 0.5s;
-    margin-top: -15em;
+    top: -15em;
+ 
+}
 
+.advisor-container.active{
     
+    top: 2em;
 }
 
 
-.advisor-altert.active{
-    
-    margin-top: -1em;
-}
-
-
-.advisor-success{
+.advisor{
     
    border-radius: 0.5em;
    border-style: solid;
@@ -26,9 +24,12 @@
    background: hsl(0, 0%, 100%);
 
     .svg{
-        background: hsl(120, 79%, 54%);
-
-
+        fill: hsl(120, 79%, 54%)
     }
+}
+
+.advisor.advisor-active{
+    border-radius: 0.5em;
+
 }
 

@@ -1,4 +1,6 @@
 import {renderCkeditor} from './ckeditor';
+import {showAdvisor} from './advisor';
+import {startWait, stopWait} from './loading';
 
 const table = document.getElementById("table");
 const form = document.getElementById("form");
@@ -49,15 +51,25 @@ export let renderForm = () => {
     
             let sendPostRequest = async () => {
     
+                startWait();
+
                 try {
                     await axios.post(url, data).then(response => {
                         form.id.value = response.data.id;
                         table.innerHTML = response.data.table;
+                        
+                        
+                        stopWait();
+                        showAdvisor('success', response.data.message);
                         renderTable();
+                        
                     });
                     
                 } catch (error) {
     
+                    
+                    stopWait();
+
                     if(error.response.status == '422'){
     
                         let errors = error.response.data.errors;      
@@ -67,8 +79,10 @@ export let renderForm = () => {
                             errorMessage += '<li>' + errors[key] + '</li>';
                         })
         
-                        document.getElementById('error-container').classList.add('active');
-                        document.getElementById('errors').innerHTML = errorMessage;
+                        showAdvisor('error', errorMessage);
+
+                        // document.getElementById('error-container').classList.add('active');
+                        // document.getElementById('errors').innerHTML = errorMessage;
                     }
                 }
             };
