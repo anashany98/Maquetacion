@@ -1,14 +1,14 @@
 
 .filter-container{
-    display: flex;
+ 
     flex-direction: column;
-    width: 0%;
+   
     height: 0%;
-    overflow-x: hidden;
+    
 
 }
 
-.filter-container active{
+.filter-container.active{
 
     width: 30%;
 
@@ -22,7 +22,6 @@
     padding: 0;
     border: none;
     background: none;
-    width: 2%
-    ;
+    width: 2%;
 
 }

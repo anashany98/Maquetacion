@@ -1,9 +1,21 @@
 import {renderCkeditor} from './ckeditor';
 import {showAdvisor} from './advisor';
 import {startWait, stopWait} from './loading';
+import axios from 'axios';
 
 const table = document.getElementById("table");
 const form = document.getElementById("form");
+const refreshButton = getElementById("refresh-button");
+
+
+refreshButton.addEventListener('click', (event)=>{
+
+    event.preventDefault();
+
+    let url = refreshButton.dataset.url;
+    form.innerHTML = responde.data.form;
+    renderForm();
+});
 
 export let renderForm = () => {
 

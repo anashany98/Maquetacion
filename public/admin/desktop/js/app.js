@@ -1978,6 +1978,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/desktop/ckeditor.js");
 /* harmony import */ var _advisor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./advisor */ "./resources/js/admin/desktop/advisor.js");
 /* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loading */ "./resources/js/admin/desktop/loading.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2007,8 +2009,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var table = document.getElementById("table");
 var form = document.getElementById("form");
+var refreshButton = getElementById("refresh-button");
+refreshButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  var url = refreshButton.dataset.url;
+  form.innerHTML = responde.data.form;
+  renderForm();
+});
 var renderForm = function renderForm() {
   var forms = document.querySelectorAll(".admin-form");
   var labels = document.querySelectorAll('.label-container');
@@ -2055,7 +2065,7 @@ var renderForm = function renderForm() {
                   (0,_loading__WEBPACK_IMPORTED_MODULE_3__.startWait)();
                   _context.prev = 1;
                   _context.next = 4;
-                  return axios.post(url, data).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_4___default().post(url, data).then(function (response) {
                     form.id.value = response.data.id;
                     table.innerHTML = response.data.table;
                     (0,_loading__WEBPACK_IMPORTED_MODULE_3__.stopWait)();
@@ -2123,7 +2133,7 @@ var renderTable = function renderTable() {
                 case 0:
                   _context2.prev = 0;
                   _context2.next = 3;
-                  return axios.get(url).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_4___default().get(url).then(function (response) {
                     form.innerHTML = response.data.form;
                     renderForm();
                   });
@@ -2165,7 +2175,7 @@ var renderTable = function renderTable() {
                 case 0:
                   _context3.prev = 0;
                   _context3.next = 3;
-                  return axios["delete"](url).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_4___default().delete(url).then(function (response) {
                     table.innerHTML = response.data.table;
                     renderTable();
                   });
@@ -2240,7 +2250,7 @@ var renderTable = function renderTable() {
                 case 0:
                   _context4.prev = 0;
                   _context4.next = 3;
-                  return axios.get(url).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_4___default().get(url).then(function (response) {
                     table.innerHTML = response.data.table;
                     renderTable();
                   });
@@ -2297,7 +2307,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var filterButton = document.getElementById('filter-button');
 var filterForm = document.getElementById('filter-form');
 var filterOpenButton = document.getElementById('filter-open-button');
-var filterContainer = document.getElementsByClassName('.filter-container');
+var filterContainer = document.getElementsByID('filter-container');
 filterButton.addEventListener('click', function () {
   var data = new FormData(filterForm);
   var url = filterForm.action;

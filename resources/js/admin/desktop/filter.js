@@ -3,7 +3,7 @@ import { renderTable } from './crudTable';
 const filterButton =document.getElementById('filter-button')
 const filterForm =document.getElementById('filter-form')
 const filterOpenButton =document.getElementById('filter-open-button')
-const filterContainer =document.getElementsByClassName('.filter-container')
+const filterContainer =document.getElementsByID('filter-container')
 
 filterButton.addEventListener('click', () =>{
 

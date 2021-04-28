@@ -17,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin'], function () {
     
 
+    Route::resource('sliders', 'App\Http\Controllers\Admin\SliderController', [
+        'parameters' => [
+            'sliders' => 'slider', 
+        ],
+        'names' => [
+            'index' => 'sliders',
+            'create' => 'sliders_create',
+            'edit' => 'sliders_edit',
+            'store' => 'sliders_store',
+            'destroy' => 'sliders_destroy',
+            'show' => 'sliders_show',
+        ]
+    ]);
+
 
 
     Route::resource('customers', 'App\Http\Controllers\Admin\CustomerController', [
