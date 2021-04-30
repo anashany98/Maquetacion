@@ -1918,9 +1918,7 @@ __webpack_require__(/*! ./sidebar */ "./resources/js/admin/desktop/sidebar.js");
 
 __webpack_require__(/*! ./advisor */ "./resources/js/admin/desktop/advisor.js");
 
-__webpack_require__(/*! ./loading */ "./resources/js/admin/desktop/loading.js");
-
-__webpack_require__(/*! ./filter */ "./resources/js/admin/desktop/filter.js"); // require('./touch');
+__webpack_require__(/*! ./loading */ "./resources/js/admin/desktop/loading.js"); // require('./touch');
 // require('./tab');
 
 /***/ }),
@@ -1978,8 +1976,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/desktop/ckeditor.js");
 /* harmony import */ var _advisor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./advisor */ "./resources/js/admin/desktop/advisor.js");
 /* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loading */ "./resources/js/admin/desktop/loading.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./filter */ "./resources/js/admin/desktop/filter.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2010,15 +2009,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var table = document.getElementById("table");
-var form = document.getElementById("form");
-var refreshButton = getElementById("refresh-button");
-refreshButton.addEventListener('click', function (event) {
-  event.preventDefault();
-  var url = refreshButton.dataset.url;
-  form.innerHTML = responde.data.form;
-  renderForm();
-});
+var form = document.getElementById("form"); // const refreshButton = getElementById("refresh-button");
+// refreshButton.addEventListener('click', (event)=>{
+//     event.preventDefault();
+//     let url = refreshButton.dataset.url;
+//     form.innerHTML = responde.data.form;
+//     renderForm();
+// });
+
 var renderForm = function renderForm() {
   var forms = document.querySelectorAll(".admin-form");
   var labels = document.querySelectorAll('.label-container');
@@ -2065,7 +2065,7 @@ var renderForm = function renderForm() {
                   (0,_loading__WEBPACK_IMPORTED_MODULE_3__.startWait)();
                   _context.prev = 1;
                   _context.next = 4;
-                  return axios__WEBPACK_IMPORTED_MODULE_4___default().post(url, data).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_5___default().post(url, data).then(function (response) {
                     form.id.value = response.data.id;
                     table.innerHTML = response.data.table;
                     (0,_loading__WEBPACK_IMPORTED_MODULE_3__.stopWait)();
@@ -2133,7 +2133,7 @@ var renderTable = function renderTable() {
                 case 0:
                   _context2.prev = 0;
                   _context2.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_4___default().get(url).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_5___default().get(url).then(function (response) {
                     form.innerHTML = response.data.form;
                     renderForm();
                   });
@@ -2175,7 +2175,7 @@ var renderTable = function renderTable() {
                 case 0:
                   _context3.prev = 0;
                   _context3.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_4___default().delete(url).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_5___default().delete(url).then(function (response) {
                     table.innerHTML = response.data.table;
                     renderTable();
                   });
@@ -2250,7 +2250,7 @@ var renderTable = function renderTable() {
                 case 0:
                   _context4.prev = 0;
                   _context4.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_4___default().get(url).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_5___default().get(url).then(function (response) {
                     table.innerHTML = response.data.table;
                     renderTable();
                   });
@@ -2280,6 +2280,7 @@ var renderTable = function renderTable() {
       sendPaginationRequest();
     });
   });
+  (0,_filter__WEBPACK_IMPORTED_MODULE_4__.renderFilterTable)();
 };
 renderForm();
 renderTable();
@@ -2294,6 +2295,9 @@ renderTable();
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderFilterTable": () => (/* binding */ renderFilterTable)
+/* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _crudTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./crudTable */ "./resources/js/admin/desktop/crudTable.js");
@@ -2307,69 +2311,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var filterButton = document.getElementById('filter-button');
 var filterForm = document.getElementById('filter-form');
 var filterOpenButton = document.getElementById('filter-open-button');
-var filterContainer = document.getElementsByID('filter-container');
-filterButton.addEventListener('click', function () {
-  var data = new FormData(filterForm);
-  var url = filterForm.action;
+var filterContainer = document.getElementById('filter-container');
+var renderFilterTable = function renderFilterTable() {
+  filterButton.addEventListener('click', function () {
+    var data = new FormData(filterForm);
+    var filters = {};
+    data.forEach(function (value, key) {
+      filters[key] = value;
+    });
+    var json = JSON.stringify(filters);
+    var url = filterForm.action;
 
-  var sendPostRequest = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return axios.post(url, data).then(function (response) {
-                table.innerHTML = response.data.table;
-                (0,_crudTable__WEBPACK_IMPORTED_MODULE_1__.renderTable)();
-              });
+    var sendFilterRequest = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                try {
+                  axios.get(url, {
+                    params: {
+                      filters: json
+                    }
+                  }).then(function (response) {
+                    table.innerHTML = response.data.table;
+                    (0,_crudTable__WEBPACK_IMPORTED_MODULE_1__.renderTable)();
+                    filterContainer.classList.toggle("active");
+                  });
+                } catch (error) {}
 
-            case 3:
-              _context.next = 7;
-              break;
-
-            case 5:
-              _context.prev = 5;
-              _context.t0 = _context["catch"](0);
-
-            case 7:
-            case "end":
-              return _context.stop();
+              case 1:
+              case "end":
+                return _context.stop();
+            }
           }
-        }
-      }, _callee, null, [[0, 5]]);
-    }));
+        }, _callee);
+      }));
 
-    return function sendPostRequest() {
-      return _ref.apply(this, arguments);
-    };
-  }();
+      return function sendFilterRequest() {
+        return _ref.apply(this, arguments);
+      };
+    }();
 
-  sendPostRequest();
-});
-filterOpenButton.forEach(function (filterOpenButton) {
-  filterOpenButton.addEventListener("click", function () {
-    var activeElements = document.querySelectorAll(".active");
-
-    if (filterOpenButton.classList.contains("active")) {
-      filterOpenButton.classList.remove("active");
-      activeElements.forEach(function (activeElement) {
-        activeElement.classList.remove("active");
-      });
-    } else {
-      activeElements.forEach(function (activeElement) {
-        activeElement.classList.remove("active");
-      });
-      sideButton.classList.add("active");
-      filterContainer.forEach(function (filterContainer) {
-        if (filterContainer.dataset.content == filterOpenButton.dataset.button) {
-          filterContainer.classList.add("active");
-        } else {}
-      });
-    }
+    sendFilterRequest();
   });
-});
+  filterOpenButton.addEventListener("click", function () {
+    filterContainer.classList.toggle("active");
+  });
+};
 
 /***/ }),
 

@@ -1,6 +1,5 @@
 .form {
-    width: 40%;
-    padding: 1em;  
+    width: 50%;
     text-align: left;
     font-family: 'Noto Sans TC', sans-serif;
     font-size: 1em;
@@ -27,10 +26,10 @@
     font-size: 1em;
 }
 
-.input-container input{
+.input-container input,
+.input-container select{
     border: 0.1em solid #000000;
     border-radius: 0.2em;
-    padding: 0.5em;
     width: 100%;
 }
 
@@ -39,8 +38,16 @@
     
 }
 
-#h3{
+#sendbutton{
+    cursor: pointer;
+    border-radius: 0.3em;
+    transition-duration: 0.4s;
+    font-size: 0.7em;
     font-family: 'Noto Sans TC', sans-serif;
-    font-size: 1em;
-
 }
+
+#sendbutton:hover{
+    background-color: #4CAF50; 
+    color: white;
+}
+

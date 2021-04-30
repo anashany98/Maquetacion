@@ -1,29 +1,24 @@
 @import url(https://fonts.googleapis.com/css?family=Lora);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 @charset "UTF-8";
-.web {
-  height: 10%;
-}
-
-.main {
-  height: 90%;
-  order: 2;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 100%;
+body {
   background: linear-gradient(0deg, white 0%, #f35d5c 98%);
 }
 
-.two-columns {
+.main {
   display: flex;
-  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 80vh;
   justify-content: space-between;
-  padding: 3em;
+  margin: 0 3%;
+  overflow-x: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .form {
-  width: 40%;
-  padding: 1em;
+  width: 50%;
   text-align: left;
   font-family: "Noto Sans TC", sans-serif;
   font-size: 1em;
@@ -51,10 +46,10 @@
   font-size: 1em;
 }
 
-.input-container input {
+.input-container input,
+.input-container select {
   border: 0.1em solid #000000;
   border-radius: 0.2em;
-  padding: 0.5em;
   width: 100%;
 }
 
@@ -62,20 +57,27 @@
   width: 100%;
 }
 
-#h3 {
+#sendbutton {
+  cursor: pointer;
+  border-radius: 0.3em;
+  transition-duration: 0.4s;
+  font-size: 0.7em;
   font-family: "Noto Sans TC", sans-serif;
-  font-size: 1em;
+}
+
+#sendbutton:hover {
+  background-color: #4CAF50;
+  color: white;
 }
 
 .table {
-  padding: 2%;
   color: black;
   border-collapse: collapse;
   table-layout: fixed;
   display: flex;
   flex-direction: column-reverse;
+  width: 45%;
   height: 100%;
-  margin-top: 2em;
 }
 
 .table-info {
@@ -88,7 +90,6 @@
 
 td, th {
   border: 0.1em solid #000000;
-  padding: 0.2em;
   font-size: 1.2em;
   text-align: left;
   text-overflow: ellipsis;
@@ -103,8 +104,6 @@ td, th {
 
 tr {
   border: 0.1em solid #000000;
-  width: 31%;
-  padding: 0.2em;
   font-size: 1em;
   text-align: left;
   font-family: "Noto Sans TC", sans-serif;
@@ -121,25 +120,16 @@ tr:hover {
   flex-direction: row;
   cursor: pointer;
   justify-content: space-between;
+  margin-top: 1em;
   flex-direction: row;
-  width: 15em;
-  padding: 1em;
+  width: 100%;
 }
 
-#sendbutton {
-  cursor: pointer;
-  border-radius: 0.3em;
-  transition-duration: 0.4s;
-  font-size: 0.7em;
-  font-family: "Noto Sans TC", sans-serif;
+.crud-buttons {
+  display: flex;
+  width: 15%;
 }
-
-#sendbutton:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.edit-button {
+.crud-buttons .edit-button {
   width: 50%;
   height: 50%;
   color: #0044ff;
@@ -152,8 +142,7 @@ tr:hover {
   border: none;
   background: none;
 }
-
-.delete-button {
+.crud-buttons .delete-button {
   width: 50%;
   height: 50%;
   color: #ff0000;
@@ -285,11 +274,23 @@ h1 {
 
 .filter-container {
   flex-direction: column;
-  height: 0%;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+  width: 0;
+  position: absolute;
+  top: 8em;
 }
 
 .filter-container.active {
-  width: 30%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: 20%;
+  background: white;
+  justify-content: center;
+  border-style: solid;
+  border-radius: 0.5em;
 }
 
 .filter-open-button {
@@ -300,7 +301,8 @@ h1 {
   padding: 0;
   border: none;
   background: none;
-  width: 2%;
+  position: absolute;
+  top: 6em;
 }
 
 .advisor-container {
@@ -341,8 +343,6 @@ h1 {
 
 .pagination-table-buttons {
   display: flex;
-  justify-content: center;
-  width: 10em;
 }
 
 .overlay {
@@ -689,6 +689,7 @@ textarea {
   /* 2 */
   margin: 0;
   /* 3 */
+  padding: 0;
 }
 
 /**

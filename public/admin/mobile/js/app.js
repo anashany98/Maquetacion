@@ -2245,9 +2245,8 @@ sidebarItems.forEach(function (sidebarItem) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(url);
-                _context.prev = 1;
-                _context.next = 4;
+                _context.prev = 0;
+                _context.next = 3;
                 return axios.get(url).then(function (response) {
                   form.innerHTML = response.data.form;
                   table.innerHTML = response.data.table;
@@ -2256,21 +2255,21 @@ sidebarItems.forEach(function (sidebarItem) {
                   (0,_crudTable__WEBPACK_IMPORTED_MODULE_1__.renderTable)();
                 });
 
-              case 4:
-                _context.next = 9;
+              case 3:
+                _context.next = 8;
                 break;
 
-              case 6:
-                _context.prev = 6;
-                _context.t0 = _context["catch"](1);
+              case 5:
+                _context.prev = 5;
+                _context.t0 = _context["catch"](0);
                 console.error(_context.t0);
 
-              case 9:
+              case 8:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[1, 6]]);
+        }, _callee, null, [[0, 5]]);
       }));
 
       return function RefreshRequest() {

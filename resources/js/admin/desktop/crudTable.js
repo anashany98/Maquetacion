@@ -1,21 +1,22 @@
 import {renderCkeditor} from './ckeditor';
 import {showAdvisor} from './advisor';
 import {startWait, stopWait} from './loading';
+import {renderFilterTable} from './filter';
 import axios from 'axios';
 
 const table = document.getElementById("table");
 const form = document.getElementById("form");
-const refreshButton = getElementById("refresh-button");
+// const refreshButton = getElementById("refresh-button");
 
 
-refreshButton.addEventListener('click', (event)=>{
+// refreshButton.addEventListener('click', (event)=>{
 
-    event.preventDefault();
+//     event.preventDefault();
 
-    let url = refreshButton.dataset.url;
-    form.innerHTML = responde.data.form;
-    renderForm();
-});
+//     let url = refreshButton.dataset.url;
+//     form.innerHTML = responde.data.form;
+//     renderForm();
+// });
 
 export let renderForm = () => {
 
@@ -23,7 +24,6 @@ export let renderForm = () => {
     let labels = document.querySelectorAll('.label-container');
     let inputs = document.querySelectorAll('.input-container');
     let sendButton = document.getElementById("send-button");
-
 
     inputs.forEach(input => {
 
@@ -238,6 +238,7 @@ export let renderTable = () => {
         });
     });
 
+    renderFilterTable();
 
 };
 

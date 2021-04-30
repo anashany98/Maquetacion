@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\FaqRequest;
+use Jenssegers\Agent\Agent;
 use App\Models\DB\Faq;
 use Debugbar;
 
@@ -15,9 +16,10 @@ class FaqController extends Controller
 {
     protected $faq;
 
-    function __construct(Faq $faq)
+    function __construct(Faq $faq,  Agent $agent)
     {
         $this->middleware('auth');
+        $this->agent = $agent;
         $this->faq = $faq;
     }
 
@@ -39,7 +41,7 @@ class FaqController extends Controller
 
         $view = View::make('admin.faqs.index')
                 ->with('faq', $this->faq)
-                ->with('faqs', $this->faq->where('active', 1)->paginate(3));
+                ->with('faqs', $this->faq->where('active', 1)->paginate(5));
 
         if(request()->ajax()) {
 
@@ -84,7 +86,7 @@ class FaqController extends Controller
         }
 
         $view = View::make('admin.faqs.index')
-        ->with('faqs', $this->faq->where('active', 1)->paginate(3))
+        ->with('faqs', $this->faq->where('active', 1)->paginate(5))
         ->with('faq', $faq)
         ->renderSections();        
 
@@ -100,7 +102,7 @@ class FaqController extends Controller
     {
         $view = View::make('admin.faqs.index')
         ->with('faq', $faq)
-        ->with('faqs', $this->faq->where('active', 1)->paginate(3));   
+        ->with('faqs', $this->faq->where('active', 1)->paginate(5));   
         
         if(request()->ajax()) {
 
@@ -123,7 +125,7 @@ class FaqController extends Controller
 
         $view = View::make('admin.faqs.index')
             ->with('faq', $this->faq)
-            ->with('faqs', $this->faq->where('active', 1)->paginate(3))
+            ->with('faqs', $this->faq->where('active', 1)->paginate(5))
             ->renderSections();
         
         return response()->json([
@@ -134,51 +136,69 @@ class FaqController extends Controller
     }
 
 
-    public function filter(Request $request){
+    public function filter(Request $request, $filters = null){
 
+        $filters = json_decode($request->input('filters'));
+        
         $query = $this->faq->query();
 
-        $query->when(request('category_id'), function ($q, $category_id) {
+        if($filters != null){
 
-            if($category_id == 'all'){
-                return $q;
-            }
-            else {
-                return $q->where('category_id', $category_id);
-            }
-        });
+            $query->when($filters->category_id, function ($q, $category_id) {
 
-        $query->when(request('search'), function ($q, $search) {
+                if($category_id == 'all'){
+                    return $q;
+                }
+                else{
+                    return $q->where('category_id', $category_id);
+                }
+            });
+    
+            $query->when($filters->search, function ($q, $search) {
+    
+                if($search == null){
+                    return $q;
+                }
+                else {
+                    return $q->where('t_faqs.title', 'like', "%$search%");
+                }   
+            });
+    
+            $query->when($filters->created_at_from, function ($q, $created_at_from) {
+    
+                if($created_at_from == null){
+                    return $q;
+                }
+                else {
+                    $q->whereDate('t_faqs.created_at', '>=', $created_at_from);
+                }   
+            });
+    
+            $query->when($filters->created_at_since, function ($q, $created_at_since) {
+    
+                if($created_at_since == null){
+                    return $q;
+                }
+                else {
+                    $q->whereDate('t_faqs.created_at', '<=', $created_at_since);
+                }   
+            });
+    
+        }
+       
+        if($this->agent->isMobile()){
+            $faqs = $query->where('t_faqs.active', 1)
+                    ->orderBy('t_faqs.created_at', 'desc')
+                    ->paginate(5)
+                    ->appends(['filters' => json_encode($filters)]);  
+        }
 
-            if($search == null){
-                return $q;
-            }
-            else {
-                return $q->whereDate('title', 'like', "%$search%");
-            }
-        });
-
-        $query->when(request('created_at_from'), function ($q, $created_at_from) {
-
-            if($created_at_from == null){
-                return $q;
-            }
-            else {
-                return $q->whereDate('created_at', '>=', $created_at_from);
-            }
-        });
-
-        $query->when(request('created_at_since'), function ($q, $created_at_since) {
-
-            if($created_at_since == null){
-                return $q;
-            }
-            else {
-                return $q->whereDate('created_at', '<=', $created_at_since);
-            }
-        });
-
-        $faqs = $query->where('active', 1)->paginate(3);
+        if($this->agent->isDesktop()){
+            $faqs = $query->where('t_faqs.active', 1)
+                    ->orderBy('t_faqs.created_at', 'desc')
+                    ->paginate(5)
+                    ->appends(['filters' => json_encode($filters)]);   
+        }
 
         $view = View::make('admin.faqs.index')
             ->with('faqs', $faqs)
@@ -188,8 +208,6 @@ class FaqController extends Controller
             'table' => $view['table'],
         ]);
     }
-
     
-
 }
     

@@ -1,12 +1,11 @@
 .table{
-    padding:2%;
     color: rgb(0, 0, 0);
     border-collapse: collapse;
     table-layout:fixed;
     display: flex;
     flex-direction: column-reverse;
+    width: 45%;
     height: 100%;
-    margin-top: 2em;
 }
 
 .table-info{
@@ -15,13 +14,10 @@
     border-collapse: collapse;
     background-color: hsl(0, 0%, 100%);
     word-break: break-all;
-
-    
 }
 
 td ,th{
     border: 0.1em solid #000000;
-    padding: 0.2em;
     font-size: 1.2em; 
     text-align: left;
     text-overflow: ellipsis;
@@ -32,13 +28,10 @@ td ,th{
     color: rgb(0, 0, 0);
     overflow-wrap: break-word;
     table-layout:fixed;
-    
 }
 
 tr{
     border: 0.1em solid #000000;
-    width: 31%;
-    padding: 0.2em;
     font-size: 1em; 
     text-align: left;
     font-family: 'Noto Sans TC', sans-serif;
@@ -58,71 +51,64 @@ tr:hover{
     flex-direction: row;
     cursor: pointer;
     justify-content: space-between;
+    margin-top: 1em;
     flex-direction: row;
-    width: 15em;
-    padding: 1em;
+    width: 100%;
 }
 
-#sendbutton{
-    cursor: pointer;
-    border-radius: 0.3em;
-    transition-duration: 0.4s;
-    font-size: 0.7em;
-    font-family: 'Noto Sans TC', sans-serif;
-}
+.crud-buttons{
 
-#sendbutton:hover{
-    background-color: #4CAF50; 
-    color: white;
-}
+    display: flex;
+    width: 15%;
 
-.edit-button {
-    width: 50%;
-    height: 50%;
-    color:#0044ff;
-    text-transform: uppercase;
-    background: transparent;
-    cursor: pointer;
-    margin-right: 1em;
-    border-radius: 0.3em;
-    padding: 0;
-    border: none;
-    background: none;
-}
-     
-
-.delete-button{
-    width: 50%;
-    height: 50%;
-    color: #ff0000;
-    background: transparent;
-    cursor: pointer;
-    border-radius: 0.3em;
-    padding: 0;
-    border: none;
-    background: none;
+    .edit-button {
+        width: 50%;
+        height: 50%;
+        color:#0044ff;
+        text-transform: uppercase;
+        background: transparent;
+        cursor: pointer;
+        margin-right: 1em;
+        border-radius: 0.3em;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+         
+    
+    .delete-button{
+        width: 50%;
+        height: 50%;
+        color: #ff0000;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 0.3em;
+        padding: 0;
+        border: none;
+        background: none;
+    }
 }
 
 .table-info th {
     cursor: pointer;
-  }
+}
   
-  .table-info .th-sort-asc::after {
-    content: "\25b4";
-  }
-  
-  .table-info .th-sort-desc::after {
-    content: "\25be";
-  }
-  
-  .table-info .th-sort-asc::after,
-  .table-info .th-sort-desc::after {
-    margin-left: 5px;
-  }
-  
-  .table-info .th-sort-asc,
-  .table-info .th-sort-desc {
-    background: rgba(0, 0, 0, 0.1);
-  }
+.table-info .th-sort-asc::after {
+content: "\25b4";
+}
+
+.table-info .th-sort-desc::after {
+content: "\25be";
+}
+
+.table-info .th-sort-asc::after,
+.table-info .th-sort-desc::after {
+margin-left: 5px;
+}
+
+.table-info .th-sort-asc,
+.table-info .th-sort-desc {
+background: rgba(0, 0, 0, 0.1);
+}
   
   

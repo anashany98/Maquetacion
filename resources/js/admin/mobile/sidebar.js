@@ -18,7 +18,6 @@ sidebarItems.forEach(sidebarItem =>{
 
             let RefreshRequest = async () => {
 
-                console.log(url)
                 try {
                     await axios.get(url).then(response => {
                         form.innerHTML = response.data.form;

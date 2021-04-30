@@ -2,70 +2,51 @@ import { renderTable } from './crudTable';
 
 const filterButton =document.getElementById('filter-button')
 const filterForm =document.getElementById('filter-form')
-const filterOpenButton =document.getElementById('filter-open-button')
-const filterContainer =document.getElementsByID('filter-container')
+const filterOpenButton = document.getElementById('filter-open-button')
+const filterContainer = document.getElementById('filter-container')
 
-filterButton.addEventListener('click', () =>{
+export let renderFilterTable = () => {
 
-    let data =new FormData(filterForm)
-    let url = filterForm.action;
+    filterButton.addEventListener('click', () =>{
 
+        let data = new FormData(filterForm);
+        let filters = {};
+        
+        data.forEach(function(value, key){
+            filters[key] = value;
+        });
+        
+        let json = JSON.stringify(filters);
 
-    let sendPostRequest = async () => {
+        let url = filterForm.action;
 
-        try {
-            await axios.post(url, data).then(response => {
-                table.innerHTML = response.data.table;
-                renderTable();
+        let sendFilterRequest = async () => {
 
-            });
+            try {
+                axios.get(url, {
+                    params: {
+                        filters: json
+                    }
+                }).then(response => {
+                    table.innerHTML = response.data.table;
+                    renderTable();
+                    filterContainer.classList.toggle("active"); 
+                });
+                
+            } catch (error) {
 
-
-        } catch (error){
-
-        }
-
-    };
- 
-    sendPostRequest();
-
-});
-
-
-
-
-filterOpenButton.forEach(filterOpenButton => { 
-
-    filterOpenButton.addEventListener("click", () => {
-
-        let activeElements = document.querySelectorAll(".active");
-
-        if(filterOpenButton.classList.contains("active")){
-
-            filterOpenButton.classList.remove("active");
-
-            activeElements.forEach(activeElement => {
-                activeElement.classList.remove("active");
-            });
-
-        }else{
-
-            activeElements.forEach(activeElement => {
-                activeElement.classList.remove("active");
-            });
-            
-            sideButton.classList.add("active");
-
-            filterContainer.forEach(filterContainer => {
-
-                if(filterContainer.dataset.content == filterOpenButton.dataset.button){
-                    filterContainer.classList.add("active"); 
-                }else{
-                }
-            });
-        }
+            } 
+        };
+        
+         sendFilterRequest();
+                
     });
     
-});
+    filterOpenButton.addEventListener("click", () => {
+    
+        filterContainer.classList.toggle("active"); 
+    });
+}
+    
 
 

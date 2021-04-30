@@ -22,12 +22,12 @@ let sendFingerprintRequest = async () => {
 
     try {
         await axios.post('/fingerprint', data).then(response => {
-            console.log(response);
+           
         });
         
     } catch (error) {
 
-        console.log(error);
+    
     }
 };
 

@@ -1,24 +1,15 @@
-.web{
-    
-    height: 10%;
-
-}
-
-.main{
-    height: 90%;
-    order:  2;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 100%;
+body{
     background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(243,93,92,1) 98%);
 }
 
-
-.two-columns{
-    display:flex;
-    flex-direction: row;
+.main{
+    display: flex;
+    flex-wrap: nowrap;
+    height: 80vh;
     justify-content: space-between;
-    padding: 3em;
-    
-
+    margin: 0 3%;
+    overflow-x: auto; 
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
