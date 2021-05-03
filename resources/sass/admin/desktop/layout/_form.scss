@@ -35,7 +35,23 @@
 
 .button{
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+
     
+    .refresh-button{
+        width: 10%;
+        cursor: pointer;
+
+    }
+
+    .send-button{
+        width: 10%;
+        cursor: pointer;
+
+
+    }
+
 }
 
 #sendbutton{

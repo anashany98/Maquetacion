@@ -7,7 +7,8 @@
     transition: all 0.5s;
     width: 0;
     position: absolute;
-    top: 8em;
+    top: 29em;
+    left: 11em;
 }
 
 .filter-container.active{
@@ -17,6 +18,8 @@
     justify-content: center;
     border-style: solid;
     border-radius: 0.5em;
+    z-index: 4;
+
 }
 
 .filter-open-button{
@@ -28,5 +31,7 @@
     border: none;
     background: none;
     position: absolute;
-    top: 6em;
+    top: 27em;
+    left: 11em;
+    z-index: 4;
 }

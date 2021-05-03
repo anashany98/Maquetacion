@@ -15,12 +15,24 @@ use Debugbar;
 class FaqController extends Controller
 {
     protected $faq;
+    protected $paginate;
+
 
     function __construct(Faq $faq,  Agent $agent)
     {
         $this->middleware('auth');
         $this->agent = $agent;
         $this->faq = $faq;
+
+        if ($this->agent->isMobile()) {
+            $this->paginate = 10;
+        }
+
+        if ($this->agent->isDesktop()) {
+            $this->paginate = 8;
+        }
+
+
     }
 
     public function indexJson(Request $request)
@@ -41,7 +53,7 @@ class FaqController extends Controller
 
         $view = View::make('admin.faqs.index')
                 ->with('faq', $this->faq)
-                ->with('faqs', $this->faq->where('active', 1)->paginate(5));
+                ->with('faqs', $this->faq->where('active', 1)->paginate($this->paginate));
 
         if(request()->ajax()) {
 
@@ -86,7 +98,7 @@ class FaqController extends Controller
         }
 
         $view = View::make('admin.faqs.index')
-        ->with('faqs', $this->faq->where('active', 1)->paginate(5))
+        ->with('faqs', $this->faq->where('active', 1)->paginate($this->paginate))
         ->with('faq', $faq)
         ->renderSections();        
 
@@ -102,8 +114,9 @@ class FaqController extends Controller
     {
         $view = View::make('admin.faqs.index')
         ->with('faq', $faq)
-        ->with('faqs', $this->faq->where('active', 1)->paginate(5));   
-        
+        ->with('faqs', $this->faq->where('active', 1)->orderBy('created_at', 'desc')->paginate($this->paginate))
+        ->renderSections();  
+
         if(request()->ajax()) {
 
             $sections = $view->renderSections(); 
@@ -125,7 +138,7 @@ class FaqController extends Controller
 
         $view = View::make('admin.faqs.index')
             ->with('faq', $this->faq)
-            ->with('faqs', $this->faq->where('active', 1)->paginate(5))
+            ->with('faqs', $this->faq->where('active', 1)->paginate($this->paginate))
             ->renderSections();
         
         return response()->json([
