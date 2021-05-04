@@ -1918,8 +1918,13 @@ __webpack_require__(/*! ./sidebar */ "./resources/js/admin/desktop/sidebar.js");
 
 __webpack_require__(/*! ./advisor */ "./resources/js/admin/desktop/advisor.js");
 
-__webpack_require__(/*! ./loading */ "./resources/js/admin/desktop/loading.js"); // require('./touch');
-// require('./tab');
+__webpack_require__(/*! ./loading */ "./resources/js/admin/desktop/loading.js");
+
+__webpack_require__(/*! ./images */ "./resources/js/admin/desktop/images.js");
+
+__webpack_require__(/*! ./tabs */ "./resources/js/admin/desktop/tabs.js");
+
+__webpack_require__(/*! ./tabs_locale */ "./resources/js/admin/desktop/tabs_locale.js"); // require('./touch');
 
 /***/ }),
 
@@ -2362,6 +2367,79 @@ var renderFilterTable = function renderFilterTable() {
 
 /***/ }),
 
+/***/ "./resources/js/admin/desktop/images.js":
+/*!**********************************************!*\
+  !*** ./resources/js/admin/desktop/images.js ***!
+  \**********************************************/
+/***/ (() => {
+
+document.querySelectorAll(".drop-zone__input").forEach(function (inputElement) {
+  var dropZoneElement = inputElement.closest(".drop-zone");
+  dropZoneElement.addEventListener("click", function (e) {
+    inputElement.click();
+  });
+  inputElement.addEventListener("change", function (e) {
+    if (inputElement.files.length) {
+      updateThumbnail(dropZoneElement, inputElement.files[0]);
+    }
+  });
+  dropZoneElement.addEventListener("dragover", function (e) {
+    e.preventDefault();
+    dropZoneElement.classList.add("drop-zone--over");
+  });
+  ["dragleave", "dragend"].forEach(function (type) {
+    dropZoneElement.addEventListener(type, function (e) {
+      dropZoneElement.classList.remove("drop-zone--over");
+    });
+  });
+  dropZoneElement.addEventListener("drop", function (e) {
+    e.preventDefault();
+
+    if (e.dataTransfer.files.length) {
+      inputElement.files = e.dataTransfer.files;
+      updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+    }
+
+    dropZoneElement.classList.remove("drop-zone--over");
+  });
+});
+/**
+ * Updates the thumbnail on a drop zone element.
+ *
+ * @param {HTMLElement} dropZoneElement
+ * @param {File} file
+ */
+
+function updateThumbnail(dropZoneElement, file) {
+  var thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb"); // First time - remove the prompt
+
+  if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+    dropZoneElement.querySelector(".drop-zone__prompt").remove();
+  } // First time - there is no thumbnail element, so lets create it
+
+
+  if (!thumbnailElement) {
+    thumbnailElement = document.createElement("div");
+    thumbnailElement.classList.add("drop-zone__thumb");
+    dropZoneElement.appendChild(thumbnailElement);
+  }
+
+  thumbnailElement.dataset.label = file.name; // Show thumbnail for image files
+
+  if (file.type.startsWith("image/")) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = function () {
+      thumbnailElement.style.backgroundImage = "url('".concat(reader.result, "')");
+    };
+  } else {
+    thumbnailElement.style.backgroundImage = null;
+  }
+}
+
+/***/ }),
+
 /***/ "./resources/js/admin/desktop/loading.js":
 /*!***********************************************!*\
   !*** ./resources/js/admin/desktop/loading.js ***!
@@ -2476,6 +2554,51 @@ sideButton.forEach(function (sideButton) {
         } else {}
       });
     }
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/desktop/tabs.js":
+/*!********************************************!*\
+  !*** ./resources/js/admin/desktop/tabs.js ***!
+  \********************************************/
+/***/ (() => {
+
+var tabsItems = document.querySelectorAll('.tab-item');
+var tabPanels = document.querySelectorAll(".tab-panel");
+tabsItems.forEach(function (tabsItem) {
+  tabsItem.addEventListener("click", function () {
+    var activeElements = document.querySelectorAll(".tab-active");
+    activeElements.forEach(function (activeElement) {
+      activeElement.classList.remove("tab-active");
+    });
+    tabsItem.classList.add("tab-active");
+    tabPanels.forEach(function (tabPanel) {
+      if (tabPanel.dataset.tab == tabsItem.dataset.tab) {
+        tabPanel.classList.add("tab-active");
+      }
+    });
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/desktop/tabs_locale.js":
+/*!***************************************************!*\
+  !*** ./resources/js/admin/desktop/tabs_locale.js ***!
+  \***************************************************/
+/***/ (() => {
+
+var tabsLenguage = document.querySelectorAll('.tab-lenguage');
+tabsLenguage.forEach(function (tabsLenguage) {
+  tabsLenguage.addEventListener("click", function () {
+    var activeElements = document.querySelectorAll(".tab-translate-active");
+    activeElements.forEach(function (activeElement) {
+      activeElement.classList.remove("tab-translate-active");
+    });
+    tabsLenguage.classList.add("tab-translate-active");
+    console.log(tabsLenguage);
   });
 });
 

@@ -29,7 +29,7 @@ class FaqController extends Controller
         }
 
         if ($this->agent->isDesktop()) {
-            $this->paginate = 8;
+            $this->paginate = 9;
         }
 
 
@@ -110,6 +110,28 @@ class FaqController extends Controller
         ]);
     }
 
+    public function edit(Faq $faq)
+    {
+        $locale = $this->locale->show($faq->id);
+
+        $view = View::make('admin.faqs.index')
+        ->with('locale', $locale)
+        ->with('faq', $faq)
+        ->with('faqs', $this->faq->where('active', 1)->orderBy('created_at', 'desc')->paginate($this->paginate));        
+        
+        if(request()->ajax()) {
+
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'table' => $sections['table'],
+                'form' => $sections['form'],
+            ]); 
+        }
+                
+        return $view;
+    }
+
     public function show(Faq $faq)
     {
         $view = View::make('admin.faqs.index')
@@ -117,14 +139,10 @@ class FaqController extends Controller
         ->with('faqs', $this->faq->where('active', 1)->orderBy('created_at', 'desc')->paginate($this->paginate))
         ->renderSections();  
 
-        if(request()->ajax()) {
-
-            $sections = $view->renderSections(); 
-    
-            return response()->json([
-                'form' => $sections['form'],
-            ]); 
-        }
+        return response()->json([
+            'table' => $view['table'],
+            'form' => $view['form'],
+        ]);
                 
         return $view;
     }

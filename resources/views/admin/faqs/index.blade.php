@@ -18,15 +18,46 @@
             <input autocomplete="false" name="hidden" type="text" style="display:none;">
             <input type="hidden" name="id" value="{{isset($faq->id) ? $faq->id : ''}}"> 
 
-            <div class="two-columns">
-                <div class="form-group">
-                    <div class="label-container">
-                        <label for="title">Title:</label>
-                    </div>
-                    <div class="input-container">    
-                        <input type="text" id="fname" name="title" value="{{isset($faq->id) ? $faq->title : ''}}" class="input">
-                    </div>    
+
+            <div class="tabs-container">
+                <div class="tabs-container-menu">
+                    <ul>
+                        <li class="tab-item tab-active" data-tab="content">
+                            Content
+                        </li>  
+
+                        <li class="tab-item" data-tab="images">
+                            Images
+                        </li>        
+                    </ul>
                 </div>
+                
+                <div class="button">
+                    
+                    <div class="refresh-button" id="refresh-button" data-url="{{route('faqs_create')}}">
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z" />
+                        </svg>
+                    </div>
+                    
+                    <div class="send-button" id="send-button">
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
+                        </svg>
+                    </div>
+
+                    <div class="switcher">
+                        <label class="switch">
+                          <input type="checkbox" checked>
+                          <span class="switch-left">On</span>
+                          <span class="switch-right">Off</span>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="tab-panel tab-active" data-tab="contenido">
 
                 <div class="form-group">   
                     <div class="label-container">
@@ -45,39 +76,78 @@
                         </select>                   
                     </div>
                 </div>
-            </div>
 
-            <div class="one-column">
-                <div class="form-group">   
-                    <div class="label-container">
-                        <label for="description">Description:</label>
+                @component('admin.layout.partials.locale')
+
+                <div class="tab-language-panel tab-translate-active" data-tab="es">
+                    <div class="two-columns">
+                        <div class="form-group">
+                            <div class="label-container">
+                                <label for="title">Titulo:</label>
+                            </div>
+                            <div class="input-container">    
+                                <input type="text" id="fname" name="title" value="{{isset($faq->id) ? $faq->title : ''}}" class="input">
+                            </div>    
+                        </div>
                     </div>
-                    <div class="input-container">    
-                        <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
-                            {{isset($faq->description) ? $faq->description : ''}}
-                        </textarea>
+
+                    <div class="one-column">
+                        <div class="form-group">   
+                            <div class="label-container">
+                                <label for="description">Descripcion:</label>
+                            </div>
+                            <div class="input-container">    
+                                <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
+                                    {{isset($faq->description) ? $faq->description : ''}}
+                                </textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-         
 
-          
+                <div class="tab-language-panel tab-translate-active" data-tab="en">
+                    <div class="two-columns">
+                        <div class="form-group">
+                            <div class="label-container">
+                                <label for="title">Title:</label>
+                            </div>
+                            <div class="input-container">    
+                                <input type="text" id="fname" name="title" value="{{isset($faq->id) ? $faq->title : ''}}" class="input">
+                            </div>    
+                        </div>
+                    </div>
 
-            <div class="button">
-                 
-                <div class="refresh-button" id="refresh-button" data-url="{{route('faqs_create')}}">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z" />
-                    </svg>
+                    <div class="one-column">
+                        <div class="form-group">   
+                            <div class="label-container">
+                                <label for="description">Description:</label>
+                            </div>
+                            <div class="input-container">    
+                                <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
+                                    {{isset($faq->description) ? $faq->description : ''}}
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="send-button" id="send-button">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
-                    </svg>
+                @endcomponent
+
+            </div>    
+            
+            <div class="tab-panel" data-tab="images">
+        
+                @component('admin.layout.partials.locale')
+
+                <div class="one-column">
+                    <div class="drop-zone">
+                        <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                        <input type="file" name="myFile" class="drop-zone__input">
+                    </div>                    
                 </div>
 
-            </div>
+                @endcomponent
+
+            </div>    
         </form> 
         
     @endif

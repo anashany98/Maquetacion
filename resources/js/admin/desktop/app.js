@@ -4,6 +4,7 @@ require('./ckeditor');
 require('./sidebar');
 require('./advisor');
 require('./loading');
-
+require('./images');
+require('./tabs');
+require('./tabs_locale');
 // require('./touch');
-// require('./tab');
