@@ -39,7 +39,15 @@
     display: block;
 }
 
-.tabs-lenguage{
+.tab-language-panel{
+    display: none;
+}
+
+.tab-language-panel.tab-active{
+    display: block;
+}
+
+.tabs-language-items{
     background-color: hsl(0, 0%, 100%);
     display: flex;
     width: 90%;
@@ -47,7 +55,7 @@
 }
 
 
-.tabs-lenguage-menu{
+.tabs-language-menu{
 
     width: max-content;
 

@@ -469,31 +469,39 @@ tr:hover {
   display: block;
 }
 
-.tabs-lenguage {
+.tab-language-panel {
+  display: none;
+}
+
+.tab-language-panel.tab-active {
+  display: block;
+}
+
+.tabs-language-items {
   background-color: white;
   display: flex;
   width: 90%;
   margin: 1em;
 }
 
-.tabs-lenguage-menu {
+.tabs-language-menu {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }
-.tabs-lenguage-menu ul {
+.tabs-language-menu ul {
   background-color: white;
   display: flex;
   margin: 0;
   padding: 0;
 }
-.tabs-lenguage-menu li {
+.tabs-language-menu li {
   color: black;
   cursor: pointer;
   padding: 0.5em 0.5em;
   text-align: center;
 }
-.tabs-lenguage-menu li.tab-translate-active {
+.tabs-language-menu li.tab-translate-active {
   background-color: #62daca;
   color: black;
 }

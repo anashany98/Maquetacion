@@ -64,16 +64,7 @@
                     </select>    
                 </div>
             </div>
-            
-
-            {{-- <div class="tab-panel" data-tab="images">
-                Prueba
-            </div> --}}
-
-
-
-
-
+    
         <div class="button">
             <input type="submit" value="Enviar" id="send-button">
         </div>

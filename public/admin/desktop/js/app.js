@@ -2588,19 +2588,37 @@ tabsItems.forEach(function (tabsItem) {
 /*!***************************************************!*\
   !*** ./resources/js/admin/desktop/tabs_locale.js ***!
   \***************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-var tabsLenguage = document.querySelectorAll('.tab-lenguage');
-tabsLenguage.forEach(function (tabsLenguage) {
-  tabsLenguage.addEventListener("click", function () {
-    var activeElements = document.querySelectorAll(".tab-translate-active");
-    activeElements.forEach(function (activeElement) {
-      activeElement.classList.remove("tab-translate-active");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderLocaleTabs": () => (/* binding */ renderLocaleTabs)
+/* harmony export */ });
+var renderLocaleTabs = function renderLocaleTabs() {
+  var tabsLanguagesItems = document.querySelectorAll('.tab-language-items');
+  var tabsLanguagePanels = document.querySelectorAll('.tab-language-panel');
+  tabsLanguagesItems.forEach(function (tabsLanguagesItem) {
+    tabsLanguagesItem.addEventListener("click", function () {
+      var activeElements = document.querySelectorAll(".tab-translate-active");
+      var activeTab = tabsLanguagesItem.dataset.tab;
+      activeElements.forEach(function (activeElement) {
+        if (activeElement.dataset.tab == activeTab) {
+          activeElement.classList.remove("tab-translate-active");
+        }
+      });
+      tabsLanguagesItem.classList.add("tab-translate-active");
+      tabsLanguagePanels.forEach(function (tabLanguagePanel) {
+        if (tabLanguagePanel.dataset.tab == activeTab) {
+          if (tabLanguagePanel.dataset.localetab == tabsLanguagesItem.dataset.localetab) {
+            tabLanguagePanel.classList.add("tab-translate-active");
+          }
+        }
+      });
     });
-    tabsLenguage.classList.add("tab-translate-active");
-    console.log(tabsLenguage);
   });
-});
+};
+renderLocaleTabs();
 
 /***/ }),
 

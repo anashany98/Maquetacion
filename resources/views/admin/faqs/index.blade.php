@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="tab-panel tab-active" data-tab="contenido">
+            <div class="tab-panel tab-active" data-tab="content">
 
                 <div class="form-group">   
                     <div class="label-container">
@@ -77,73 +77,94 @@
                     </div>
                 </div>
 
-                @component('admin.layout.partials.locale')
+                @component('admin.layout.partials.locale', ['tab' => 'content'])
 
-                <div class="tab-language-panel tab-translate-active" data-tab="es">
-                    <div class="two-columns">
-                        <div class="form-group">
-                            <div class="label-container">
-                                <label for="title">Titulo:</label>
+                    <div class="tab-language-panel tab-translate-active" data-tab="content" data-localetab='es'>
+                        <div class="two-columns">
+                            <div class="form-group">
+                                <div class="label-container">
+                                    <label for="title">Titulo:</label>
+                                </div>
+                                <div class="input-container">    
+                                    <input type="text" id="fname" name="title" value="{{isset($faq->id) ? $faq->title : ''}}" class="input">
+                                </div>    
                             </div>
-                            <div class="input-container">    
-                                <input type="text" id="fname" name="title" value="{{isset($faq->id) ? $faq->title : ''}}" class="input">
-                            </div>    
+                        </div>
+
+                        <div class="one-column">
+                            <div class="form-group">   
+                                <div class="label-container">
+                                    <label for="description">Descripcion:</label>
+                                </div>
+                                <div class="input-container">    
+                                    <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
+                                        {{isset($faq->description) ? $faq->description : ''}}
+                                    </textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="one-column">
-                        <div class="form-group">   
-                            <div class="label-container">
-                                <label for="description">Descripcion:</label>
-                            </div>
-                            <div class="input-container">    
-                                <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
-                                    {{isset($faq->description) ? $faq->description : ''}}
-                                </textarea>
+                    <div class="tab-language-panel tab-translate-active" data-tab="content" data-localetab='en'>
+                        <div class="two-columns">
+                            <div class="form-group">
+                                <div class="label-container">
+                                    <label for="title">Title:</label>
+                                </div>
+                                <div class="input-container">    
+                                    <input type="text" id="fname" name="title" value="{{isset($faq->id) ? $faq->title : ''}}" class="input">
+                                </div>    
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="tab-language-panel tab-translate-active" data-tab="en">
-                    <div class="two-columns">
-                        <div class="form-group">
-                            <div class="label-container">
-                                <label for="title">Title:</label>
+                        <div class="one-column">
+                            <div class="form-group">   
+                                <div class="label-container">
+                                    <label for="description">Description:</label>
+                                </div>
+                                <div class="input-container">    
+                                    <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
+                                        {{isset($faq->description) ? $faq->description : ''}}
+                                    </textarea>
+                                </div>
                             </div>
-                            <div class="input-container">    
-                                <input type="text" id="fname" name="title" value="{{isset($faq->id) ? $faq->title : ''}}" class="input">
-                            </div>    
                         </div>
                     </div>
 
-                    <div class="one-column">
-                        <div class="form-group">   
-                            <div class="label-container">
-                                <label for="description">Description:</label>
-                            </div>
-                            <div class="input-container">    
-                                <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
-                                    {{isset($faq->description) ? $faq->description : ''}}
-                                </textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 @endcomponent
 
             </div>    
             
             <div class="tab-panel" data-tab="images">
         
-                @component('admin.layout.partials.locale')
+                @component('admin.layout.partials.locale', ['tab' => 'images'])
 
-                <div class="one-column">
-                    <div class="drop-zone">
-                        <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                        <input type="file" name="myFile" class="drop-zone__input">
-                    </div>                    
-                </div>
+                    <div class="tab-images tab-active" data-tab="images" data-localetab='es'>
+                        <div class="one-column">
+                            <div class="form-group">
+                                <div class="input-container">
+                                    <div class="drop-zone">
+                                        <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                                        <input type="file" name="myFile" class="drop-zone__input">
+                                    </div>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-images tab-active" data-tab="images" data-localetab='en'>
+                        <div class="one-column">
+                            <div class="form-group">
+                                <div class="input-container">
+                                    <div class="drop-zone">
+                                        <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                                        <input type="file" name="myFile" class="drop-zone__input">
+                                    </div>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 @endcomponent
 
@@ -163,7 +184,7 @@
             <tr class="touch">
                 <th>Title</th>
                 <th>Categories</th>
-                <th>Creación</th>
+                <th>Created</th>
             </tr>
         </thead>
 

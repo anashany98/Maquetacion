@@ -18,8 +18,9 @@ tabsItems.forEach(tabsItem => {
             if(tabPanel.dataset.tab == tabsItem.dataset.tab){
                 tabPanel.classList.add("tab-active"); 
             }
-        });
+        }); 
     });
+
 });
 
 
