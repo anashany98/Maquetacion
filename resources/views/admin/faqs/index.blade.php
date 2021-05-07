@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-language-panel tab-translate-active" data-tab="content" data-localetab='en'>
+                    <div class="tab-language-panel" data-tab="content" data-localetab='en'>
                         <div class="two-columns">
                             <div class="form-group">
                                 <div class="label-container">
@@ -140,12 +140,12 @@
         
                 @component('admin.layout.partials.locale', ['tab' => 'images'])
 
-                    <div class="tab-images tab-active" data-tab="images" data-localetab='es'>
+                    <div class="tab-language-panel tab-translate-active" data-tab="images" data-localetab='es'>
                         <div class="one-column">
                             <div class="form-group">
                                 <div class="input-container">
                                     <div class="drop-zone">
-                                        <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                                        <span class="drop-zone__prompt">Suelta el archivo aquí o haz clic para subir</span>
                                         <input type="file" name="myFile" class="drop-zone__input">
                                     </div>     
                                 </div>
@@ -153,7 +153,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-images tab-active" data-tab="images" data-localetab='en'>
+                    <div class="tab-language-panel" data-tab="images" data-localetab='en'>
                         <div class="one-column">
                             <div class="form-group">
                                 <div class="input-container">

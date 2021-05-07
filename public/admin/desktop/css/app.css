@@ -473,7 +473,7 @@ tr:hover {
   display: none;
 }
 
-.tab-language-panel.tab-active {
+.tab-language-panel.tab-translate-active {
   display: block;
 }
 
