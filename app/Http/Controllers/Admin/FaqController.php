@@ -9,19 +9,22 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\FaqRequest;
 use Jenssegers\Agent\Agent;
+use App\Vendor\Locale\Locale;
 use App\Models\DB\Faq;
 use Debugbar;
 
 class FaqController extends Controller
 {
     protected $faq;
+    protected $agent;
+    protected $locale;
     protected $paginate;
 
-
-    function __construct(Faq $faq,  Agent $agent)
+    function __construct(Faq $faq, Agent $agent, Locale $locale)
     {
         $this->middleware('auth');
         $this->agent = $agent;
+        $this->locale = $locale;
         $this->faq = $faq;
 
         if ($this->agent->isMobile()) {
@@ -32,7 +35,7 @@ class FaqController extends Controller
             $this->paginate = 9;
         }
 
-
+        $this->locale->setParent('faqs');
     }
 
     public function indexJson(Request $request)
@@ -84,12 +87,14 @@ class FaqController extends Controller
     {            
         $faq = $this->faq->updateOrCreate([
             'id' => request('id')],[
-            'title' => request('title'),
-            'description' => request('description'),
+            'name' => request('name'),
             'category_id'=> request('category_id'),
             'active' => 1,
         ]);
 
+        if(request('locale')){
+            $locale = $this->locale->store(request('locale'), $faq->id);
+        }
 
         if (request('id')){
             $advisor = \Lang::get('admin/faqs.faq-update');

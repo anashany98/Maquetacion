@@ -1,6 +1,6 @@
 export let renderLocaleTabs = () => {
 
-    let tabsLanguagesItems = document.querySelectorAll('.tab-language-items');
+    let tabsLanguagesItems = document.querySelectorAll('.tab-language-item');
     let tabsLanguagePanels =document.querySelectorAll('.tab-language-panel');
 
     tabsLanguagesItems.forEach(tabsLanguagesItem => { 

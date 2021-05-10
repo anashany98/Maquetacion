@@ -2596,7 +2596,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "renderLocaleTabs": () => (/* binding */ renderLocaleTabs)
 /* harmony export */ });
 var renderLocaleTabs = function renderLocaleTabs() {
-  var tabsLanguagesItems = document.querySelectorAll('.tab-language-items');
+  var tabsLanguagesItems = document.querySelectorAll('.tab-language-item');
   var tabsLanguagePanels = document.querySelectorAll('.tab-language-panel');
   tabsLanguagesItems.forEach(function (tabsLanguagesItem) {
     tabsLanguagesItem.addEventListener("click", function () {

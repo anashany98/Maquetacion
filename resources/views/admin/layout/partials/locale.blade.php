@@ -4,12 +4,13 @@
     <div class="tabs-language-items">
         <div class="tabs-language-menu">
             <ul> 
-                <li class="tab-language-items tab-translate-active" data-tab="{{$tab}}" data-localetab='es'>
-                    Español
+                @foreach ($localizations as $localization)
+
+                <li class="tab-language-item {{ $loop->first ? 'tab-translate-active':'' }}" data-tab="{{$tab}}" data-localetab="{{$localization->alias}}">
+                    {{$localization->name}}
                 </li>      
-                <li class="tab-language-items" data-tab="{{$tab}}" data-localetab='en'>
-                    English
-                </li>         
+   
+                @endforeach
             </ul>
         </div>
     </div>

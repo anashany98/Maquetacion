@@ -75,61 +75,46 @@
                                 @endforeach
                         </select>                   
                     </div>
+
+                    <div class="label-container">
+                        <label for="name">Name:</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" name="name" value="{{isset($faq->name) ? $faq->name : ''}}"  class="input-highlight"/>
+                    </div>
                 </div>
 
                 @component('admin.layout.partials.locale', ['tab' => 'content'])
 
-                    <div class="tab-language-panel tab-translate-active" data-tab="content" data-localetab='es'>
-                        <div class="two-columns">
-                            <div class="form-group">
-                                <div class="label-container">
-                                    <label for="title">Titulo:</label>
+                    @foreach ($localizations as $localization)
+
+                        <div class="tab-language-panel {{ $loop->first ?'tab-translate-active':'' }}" data-tab="content" data-localetab="{{$localization->alias}}">
+                            <div class="two-columns">
+                                <div class="form-group">
+                                    <div class="label-container">
+                                        <label for="title">Titulo:</label>
+                                    </div>
+                                    <div class="input-container">    
+                                        <input type="text" class="input" name="locale[title.{{$localization->alias}}]" value="{{isset($locale["title.$localization->alias"]) ? $locale["title.$localization->alias"] : ''}}" >
+                                    </div>    
                                 </div>
-                                <div class="input-container">    
-                                    <input type="text" id="fname" name="title" value="{{isset($faq->id) ? $faq->title : ''}}" class="input">
-                                </div>    
+                            </div>
+
+                            <div class="one-column">
+                                <div class="form-group">   
+                                    <div class="label-container">
+                                        <label for="description">Descripcion:</label>
+                                    </div>
+                                    <div class="input-container">    
+                                        <textarea class="ckeditor" type="text" name="locale[description.{{$localization->alias}}]" >{{isset($locale["description.$localization->alias"]) ? $locale["description.$localization->alias"] : ''}} 
+                                            {{isset($faq->description) ? $faq->description : ''}}
+                                        </textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="one-column">
-                            <div class="form-group">   
-                                <div class="label-container">
-                                    <label for="description">Descripcion:</label>
-                                </div>
-                                <div class="input-container">    
-                                    <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
-                                        {{isset($faq->description) ? $faq->description : ''}}
-                                    </textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-language-panel" data-tab="content" data-localetab='en'>
-                        <div class="two-columns">
-                            <div class="form-group">
-                                <div class="label-container">
-                                    <label for="title">Title:</label>
-                                </div>
-                                <div class="input-container">    
-                                    <input type="text" id="fname" name="title" value="{{isset($faq->id) ? $faq->title : ''}}" class="input">
-                                </div>    
-                            </div>
-                        </div>
-
-                        <div class="one-column">
-                            <div class="form-group">   
-                                <div class="label-container">
-                                    <label for="description">Description:</label>
-                                </div>
-                                <div class="input-container">    
-                                    <textarea type="text" id="lname" name="description" value="{{isset($faq->description) ? $faq->description : ''}}" class="ckeditor">
-                                        {{isset($faq->description) ? $faq->description : ''}}
-                                    </textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
 
 
                 @endcomponent
@@ -140,31 +125,22 @@
         
                 @component('admin.layout.partials.locale', ['tab' => 'images'])
 
-                    <div class="tab-language-panel tab-translate-active" data-tab="images" data-localetab='es'>
-                        <div class="one-column">
-                            <div class="form-group">
-                                <div class="input-container">
-                                    <div class="drop-zone">
-                                        <span class="drop-zone__prompt">Suelta el archivo aquí o haz clic para subir</span>
-                                        <input type="file" name="myFile" class="drop-zone__input">
-                                    </div>     
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @foreach ($localizations as $localization)
 
-                    <div class="tab-language-panel" data-tab="images" data-localetab='en'>
-                        <div class="one-column">
-                            <div class="form-group">
-                                <div class="input-container">
-                                    <div class="drop-zone">
-                                        <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                                        <input type="file" name="myFile" class="drop-zone__input">
-                                    </div>     
+                        <div class="tab-language-panel {{ $loop->first ? 'tab-translate-active':'' }}" data-tab="images" data-localetab="{{$localization->alias}}">
+                            <div class="one-column">
+                                <div class="form-group">
+                                    <div class="input-container">
+                                        <div class="drop-zone">
+                                            <span class="drop-zone__prompt">Suelta el archivo aquí o haz clic para subir</span>
+                                            <input type="file" name="myFile" class="drop-zone__input">
+                                        </div>     
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                    @endforeach
 
                 @endcomponent
 
@@ -182,7 +158,7 @@
         
         <thead >
             <tr class="touch">
-                <th>Title</th>
+                <th>Name</th>
                 <th>Categories</th>
                 <th>Created</th>
             </tr>
@@ -191,7 +167,7 @@
         <tbody>
             @foreach($faqs as $faq_element)
                 <tr class="table-row" id="{{$faq_element->id}}">
-                    <td>{{$faq_element->title}}</td>
+                    <td>{{$faq_element->name}}</td>
                     <td>{{$faq_element->category->name}}</td>
                     <td>{{ Carbon\Carbon::parse($faq_element->created_at)->format('d-m-Y') }}</td>
                 </tr>
