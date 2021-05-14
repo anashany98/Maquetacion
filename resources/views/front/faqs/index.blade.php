@@ -10,11 +10,11 @@
 
         @foreach($faqs as $faq)
 
-            <div class= "faq">
+            <div class= "faq" data-content="{{$loop->iteration}}">
                 <div class="faq-header">
 
                     <div class="faq-title">
-                        <h3>{{$faq->title}}</h3>
+                        <h3>{{isset($faq->locale['title']) ? $faq->locale['title'] : "" }}</h3>
                     </div>
 
                     <div class="faq-button" data-button="{{$loop->iteration}}">
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="faq-description" data-content="{{$loop->iteration}}">
-                    <p>{{$faq->description}}</p>
+                    <p>{!!isset($faq->locale['description']) ? $faq->locale['description'] : "" !!}</p>
                 </div>
             </div>
 

@@ -120,31 +120,42 @@
                 @endcomponent
 
             </div>    
-            
             <div class="tab-panel" data-tab="images">
-        
+
+
                 @component('admin.layout.partials.locale', ['tab' => 'images'])
+
 
                     @foreach ($localizations as $localization)
 
-                        <div class="tab-language-panel {{ $loop->first ? 'tab-translate-active':'' }}" data-tab="images" data-localetab="{{$localization->alias}}">
-                            <div class="one-column">
+                        <div class="locale-tab-panel {{ $loop->first ? 'locale-tab-active':'' }}" data-tab="images" data-localetab="{{$localization->alias}}">
+
+                            <div class="two-columns">
                                 <div class="form-group">
-                                    <div class="input-container">
-                                        <div class="drop-zone">
-                                            <span class="drop-zone__prompt">Suelta el archivo aquí o haz clic para subir</span>
-                                            <input type="file" name="myFile" class="drop-zone__input">
-                                        </div>     
+                                    <div class="form-label">
+                                        <label for="name" class="label-highlight">Foto destacada</label>
+                                    </div>
+                                    <div class="form-input">
+                                        @include('admin.layout.partials.upload', [
+                                            'type' => 'image', 
+                                            'content' => 'featured', 
+                                            'alias' => $localization->alias,
+                                            'files' => $faq->images_featured
+                                        ])
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
+                        
                     @endforeach
 
-                @endcomponent
 
-            </div>    
+                @endcomponent
+            
+            </div>
+                
         </form> 
         
     @endif

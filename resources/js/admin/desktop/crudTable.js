@@ -2,6 +2,7 @@ import {renderCkeditor} from './ckeditor';
 import {showAdvisor} from './advisor';
 import {startWait, stopWait} from './loading';
 import {renderFilterTable} from './filter';
+import {renderUpload} from './upload';
 import axios from 'axios';
 
 const table = document.getElementById("table");
@@ -100,10 +101,14 @@ export let renderForm = () => {
             };
     
             sendPostRequest();
+    
         });
+
     });
 
     renderCkeditor();
+    renderUpload();
+
 };
 
 
