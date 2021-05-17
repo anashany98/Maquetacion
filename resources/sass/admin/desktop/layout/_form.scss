@@ -11,7 +11,28 @@
 .form-group{
     margin-bottom: 1em;
     width: 100%;
+} 
+
+.form-label-grid{
+  margin-bottom: 1em;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 14.8em 11.1em 0.1em 4.4em;
+  grid-template-rows: auto 4em 4em;
+  grid-template-areas:
+  "form-input-principal . . ."
+    "form-input-grid . . ."
+
+} 
+
+.form-input-principal{
+
 }
+
+.form-input-grid{
+
+}
+
 
 .label-container{
     margin-bottom: 0.5em;

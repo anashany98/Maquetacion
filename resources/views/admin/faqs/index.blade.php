@@ -132,10 +132,10 @@
 
                             <div class="two-columns">
                                 <div class="form-group">
-                                    <div class="form-label">
+                                    <div class="form-label-grid">
                                         <label for="name" class="label-highlight">Foto destacada</label>
                                     </div>
-                                    <div class="form-input">
+                                    <div class="form-input-single">
                                         @include('admin.layout.partials.upload', [
                                             'type' => 'image', 
                                             'content' => 'featured', 
@@ -143,6 +143,16 @@
                                             'files' => $faq->images_featured
                                         ])
                                     </div>
+
+                                    <div class="form-input-multi">
+                                        @include('admin.layout.partials.upload', [
+                                            'type' => 'multiple-images', 
+                                            'content' => 'grid', 
+                                            'alias' => $localization->alias,
+                                            'files' => $faq->images_featured
+                                        ])
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -201,7 +211,7 @@
                 </div>
             </div>      
            
-            @include('admin.layout.partials.pagination', ['items' => $faqs])
+            {{-- @include('admin.layout.partials.pagination', ['items' => $faqs]) --}}
             
         </div>   
     </table>

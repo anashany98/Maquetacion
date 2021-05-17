@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="table" id="table">
+    <div class="table visible" id="table">
         @yield('table')
     </div>
 

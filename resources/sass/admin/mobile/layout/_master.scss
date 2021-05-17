@@ -1,23 +1,20 @@
-.main{
-    display:flex;
-    order:  2;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 100%;
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(243,93,92,1) 98%);
 
-  
+body{
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(243,93,92,1) 98%);
+    width: 100%;
+
 }
 
+.wrap{
+    height: 100vh;
 
-.two-columns{
-    margin-top: 3em;
-    display:flex;
-    flex-direction: column-reverse;
+}
+
+.main{
     justify-content: space-between;
-    // padding: 3em;
-    min-width: 90%;
-    
-    
-
+    margin: 0 3%;
+    position: relative;
+    // top: 5em;
+    // -webkit-overflow-scrolling: touch;
+    // -ms-overflow-style: -ms-autohiding-scrollbar;
 }

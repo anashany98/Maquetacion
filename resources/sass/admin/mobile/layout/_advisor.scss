@@ -1,0 +1,35 @@
+.advisor-container{
+
+    width: 23em;
+    align-content: center;
+    position: fixed;
+    transition: 0.5s;
+    top: -15em;
+ 
+}
+
+.advisor-container.active{
+    
+    top: 2em;
+}
+
+
+.advisor{
+    
+   border-radius: 0.5em;
+   border-style: solid;
+   text-align: center;
+   left: 40em;
+   position: relative;
+   background: hsl(0, 0%, 100%);
+
+    .svg{
+        fill: hsl(120, 79%, 54%)
+    }
+}
+
+.advisor.advisor-active{
+    border-radius: 0.5em;
+
+}
+

@@ -2163,52 +2163,173 @@ var renderTable = function renderTable() {
       var currentIsAscendig = headerCell.classList.contains("th-sort-asc");
       sortTableByColumn(tableElement, headerIndex, !currentIsAscendig);
     });
-  });
-  paginationButtons.forEach(function (paginationButton) {
-    paginationButton.addEventListener("click", function () {
-      var url = paginationButton.dataset.page;
-
-      var sendPaginationRequest = /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  _context4.prev = 0;
-                  _context4.next = 3;
-                  return axios.get(url).then(function (response) {
-                    table.innerHTML = response.data.table;
-                    renderTable();
-                  });
-
-                case 3:
-                  _context4.next = 8;
-                  break;
-
-                case 5:
-                  _context4.prev = 5;
-                  _context4.t0 = _context4["catch"](0);
-                  console.error(_context4.t0);
-
-                case 8:
-                case "end":
-                  return _context4.stop();
-              }
-            }
-          }, _callee4, null, [[0, 5]]);
-        }));
-
-        return function sendPaginationRequest() {
-          return _ref6.apply(this, arguments);
-        };
-      }();
-
-      sendPaginationRequest();
-    });
-  });
+  }); // paginationButtons.forEach(paginationButton => {
+  //     paginationButton.addEventListener("click", () => {
+  //         let url = paginationButton.dataset.page;
+  //         let sendPaginationRequest = async () => {
+  //             try {
+  //                 await axios.get(url).then(response => {
+  //                     table.innerHTML = response.data.table;
+  //                     renderTable();
+  //                 });
+  //             } catch (error) {
+  //                 console.error(error);
+  //             }
+  //         };
+  //         sendPaginationRequest();
+  //     });
+  // });
 };
 renderForm();
 renderTable();
+
+/***/ }),
+
+/***/ "./resources/js/admin/mobile/filter.js":
+/*!*********************************************!*\
+  !*** ./resources/js/admin/mobile/filter.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderFilterTable": () => (/* binding */ renderFilterTable)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _crudTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./crudTable */ "./resources/js/admin/mobile/crudTable.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var filterButton = document.getElementById('filter-button');
+var filterForm = document.getElementById('filter-form');
+var filterOpenButton = document.getElementById('filter-open-button');
+var filterContainer = document.getElementById('filter-container');
+var renderFilterTable = function renderFilterTable() {
+  filterButton.addEventListener('click', function () {
+    var data = new FormData(filterForm);
+    var filters = {};
+    data.forEach(function (value, key) {
+      filters[key] = value;
+    });
+    var json = JSON.stringify(filters);
+    var url = filterForm.action;
+
+    var sendFilterRequest = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                try {
+                  axios.get(url, {
+                    params: {
+                      filters: json
+                    }
+                  }).then(function (response) {
+                    table.innerHTML = response.data.table;
+                    (0,_crudTable__WEBPACK_IMPORTED_MODULE_1__.renderTable)();
+                    filterContainer.classList.toggle("active");
+                  });
+                } catch (error) {}
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function sendFilterRequest() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    sendFilterRequest();
+  });
+  filterOpenButton.addEventListener("click", function () {
+    filterContainer.classList.toggle("active");
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/admin/mobile/images.js":
+/*!*********************************************!*\
+  !*** ./resources/js/admin/mobile/images.js ***!
+  \*********************************************/
+/***/ (() => {
+
+document.querySelectorAll(".drop-zone__input").forEach(function (inputElement) {
+  var dropZoneElement = inputElement.closest(".drop-zone");
+  dropZoneElement.addEventListener("click", function (e) {
+    inputElement.click();
+  });
+  inputElement.addEventListener("change", function (e) {
+    if (inputElement.files.length) {
+      updateThumbnail(dropZoneElement, inputElement.files[0]);
+    }
+  });
+  dropZoneElement.addEventListener("dragover", function (e) {
+    e.preventDefault();
+    dropZoneElement.classList.add("drop-zone--over");
+  });
+  ["dragleave", "dragend"].forEach(function (type) {
+    dropZoneElement.addEventListener(type, function (e) {
+      dropZoneElement.classList.remove("drop-zone--over");
+    });
+  });
+  dropZoneElement.addEventListener("drop", function (e) {
+    e.preventDefault();
+
+    if (e.dataTransfer.files.length) {
+      inputElement.files = e.dataTransfer.files;
+      updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+    }
+
+    dropZoneElement.classList.remove("drop-zone--over");
+  });
+});
+/**
+ * Updates the thumbnail on a drop zone element.
+ *
+ * @param {HTMLElement} dropZoneElement
+ * @param {File} file
+ */
+
+function updateThumbnail(dropZoneElement, file) {
+  var thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb"); // First time - remove the prompt
+
+  if (dropZoneElement.querySelector(".drop-zone__prompt")) {
+    dropZoneElement.querySelector(".drop-zone__prompt").remove();
+  } // First time - there is no thumbnail element, so lets create it
+
+
+  if (!thumbnailElement) {
+    thumbnailElement = document.createElement("div");
+    thumbnailElement.classList.add("drop-zone__thumb");
+    dropZoneElement.appendChild(thumbnailElement);
+  }
+
+  thumbnailElement.dataset.label = file.name; // Show thumbnail for image files
+
+  if (file.type.startsWith("image/")) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = function () {
+      thumbnailElement.style.backgroundImage = "url('".concat(reader.result, "')");
+    };
+  } else {
+    thumbnailElement.style.backgroundImage = null;
+  }
+}
 
 /***/ }),
 
@@ -2305,28 +2426,140 @@ sideButton.forEach(function (sideButton) {
 
 /***/ }),
 
-/***/ "./resources/js/admin/mobile/tab.js":
-/*!******************************************!*\
-  !*** ./resources/js/admin/mobile/tab.js ***!
-  \******************************************/
+/***/ "./resources/js/admin/mobile/tabs.js":
+/*!*******************************************!*\
+  !*** ./resources/js/admin/mobile/tabs.js ***!
+  \*******************************************/
 /***/ (() => {
 
-var tabsPanels = document.querySelectorAll(".tab-panel");
-var tabsItems = document.querySelectorAll(".tab-item");
-tabsItems.forEach(function (tabItem) {
-  tabsItems.addEventListener("click", function () {
+var tabsItems = document.querySelectorAll('.tab-item');
+var tabPanels = document.querySelectorAll(".tab-panel");
+tabsItems.forEach(function (tabsItem) {
+  tabsItem.addEventListener("click", function () {
     var activeElements = document.querySelectorAll(".tab-active");
     activeElements.forEach(function (activeElement) {
-      activeElements.classList.remove("tab-active");
+      activeElement.classList.remove("tab-active");
     });
-    tabItem.classList.ass("tab-active");
-    tabsPanels.forEach(function (tabPanel) {
-      if (tabsPanel.dataset.tab == tabItem.dataset.tab) {
+    tabsItem.classList.add("tab-active");
+    tabPanels.forEach(function (tabPanel) {
+      if (tabPanel.dataset.tab == tabsItem.dataset.tab) {
         tabPanel.classList.add("tab-active");
       }
     });
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/admin/mobile/tabs_locale.js":
+/*!**************************************************!*\
+  !*** ./resources/js/admin/mobile/tabs_locale.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderLocaleTabs": () => (/* binding */ renderLocaleTabs)
+/* harmony export */ });
+var renderLocaleTabs = function renderLocaleTabs() {
+  var tabsLanguagesItems = document.querySelectorAll('.tab-language-item');
+  var tabsLanguagePanels = document.querySelectorAll('.tab-language-panel');
+  tabsLanguagesItems.forEach(function (tabsLanguagesItem) {
+    tabsLanguagesItem.addEventListener("click", function () {
+      var activeElements = document.querySelectorAll(".tab-translate-active");
+      var activeTab = tabsLanguagesItem.dataset.tab;
+      activeElements.forEach(function (activeElement) {
+        if (activeElement.dataset.tab == activeTab) {
+          activeElement.classList.remove("tab-translate-active");
+        }
+      });
+      tabsLanguagesItem.classList.add("tab-translate-active");
+      tabsLanguagePanels.forEach(function (tabLanguagePanel) {
+        if (tabLanguagePanel.dataset.tab == activeTab) {
+          if (tabLanguagePanel.dataset.localetab == tabsLanguagesItem.dataset.localetab) {
+            tabLanguagePanel.classList.add("tab-translate-active");
+          }
+        }
+      });
+    });
+  });
+};
+renderLocaleTabs();
+
+/***/ }),
+
+/***/ "./resources/js/admin/mobile/upload.js":
+/*!*********************************************!*\
+  !*** ./resources/js/admin/mobile/upload.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderUpload": () => (/* binding */ renderUpload)
+/* harmony export */ });
+var renderUpload = function renderUpload() {
+  var inputElements = document.querySelectorAll(".upload-input");
+  inputElements.forEach(function (inputElement) {
+    var uploadElement = inputElement.closest(".upload");
+    uploadElement.addEventListener("click", function (e) {
+      inputElement.click();
+    });
+    inputElement.addEventListener("change", function (e) {
+      if (inputElement.files.length) {
+        updateThumbnail(uploadElement, inputElement.files[0]);
+      }
+    });
+    uploadElement.addEventListener("dragover", function (e) {
+      e.preventDefault();
+      uploadElement.classList.add("upload-over");
+    });
+    ["dragleave", "dragend"].forEach(function (type) {
+      uploadElement.addEventListener(type, function (e) {
+        uploadElement.classList.remove("upload-over");
+      });
+    });
+    uploadElement.addEventListener("drop", function (e) {
+      e.preventDefault();
+
+      if (e.dataTransfer.files.length) {
+        inputElement.files = e.dataTransfer.files;
+        updateThumbnail(uploadElement, e.dataTransfer.files[0]);
+      }
+
+      uploadElement.classList.remove("upload-over");
+    });
+  });
+
+  function updateThumbnail(uploadElement, file) {
+    var thumbnailElement = uploadElement.querySelector(".upload-thumb");
+
+    if (uploadElement.querySelector(".upload-prompt")) {
+      uploadElement.querySelector(".upload-prompt").remove();
+    }
+
+    if (!thumbnailElement) {
+      thumbnailElement = document.createElement("div");
+      thumbnailElement.classList.add("upload-thumb");
+      uploadElement.appendChild(thumbnailElement);
+    }
+
+    thumbnailElement.dataset.label = file.name;
+
+    if (file.type.startsWith("image/")) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = function () {
+        thumbnailElement.style.backgroundImage = "url('".concat(reader.result, "')");
+      };
+    } else {
+      thumbnailElement.style.backgroundImage = null;
+    }
+  }
+};
 
 /***/ }),
 
@@ -20623,16 +20856,23 @@ var __webpack_exports__ = {};
 /*!******************************************!*\
   !*** ./resources/js/admin/mobile/app.js ***!
   \******************************************/
-__webpack_require__(/*! ../../bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ../../bootstrap */ "./resources/js/bootstrap.js"); // require('./crudTable');
 
-__webpack_require__(/*! ./crudTable */ "./resources/js/admin/mobile/crudTable.js");
 
 __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/mobile/ckeditor.js");
 
 __webpack_require__(/*! ./sidebar */ "./resources/js/admin/mobile/sidebar.js"); // require('./touch');
 
 
-__webpack_require__(/*! ./tab */ "./resources/js/admin/mobile/tab.js");
+__webpack_require__(/*! ./tabs */ "./resources/js/admin/mobile/tabs.js");
+
+__webpack_require__(/*! ./tabs_locale */ "./resources/js/admin/mobile/tabs_locale.js");
+
+__webpack_require__(/*! ./upload */ "./resources/js/admin/mobile/upload.js");
+
+__webpack_require__(/*! ./filter */ "./resources/js/admin/mobile/filter.js");
+
+__webpack_require__(/*! ./images */ "./resources/js/admin/mobile/images.js");
 })();
 
 /******/ })()

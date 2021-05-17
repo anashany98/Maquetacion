@@ -1,12 +1,41 @@
 .bottom-bar{
     display: flex;
     flex-direction: row;
-    margin-top: 17em;
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
-    border: 1px black;
+    height: 3em;
+    background-color: black;
+    z-index: 2;
+    
+}
+.bottombar-item{
+    display: flex;
+    justify-content: center;
+    width:8em;
+    height:2em;
+   
+    svg{
+    color: hsl(0, 0%, 100%);
+    width:2em;
+    height:2em;
+
+    }
+    
 }
 
-.bottom-button{
-
-
+.bottombar-visible{
+    display: flex;
+    justify-content: center;
+    width:8em;
+    height:2em;
+    background-color:  hsl(182, 38%, 68%);
+    svg{
+       
+        color: hsl(0, 0%, 0%);
+        width:2em;
+        height:2em;
+        
+    }
+        
 }

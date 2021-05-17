@@ -1,81 +1,120 @@
 .table{
-    // width: 50%;
-    // padding:2%;
-    // color: rgb(0, 0, 0);
-    // margin-right: 3em;
-    width: 100%;
-
-
+    color: rgb(0, 0, 0);
+    border-collapse: collapse;
+    table-layout:fixed;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 45%;
+    height: 100%;
 }
 
-
+#table.visible{
+    height: 100vh;
+    display: initial;
+    overflow: scroll;
+}
 
 .table-info{
     overflow-wrap: break-word;
     table-layout: fixed;
     border-collapse: collapse;
     background-color: hsl(0, 0%, 100%);
-    
+    word-break: break-all;
 }
 
 td ,th{
-    border: 0.1em solid hsl(0, 0%, 0%);
-    padding: 0.2em;
+    border: 0.1em solid #000000;
+    font-size: 1.2em; 
     text-align: left;
-    // text-overflow: ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    font-family: 'Press Start 2P';
-    // font-size: 0.7em;
+    font-family: 'Noto Sans TC', sans-serif;
+    border-collapse: collapse;
     color: rgb(0, 0, 0);
     overflow-wrap: break-word;
-    z-index: 5;
-   
+    table-layout:fixed;
 }
-
 
 tr{
     border: 0.1em solid #000000;
-    width: 31%;
-    padding: 0.2em;
-    font-size: 0.7em; 
+    font-size: 1em; 
     text-align: left;
-    font-family: 'Press Start 2P';
-    z-index: 5;
+    font-family: 'Noto Sans TC', sans-serif;
+    overflow-wrap: break-word;
+    table-layout:fixed;
 }
-
 
 tr:hover{
 
-    background-color: hsl(56, 82%, 63%)
+    background-color: hsl(172, 62%, 62%)
 
 
 }
+
 .buttons{
     display: flex;
     flex-direction: row;
-    width: 75%;
-    height: 20%;
     cursor: pointer;
     justify-content: space-between;
-}
- 
-.edit-button {
-    width: 50%;
-    color:#0044ff;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin-right: 0.5em;
-    border: none;
-    background: none;
-}
-     
-
-.delete-button{
-    width: 50%;
-    color: #ff0000;
-    cursor: pointer;
-    border: none;
-    background: none;
+    margin-top: 1em;
+    flex-direction: row;
+    width: 100%;
 }
 
+.crud-buttons{
+
+    display: flex;
+    width: 15%;
+
+    .edit-button {
+        width: 50%;
+        height: 50%;
+        color:#0044ff;
+        text-transform: uppercase;
+        background: transparent;
+        cursor: pointer;
+        margin-right: 1em;
+        border-radius: 0.3em;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+         
+    
+    .delete-button{
+        width: 50%;
+        height: 50%;
+        color: #ff0000;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 0.3em;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+}
+
+.table-info th {
+    cursor: pointer;
+}
+  
+.table-info .th-sort-asc::after {
+content: "\25b4";
+}
+
+.table-info .th-sort-desc::after {
+content: "\25be";
+}
+
+.table-info .th-sort-asc::after,
+.table-info .th-sort-desc::after {
+margin-left: 5px;
+}
+
+.table-info .th-sort-asc,
+.table-info .th-sort-desc {
+background: rgba(0, 0, 0, 0.1);
+}
+  
+  

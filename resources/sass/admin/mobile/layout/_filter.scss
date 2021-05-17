@@ -1,16 +1,24 @@
 
 .filter-container{
-    display: flex;
+ 
     flex-direction: column;
-    width: 0%;
-    height: 0%;
-    overflow-x: hidden;
-
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+    width: 0;
+    position: absolute;
+    top: 31em;
+    left: 9em;
 }
 
-.filter-container active{
-
-    width: 30%;
+.filter-container.active{
+    height: max-content;
+    width: 20%;
+    background: hsl(0, 0%, 100%);
+    justify-content: center;
+    border-style: solid;
+    border-radius: 0.5em;
+    z-index: 4;
 
 }
 
@@ -22,7 +30,8 @@
     padding: 0;
     border: none;
     background: none;
-    width: 2%
-    ;
-
+    position: absolute;
+    top: 29em;
+    left: 9em;
+    z-index: 4;
 }
