@@ -20856,8 +20856,9 @@ var __webpack_exports__ = {};
 /*!******************************************!*\
   !*** ./resources/js/admin/mobile/app.js ***!
   \******************************************/
-__webpack_require__(/*! ../../bootstrap */ "./resources/js/bootstrap.js"); // require('./crudTable');
+__webpack_require__(/*! ../../bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./crudTable */ "./resources/js/admin/mobile/crudTable.js");
 
 __webpack_require__(/*! ./ckeditor */ "./resources/js/admin/mobile/ckeditor.js");
 
