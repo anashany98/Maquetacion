@@ -20,6 +20,7 @@ class FaqController extends Controller
     protected $agent;
     protected $locale;
     protected $paginate;
+    protected $image;
 
     function __construct(Faq $faq, Agent $agent, Locale $locale, Image $image)
     {
