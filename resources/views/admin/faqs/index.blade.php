@@ -140,7 +140,7 @@
                                             'type' => 'image', 
                                             'content' => 'featured', 
                                             'alias' => $localization->alias,
-                                            'files' => $faq->images_featured
+                                            'files' => $faq->images_featured_preview
                                         ])
                                     </div>
                                 </div>
