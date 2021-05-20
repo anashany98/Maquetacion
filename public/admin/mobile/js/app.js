@@ -2163,22 +2163,49 @@ var renderTable = function renderTable() {
       var currentIsAscendig = headerCell.classList.contains("th-sort-asc");
       sortTableByColumn(tableElement, headerIndex, !currentIsAscendig);
     });
-  }); // paginationButtons.forEach(paginationButton => {
-  //     paginationButton.addEventListener("click", () => {
-  //         let url = paginationButton.dataset.page;
-  //         let sendPaginationRequest = async () => {
-  //             try {
-  //                 await axios.get(url).then(response => {
-  //                     table.innerHTML = response.data.table;
-  //                     renderTable();
-  //                 });
-  //             } catch (error) {
-  //                 console.error(error);
-  //             }
-  //         };
-  //         sendPaginationRequest();
-  //     });
-  // });
+  });
+  paginationButtons.forEach(function (paginationButton) {
+    paginationButton.addEventListener("click", function () {
+      var url = paginationButton.dataset.page;
+
+      var sendPaginationRequest = /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.prev = 0;
+                  _context4.next = 3;
+                  return axios.get(url).then(function (response) {
+                    table.innerHTML = response.data.table;
+                    renderTable();
+                  });
+
+                case 3:
+                  _context4.next = 8;
+                  break;
+
+                case 5:
+                  _context4.prev = 5;
+                  _context4.t0 = _context4["catch"](0);
+                  console.error(_context4.t0);
+
+                case 8:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4, null, [[0, 5]]);
+        }));
+
+        return function sendPaginationRequest() {
+          return _ref6.apply(this, arguments);
+        };
+      }();
+
+      sendPaginationRequest();
+    });
+  });
 };
 renderForm();
 renderTable();

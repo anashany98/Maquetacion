@@ -1,4 +1,4 @@
-// import {openModal, openImageModal, updateImageModal} from './modalImage';
+import {openModal, openImageModal, updateImageModal} from './modalImage';
 
 export let renderUploadImage = () => {
 
@@ -10,13 +10,13 @@ export let renderUploadImage = () => {
         uploadImage(inputElement);
     });
 
-    uploadImages.forEach(uploadImage => {
+    // uploadImages.forEach(uploadImage => {
 
-        uploadImage.addEventListener("click", (e) => {
+    //     uploadImage.addEventListener("click", (e) => {
 
-            openImage(uploadImage);
-        });
-    });
+    //         openImage(uploadImage);
+    //     });
+    // });
 
     function uploadImage(inputElement){
 

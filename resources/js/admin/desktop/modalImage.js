@@ -7,7 +7,7 @@ export let openModal = () => {
     let modal = document.getElementById('upload-image-modal');
 
     modal.classList.add('modal-active');
-    startOverlay();
+    // startOverlay();
 }
 
 export let openImageModal = (image) => {
@@ -35,7 +35,7 @@ export let openImageModal = (image) => {
 
     modal.classList.add('modal-active');
 
-    startOverlay();
+    // startOverlay();
 }
 
 export let updateImageModal = (image) => {
@@ -58,8 +58,8 @@ modalImageStoreButton .addEventListener("click", (e) => {
             axios.post(url, data).then(response => {
 
                 modal.classList.remove('modal-active');
-                stopWait();
-                showMessage('success', response.data.message);
+                // stopWait();
+                // showMessage('success', response.data.message);
               
             });
             
@@ -87,8 +87,8 @@ modalImageDeleteButton.addEventListener("click", (e) => {
             }).then(response => {
 
                 modal.classList.remove('modal-active');
-                stopWait();
-                showMessage('success', response.data.message);
+                // stopWait();
+                // showMessage('success', response.data.message);
 
                 let uploadImages = document.querySelectorAll(".upload-image");
 

@@ -1,26 +1,29 @@
-const tabsItems = document.querySelectorAll('.tab-item');
-const tabPanels = document.querySelectorAll(".tab-panel");
+export let renderTabs = () => {
 
-tabsItems.forEach(tabsItem => { 
 
-    tabsItem.addEventListener("click", () => {
+    const tabsItems = document.querySelectorAll('.tab-item');
+    const tabPanels = document.querySelectorAll(".tab-panel");
 
-        let activeElements = document.querySelectorAll(".tab-active");
+    tabsItems.forEach(tabsItem => { 
 
-        activeElements.forEach(activeElement => {
-            activeElement.classList.remove("tab-active");
+        tabsItem.addEventListener("click", () => {
+
+            let activeElements = document.querySelectorAll(".tab-active");
+
+            activeElements.forEach(activeElement => {
+                activeElement.classList.remove("tab-active");
+            });
+            
+            tabsItem.classList.add("tab-active");
+
+            tabPanels.forEach(tabPanel => {
+
+                if(tabPanel.dataset.tab == tabsItem.dataset.tab){
+                    tabPanel.classList.add("tab-active"); 
+                }
+            }); 
         });
-        
-        tabsItem.classList.add("tab-active");
 
-        tabPanels.forEach(tabPanel => {
-
-            if(tabPanel.dataset.tab == tabsItem.dataset.tab){
-                tabPanel.classList.add("tab-active"); 
-            }
-        }); 
     });
 
-});
-
-
+}

@@ -2,22 +2,14 @@ import {renderCkeditor} from './ckeditor';
 import {showAdvisor} from './advisor';
 import {startWait, stopWait} from './loading';
 import {renderFilterTable} from './filter';
-import {renderUpload} from './upload';
+import {renderUploadImage} from './uploadImage';
+import {renderLocaleTabs}  from './tabs_locale';
+import {renderTabs} from './tabs'
+
 import axios from 'axios';
 
 const table = document.getElementById("table");
 const form = document.getElementById("form");
-// const refreshButton = getElementById("refresh-button");
-
-
-// refreshButton.addEventListener('click', (event)=>{
-
-//     event.preventDefault();
-
-//     let url = refreshButton.dataset.url;
-//     form.innerHTML = responde.data.form;
-//     renderForm();
-// });
 
 export let renderForm = () => {
 
@@ -107,7 +99,9 @@ export let renderForm = () => {
     });
 
     renderCkeditor();
-    renderUpload();
+    renderUploadImage();
+    renderLocaleTabs();
+    renderTabs();
 
 };
 

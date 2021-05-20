@@ -1926,7 +1926,9 @@ __webpack_require__(/*! ./tabs */ "./resources/js/admin/desktop/tabs.js");
 
 __webpack_require__(/*! ./tabs_locale */ "./resources/js/admin/desktop/tabs_locale.js");
 
-__webpack_require__(/*! ./upload */ "./resources/js/admin/desktop/upload.js"); // require('./touch');
+__webpack_require__(/*! ./uploadImage */ "./resources/js/admin/desktop/uploadImage.js");
+
+__webpack_require__(/*! ./modalImage */ "./resources/js/admin/desktop/modalImage.js"); // require('./touch');
 
 /***/ }),
 
@@ -1984,9 +1986,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _advisor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./advisor */ "./resources/js/admin/desktop/advisor.js");
 /* harmony import */ var _loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loading */ "./resources/js/admin/desktop/loading.js");
 /* harmony import */ var _filter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./filter */ "./resources/js/admin/desktop/filter.js");
-/* harmony import */ var _upload__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./upload */ "./resources/js/admin/desktop/upload.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _uploadImage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./uploadImage */ "./resources/js/admin/desktop/uploadImage.js");
+/* harmony import */ var _tabs_locale__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tabs_locale */ "./resources/js/admin/desktop/tabs_locale.js");
+/* harmony import */ var _tabs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./tabs */ "./resources/js/admin/desktop/tabs.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2019,15 +2023,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var table = document.getElementById("table");
-var form = document.getElementById("form"); // const refreshButton = getElementById("refresh-button");
-// refreshButton.addEventListener('click', (event)=>{
-//     event.preventDefault();
-//     let url = refreshButton.dataset.url;
-//     form.innerHTML = responde.data.form;
-//     renderForm();
-// });
 
+
+var table = document.getElementById("table");
+var form = document.getElementById("form");
 var renderForm = function renderForm() {
   var forms = document.querySelectorAll(".admin-form");
   var labels = document.querySelectorAll('.label-container');
@@ -2074,7 +2073,7 @@ var renderForm = function renderForm() {
                   (0,_loading__WEBPACK_IMPORTED_MODULE_3__.startWait)();
                   _context.prev = 1;
                   _context.next = 4;
-                  return axios__WEBPACK_IMPORTED_MODULE_6___default().post(url, data).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_8___default().post(url, data).then(function (response) {
                     form.id.value = response.data.id;
                     table.innerHTML = response.data.table;
                     (0,_loading__WEBPACK_IMPORTED_MODULE_3__.stopWait)();
@@ -2118,7 +2117,9 @@ var renderForm = function renderForm() {
     });
   });
   (0,_ckeditor__WEBPACK_IMPORTED_MODULE_1__.renderCkeditor)();
-  (0,_upload__WEBPACK_IMPORTED_MODULE_5__.renderUpload)();
+  (0,_uploadImage__WEBPACK_IMPORTED_MODULE_5__.renderUploadImage)();
+  (0,_tabs_locale__WEBPACK_IMPORTED_MODULE_6__.renderLocaleTabs)();
+  (0,_tabs__WEBPACK_IMPORTED_MODULE_7__.renderTabs)();
 };
 var renderTable = function renderTable() {
   var deleteButton = document.getElementById("delete-button");
@@ -2143,7 +2144,7 @@ var renderTable = function renderTable() {
                 case 0:
                   _context2.prev = 0;
                   _context2.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_6___default().get(url).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_8___default().get(url).then(function (response) {
                     form.innerHTML = response.data.form;
                     renderForm();
                   });
@@ -2185,7 +2186,7 @@ var renderTable = function renderTable() {
                 case 0:
                   _context3.prev = 0;
                   _context3.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_6___default().delete(url).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_8___default().delete(url).then(function (response) {
                     table.innerHTML = response.data.table;
                     renderTable();
                   });
@@ -2260,7 +2261,7 @@ var renderTable = function renderTable() {
                 case 0:
                   _context4.prev = 0;
                   _context4.next = 3;
-                  return axios__WEBPACK_IMPORTED_MODULE_6___default().get(url).then(function (response) {
+                  return axios__WEBPACK_IMPORTED_MODULE_8___default().get(url).then(function (response) {
                     table.innerHTML = response.data.table;
                     renderTable();
                   });
@@ -2470,6 +2471,161 @@ var stopWait = function stopWait() {
 
 /***/ }),
 
+/***/ "./resources/js/admin/desktop/modalImage.js":
+/*!**************************************************!*\
+  !*** ./resources/js/admin/desktop/modalImage.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "openModal": () => (/* binding */ openModal),
+/* harmony export */   "openImageModal": () => (/* binding */ openImageModal),
+/* harmony export */   "updateImageModal": () => (/* binding */ updateImageModal)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var modalImageStoreButton = document.getElementById('modal-image-store-button');
+var modalImageDeleteButton = document.getElementById('modal-image-delete-button');
+var openModal = function openModal() {
+  var modal = document.getElementById('upload-image-modal');
+  modal.classList.add('modal-active'); // startOverlay();
+};
+var openImageModal = function openImageModal(image) {
+  var modal = document.getElementById('upload-image-modal');
+  var imageContainer = document.getElementById('modal-image-original');
+  var imageForm = document.getElementById('image-form');
+
+  if (image.path) {
+    imageContainer.src = '../storage/' + image.path;
+  }
+
+  for (var _i = 0, _Object$entries = Object.entries(image); _i < _Object$entries.length; _i++) {
+    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+        key = _Object$entries$_i[0],
+        val = _Object$entries$_i[1];
+
+    var input = imageForm.elements[key];
+
+    if (input) {
+      switch (input.type) {
+        case 'checkbox':
+          input.checked = !!val;
+          break;
+
+        default:
+          input.value = val;
+          break;
+      }
+    }
+  }
+
+  modal.classList.add('modal-active'); // startOverlay();
+};
+var updateImageModal = function updateImageModal(image) {
+  var imageContainer = document.getElementById('modal-image-original');
+  imageContainer.src = image;
+};
+modalImageStoreButton.addEventListener("click", function (e) {
+  var modal = document.getElementById('upload-image-modal');
+  var imageForm = document.getElementById('image-form');
+  var data = new FormData(imageForm);
+  var url = imageForm.action;
+
+  var sendImagePostRequest = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              try {
+                axios.post(url, data).then(function (response) {
+                  modal.classList.remove('modal-active'); // stopWait();
+                  // showMessage('success', response.data.message);
+                });
+              } catch (error) {}
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function sendImagePostRequest() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  sendImagePostRequest();
+});
+modalImageDeleteButton.addEventListener("click", function (e) {
+  var modal = document.getElementById('upload-image-modal');
+  var url = modalImageDeleteButton.dataset.route;
+  var imageId = document.getElementById('modal-image-id').value;
+
+  var sendImageDeleteRequest = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              try {
+                axios.get(url, {
+                  params: {
+                    'image': imageId
+                  }
+                }).then(function (response) {
+                  modal.classList.remove('modal-active'); // stopWait();
+                  // showMessage('success', response.data.message);
+
+                  var uploadImages = document.querySelectorAll(".upload-image");
+                  uploadImages.forEach(function (uploadImage) {
+                    if (uploadImage.classList.contains(imageId)) {
+                      uploadImage.remove();
+                    }
+                  });
+                });
+              } catch (error) {}
+
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function sendImageDeleteRequest() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  sendImageDeleteRequest();
+});
+
+/***/ }),
+
 /***/ "./resources/js/admin/desktop/sidebar.js":
 /*!***********************************************!*\
   !*** ./resources/js/admin/desktop/sidebar.js ***!
@@ -2568,24 +2724,31 @@ sideButton.forEach(function (sideButton) {
 /*!********************************************!*\
   !*** ./resources/js/admin/desktop/tabs.js ***!
   \********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-var tabsItems = document.querySelectorAll('.tab-item');
-var tabPanels = document.querySelectorAll(".tab-panel");
-tabsItems.forEach(function (tabsItem) {
-  tabsItem.addEventListener("click", function () {
-    var activeElements = document.querySelectorAll(".tab-active");
-    activeElements.forEach(function (activeElement) {
-      activeElement.classList.remove("tab-active");
-    });
-    tabsItem.classList.add("tab-active");
-    tabPanels.forEach(function (tabPanel) {
-      if (tabPanel.dataset.tab == tabsItem.dataset.tab) {
-        tabPanel.classList.add("tab-active");
-      }
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "renderTabs": () => (/* binding */ renderTabs)
+/* harmony export */ });
+var renderTabs = function renderTabs() {
+  var tabsItems = document.querySelectorAll('.tab-item');
+  var tabPanels = document.querySelectorAll(".tab-panel");
+  tabsItems.forEach(function (tabsItem) {
+    tabsItem.addEventListener("click", function () {
+      var activeElements = document.querySelectorAll(".tab-active");
+      activeElements.forEach(function (activeElement) {
+        activeElement.classList.remove("tab-active");
+      });
+      tabsItem.classList.add("tab-active");
+      tabPanels.forEach(function (tabPanel) {
+        if (tabPanel.dataset.tab == tabsItem.dataset.tab) {
+          tabPanel.classList.add("tab-active");
+        }
+      });
     });
   });
-});
+};
 
 /***/ }),
 
@@ -2627,23 +2790,50 @@ renderLocaleTabs();
 
 /***/ }),
 
-/***/ "./resources/js/admin/desktop/upload.js":
-/*!**********************************************!*\
-  !*** ./resources/js/admin/desktop/upload.js ***!
-  \**********************************************/
+/***/ "./resources/js/admin/desktop/uploadImage.js":
+/*!***************************************************!*\
+  !*** ./resources/js/admin/desktop/uploadImage.js ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "renderUpload": () => (/* binding */ renderUpload)
+/* harmony export */   "renderUploadImage": () => (/* binding */ renderUploadImage)
 /* harmony export */ });
-var renderUpload = function renderUpload() {
-  var inputElements = document.querySelectorAll(".upload-input");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _modalImage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modalImage */ "./resources/js/admin/desktop/modalImage.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var renderUploadImage = function renderUploadImage() {
+  var inputElements = document.querySelectorAll(".upload-image-input");
+  var uploadImages = document.querySelectorAll(".upload-image");
   inputElements.forEach(function (inputElement) {
-    var uploadElement = inputElement.closest(".upload");
+    uploadImage(inputElement);
+  }); // uploadImages.forEach(uploadImage => {
+  //     uploadImage.addEventListener("click", (e) => {
+  //         openImage(uploadImage);
+  //     });
+  // });
+
+  function uploadImage(inputElement) {
+    var uploadElement = inputElement.parentElement;
     uploadElement.addEventListener("click", function (e) {
-      inputElement.click();
+      var thumbnailElement = uploadElement.querySelector(".upload-image-thumb");
+
+      if (!thumbnailElement) {
+        inputElement.click();
+      } else {
+        openImage(uploadElement);
+      }
+
+      ;
     });
     inputElement.addEventListener("change", function (e) {
       if (inputElement.files.length) {
@@ -2652,11 +2842,11 @@ var renderUpload = function renderUpload() {
     });
     uploadElement.addEventListener("dragover", function (e) {
       e.preventDefault();
-      uploadElement.classList.add("upload-over");
+      uploadElement.classList.add("upload-image-over");
     });
     ["dragleave", "dragend"].forEach(function (type) {
       uploadElement.addEventListener(type, function (e) {
-        uploadElement.classList.remove("upload-over");
+        uploadElement.classList.remove("upload-image-over");
       });
     });
     uploadElement.addEventListener("drop", function (e) {
@@ -2667,34 +2857,90 @@ var renderUpload = function renderUpload() {
         updateThumbnail(uploadElement, e.dataTransfer.files[0]);
       }
 
-      uploadElement.classList.remove("upload-over");
+      uploadElement.classList.remove("upload-image-over");
     });
-  });
+  }
 
   function updateThumbnail(uploadElement, file) {
-    var thumbnailElement = uploadElement.querySelector(".upload-thumb");
-
-    if (uploadElement.querySelector(".upload-prompt")) {
-      uploadElement.querySelector(".upload-prompt").remove();
-    }
-
-    if (!thumbnailElement) {
-      thumbnailElement = document.createElement("div");
-      thumbnailElement.classList.add("upload-thumb");
-      uploadElement.appendChild(thumbnailElement);
-    }
-
-    thumbnailElement.dataset.label = file.name;
-
     if (file.type.startsWith("image/")) {
+      var _thumbnailElement = uploadElement.querySelector(".upload-image-thumb");
+
+      if (uploadElement.classList.contains('collection')) {
+        if (!_thumbnailElement) {
+          var cloneUploadElement = uploadElement.cloneNode(true);
+          var cloneInput = cloneUploadElement.querySelector('.upload-image-input');
+          uploadImage(cloneInput);
+          uploadElement.parentElement.insertBefore(cloneUploadElement, uploadElement);
+        }
+      }
+
+      if (uploadElement.querySelector(".upload-image-prompt")) {
+        uploadElement.querySelector(".upload-image-prompt").remove();
+      }
+
+      if (!_thumbnailElement) {
+        _thumbnailElement = document.createElement("div");
+
+        _thumbnailElement.classList.add("upload-image-thumb");
+
+        uploadElement.appendChild(_thumbnailElement);
+      }
+
       var reader = new FileReader();
       reader.readAsDataURL(file);
 
       reader.onload = function () {
-        thumbnailElement.style.backgroundImage = "url('".concat(reader.result, "')");
+        _thumbnailElement.style.backgroundImage = "url('".concat(reader.result, "')");
+        (0,_modalImage__WEBPACK_IMPORTED_MODULE_1__.updateImageModal)(reader.result);
+        (0,_modalImage__WEBPACK_IMPORTED_MODULE_1__.openModal)();
       };
+
+      uploadElement.classList.remove('upload-image-add');
+      uploadElement.classList.add('upload-image');
+
+      if (uploadElement.classList.contains('collection')) {
+        var content = uploadElement.dataset.content;
+        var alias = uploadElement.dataset.alias;
+        var inputElement = uploadElement.getElementsByClassName("upload-image-input")[0];
+        inputElement.name = "images[" + content + "-" + Math.floor(Math.random() * 99999 + 1) + "." + alias + "]";
+      }
     } else {
       thumbnailElement.style.backgroundImage = null;
+    }
+  }
+
+  function openImage(image) {
+    var url = image.dataset.url;
+
+    if (url) {
+      var sendImageRequest = /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  try {
+                    axios.get(url).then(function (response) {
+                      (0,_modalImage__WEBPACK_IMPORTED_MODULE_1__.openImageModal)(response.data);
+                    });
+                  } catch (error) {}
+
+                case 1:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+
+        return function sendImageRequest() {
+          return _ref.apply(this, arguments);
+        };
+      }();
+
+      sendImageRequest();
+    } else {
+      (0,_modalImage__WEBPACK_IMPORTED_MODULE_1__.openModal)();
     }
   }
 };

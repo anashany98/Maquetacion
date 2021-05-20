@@ -91,8 +91,6 @@ class Image
 
 			Storage::disk($this->entity)->putFileAs('/' . $entity_id . '/' . $language . '/' . $content . '/original', $file, $filename);
 
-			Debugbar::info($path);
-
 			$image = ImageOriginal::create([
 				'entity_id' => $entity_id,
 				'entity' => $this->entity,

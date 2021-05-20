@@ -128,7 +128,7 @@
 
                     @foreach ($localizations as $localization)
 
-                        <div class="locale-tab-panel {{ $loop->first ? 'locale-tab-active':'' }}" data-tab="images" data-localetab="{{$localization->alias}}">
+                        <div class="tab-language-panel {{ $loop->first ? 'tab-translate-active':'' }}" data-tab="images" data-localetab="{{$localization->alias}}">
 
                             <div class="two-columns">
                                 <div class="form-group">
@@ -137,7 +137,8 @@
                                     </div>
                                     <div class="form-input">
                                         @include('admin.layout.partials.upload_image', [
-                                            'type' => 'image', 
+                                            'entity' => 'faqs',
+                                            'type' => 'single', 
                                             'content' => 'featured', 
                                             'alias' => $localization->alias,
                                             'files' => $faq->images_featured_preview
@@ -147,19 +148,22 @@
 
                                 <div class="form-group">
                                     <div class="form-label">
-                                        <label for="name" class="label-highlight">Galeria</label>
+                                        <label for="name" class="label-highlight">Galería</label>
                                     </div>
                                     <div class="form-input">
                                         @include('admin.layout.partials.upload_image', [
-                                            'type' => 'image', 
+                                            'entity' => 'faqs',
+                                            'type' => 'collection', 
                                             'content' => 'grid', 
                                             'alias' => $localization->alias,
                                             'files' => $faq->images_grid_preview
                                         ])
                                     </div>
                                 </div>
-                                
+
                             </div>
+                                
+                        
 
                         </div>
               

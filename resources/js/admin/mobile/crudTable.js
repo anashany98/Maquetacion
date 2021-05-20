@@ -188,29 +188,29 @@ export let renderTable = () => {
 
 
 
-    // paginationButtons.forEach(paginationButton => {
+    paginationButtons.forEach(paginationButton => {
 
-    //     paginationButton.addEventListener("click", () => {
+        paginationButton.addEventListener("click", () => {
 
-    //         let url = paginationButton.dataset.page;
+            let url = paginationButton.dataset.page;
 
-    //         let sendPaginationRequest = async () => {
+            let sendPaginationRequest = async () => {
 
-    //             try {
-    //                 await axios.get(url).then(response => {
-    //                     table.innerHTML = response.data.table;
-    //                     renderTable();
-    //                 });
+                try {
+                    await axios.get(url).then(response => {
+                        table.innerHTML = response.data.table;
+                        renderTable();
+                    });
                     
-    //             } catch (error) {
-    //                 console.error(error);
-    //             }
-    //         };
+                } catch (error) {
+                    console.error(error);
+                }
+            };
 
-    //         sendPaginationRequest();
+            sendPaginationRequest();
             
-    //     });
-    // });
+        });
+    });
 
 };
 

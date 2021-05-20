@@ -7,5 +7,6 @@ require('./loading');
 require('./images');
 require('./tabs');
 require('./tabs_locale');
-require('./upload');
+require('./uploadImage');
+require('./modalImage');
 // require('./touch');

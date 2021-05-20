@@ -25,6 +25,7 @@
             @if($agent->isDesktop())
                 @include("admin.layout.partials.loading")
                 @include("admin.layout.partials.advisor")
+                @include("admin.layout.partials.modal_image")
             @endif
 
             <button class="sidebutton">
