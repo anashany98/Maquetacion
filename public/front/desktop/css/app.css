@@ -70,18 +70,38 @@ h1 {
 }
 
 .faq-description {
-  background-color: #ffc7c7;
+  font-size: 1em;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 1s ease-out;
 }
 .faq-description p {
-  font-size: 1em;
-  margin: 1em;
+  font-weight: 400;
+  margin: 0.5em;
 }
 
 .faq-description.active {
+  background-color: rgba(31, 178, 170, 0.521);
   max-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.description {
+  width: 60%;
+}
+
+.image-show {
+  width: 40%;
+}
+
+.image-show-single {
+  width: 40%;
+}
+
+.image-show-grid {
+  width: 10%;
+  display: flex;
+  flex: row;
 }
 
 .login {

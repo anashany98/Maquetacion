@@ -23,11 +23,41 @@
                         </svg>
                     </div>
                 </div>
+            </div>
+        
+            <div class="faq-description" data-content="{{$loop->iteration}}">
+                
+                <div class="description">
+                     <p>{!!isset($faq->locale['description']) ? $faq->locale['description'] : "" !!}</p>
+                </div>
 
-                <div class="faq-description" data-content="{{$loop->iteration}}">
-                    <p>{!!isset($faq->locale['description']) ? $faq->locale['description'] : "" !!}</p>
+                <div class="image-show">
+                    <div class="image-show-single"> 
+                        @isset($faq->image_featured_desktop->path)
+                                <div class="faq-description-image">
+                                    <img src="{{Storage::url($faq->image_featured_desktop->path)}}" alt="{{$faq->image_featured_desktop->alt}}" title="{{$faq->image_featured_desktop->title}}" />
+                                </div>
+                        @endif
+                    </div>
+
+                    @isset($faq->image_grid_desktop)    
+
+                    <div class="image-show-grid"> 
+                        @foreach ($faq->image_grid_desktop as $image)
+                            <div class="faq-description-image-grid">
+                                <img src="{{Storage::url($image->path)}}" alt="{{$image->alt}}" title="{{$image->title}}" />
+                            </div>
+                        @endforeach
+                    </div>
+                        
+                    @endif
                 </div>
             </div>
+
+                
+            
+
+            
 
         @endforeach    
 
