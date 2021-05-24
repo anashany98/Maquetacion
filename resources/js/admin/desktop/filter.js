@@ -7,45 +7,50 @@ const filterContainer = document.getElementById('filter-container')
 
 export let renderFilterTable = () => {
 
-    filterButton.addEventListener('click', () =>{
+    if(filterButton){
 
-        let data = new FormData(filterForm);
-        let filters = {};
-        
-        data.forEach(function(value, key){
-            filters[key] = value;
+
+        filterButton.addEventListener('click', () =>{
+
+            let data = new FormData(filterForm);
+            let filters = {};
+            
+            data.forEach(function(value, key){
+                filters[key] = value;
+            });
+            
+            let json = JSON.stringify(filters);
+
+            let url = filterForm.action;
+
+            let sendFilterRequest = async () => {
+
+                try {
+                    axios.get(url, {
+                        params: {
+                            filters: json
+                        }
+                    }).then(response => {
+                        table.innerHTML = response.data.table;
+                        renderTable();
+                        filterContainer.classList.toggle("active"); 
+                    });
+                    
+                } catch (error) {
+
+                } 
+            };
+            
+            sendFilterRequest();
+                    
         });
         
-        let json = JSON.stringify(filters);
-
-        let url = filterForm.action;
-
-        let sendFilterRequest = async () => {
-
-            try {
-                axios.get(url, {
-                    params: {
-                        filters: json
-                    }
-                }).then(response => {
-                    table.innerHTML = response.data.table;
-                    renderTable();
-                    filterContainer.classList.toggle("active"); 
-                });
-                
-            } catch (error) {
-
-            } 
-        };
+        filterOpenButton.addEventListener("click", () => {
         
-         sendFilterRequest();
-                
-    });
-    
-    filterOpenButton.addEventListener("click", () => {
-    
-        filterContainer.classList.toggle("active"); 
-    });
+            filterContainer.classList.toggle("active"); 
+        });
+
+    }
 }
     
 

@@ -21,6 +21,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/image/{image}', 'App\Vendor\Image\Image@show')->name('show_image_seo');
     Route::post('/image/seo', 'App\Vendor\Image\Image@storeSeo')->name('store_image_seo');
 
+    Route::get('/tags/filter/{filters?}', 'App\Http\Controllers\Admin\LocaleTagController@filter')->name('tags_filter');
+    Route::get('/tags/{group}/{key}', 'App\Http\Controllers\Admin\LocaleTagController@edit')->name('tags_edit');
+    Route::get('/tags', 'App\Http\Controllers\Admin\LocaleTagController@index')->name('tags');
+    Route::post('/tags', 'App\Http\Controllers\Admin\LocaleTagController@store')->name('tags_store');
+
+
+
     Route::resource('sliders', 'App\Http\Controllers\Admin\SliderController', [
         'parameters' => [
             'sliders' => 'slider', 

@@ -36,7 +36,7 @@
            
             @include("admin.layout.partials.sidebar")
 
-            @include('admin.layout.partials.filter')
+            {{-- @include('admin.layout.partials.filter') --}}
 
             <div class="main">
                 @yield('content')

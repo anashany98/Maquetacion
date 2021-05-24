@@ -121,52 +121,57 @@ export let renderTable = () => {
         });
     });
 
-    editButton.addEventListener("click", () => {
+    if(editButton){
 
-        if(editButton.dataset.elementId != null){
+        editButton.addEventListener("click", () => {
 
-            let url = editButton.dataset.url + '/' + editButton.dataset.elementId;
+            if(editButton.dataset.elementId != null){
 
-            let sendEditRequest = async () => {
+                let url = editButton.dataset.url + '/' + editButton.dataset.elementId;
+
+                let sendEditRequest = async () => {
+        
+                    try {
+                        await axios.get(url).then(response => {
+                            form.innerHTML = response.data.form;
+                            renderForm();
+                        });
+                        
+                    } catch (error) {
+                        console.error(error);
+                    }
+                };
+        
+                sendEditRequest();
+            }
+        });
+    }    
     
-                try {
-                    await axios.get(url).then(response => {
-                        form.innerHTML = response.data.form;
-                        renderForm();
-                    });
-                    
-                } catch (error) {
-                    console.error(error);
-                }
-            };
-    
-            sendEditRequest();
-        }
-    });
+    if(deleteButton){
 
+        deleteButton.addEventListener("click", () => {
 
-    deleteButton.addEventListener("click", () => {
+            if(deleteButton.dataset.elementId != null){
 
-        if(deleteButton.dataset.elementId != null){
+                let url = deleteButton.dataset.url + '/' + deleteButton.dataset.elementId;
 
-            let url = deleteButton.dataset.url + '/' + deleteButton.dataset.elementId;
-
-            let sendDeleteRequest = async () => {
-    
-                try {
-                    await axios.delete(url).then(response => {
-                        table.innerHTML = response.data.table;
-                        renderTable();
-                    });
-                    
-                } catch (error) {
-                    console.error(error);
-                }
-            };
-    
-            sendDeleteRequest();
-        }
-    });
+                let sendDeleteRequest = async () => {
+        
+                    try {
+                        await axios.delete(url).then(response => {
+                            table.innerHTML = response.data.table;
+                            renderTable();
+                        });
+                        
+                    } catch (error) {
+                        console.error(error);
+                    }
+                };
+        
+                sendDeleteRequest();
+            }
+        });
+    }
 
     function sortTableByColumn(tables, column, asc = true)  {
     
@@ -212,7 +217,7 @@ export let renderTable = () => {
     
     })
 
-
+    
     paginationButtons.forEach(paginationButton => {
 
         paginationButton.addEventListener("click", () => {

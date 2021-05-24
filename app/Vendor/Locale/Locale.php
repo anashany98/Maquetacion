@@ -4,35 +4,34 @@ namespace App\Vendor\Locale;
 
 use App\Vendor\Locale\Models\Locale as DBLocale;
 use App\Vendor\Locale\Models\LocaleLanguage;
-use Debugbar;
 
-class Locale 
+class Locale
 {
     protected $rel_parent;
     protected $language;
-    protected $locale;
 
     function __construct(DBLocale $locale)
     {
         $this->locale = $locale;
     }
 
-    public function setParent($rel_parent){
-
+    public function setParent($rel_parent)
+    {
         $this->rel_parent = $rel_parent;
     }
 
-    public function getParent(){
-
+    public function getParent()
+    {
         return $this->rel_parent;
     }
-
+    
     public function setLanguage($language)
     {
         $this->language = $language;
     }
 
-    public function store($locale, $key){
+    public function store($locale, $key)
+    {  
 
         foreach ($locale as $rel_anchor => $value){
 
@@ -56,10 +55,6 @@ class Locale
 
         return $locale;
     }
-
-
-
-
 
     public function show($key)
     {
@@ -88,6 +83,6 @@ class Locale
 
         return $items;
     }
-
 }
+    
 
