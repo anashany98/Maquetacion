@@ -1,5 +1,6 @@
 @php
     $route = 'tags';
+    $filters = ['parent' => $groups]; 
 @endphp
 
 @extends('admin.layout.table-form')
@@ -15,7 +16,8 @@
             {{ csrf_field() }}
                 
             <input autocomplete="false" name="hidden" type="text" style="display:none;">
-            <input type="hidden" name="id" value="{{isset($tag->id) ? $tag->id : ''}}"> 
+            <input type="hidden" name="group" value="{{isset($tag->group) ? $tag->group : ''}}"> 
+            <input type="hidden" name="key" value="{{isset($tag->key) ? $tag->key : ''}}"> 
 
 
             <div class="tabs-container">
@@ -32,6 +34,12 @@
                     <div class="send-button" id="send-button">
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
+                        </svg>
+                    </div>
+
+                    <div class="import-button" id="import-button" data-url="{{route('tags_import')}}">
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M1,12H10.76L8.26,9.5L9.67,8.08L14.59,13L9.67,17.92L8.26,16.5L10.76,14H1V12M19,3C20.11,3 21,3.9 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V16H5V19H19V7H5V10H3V5A2,2 0 0,1 5,3H19Z" />
                         </svg>
                     </div>
 
@@ -59,7 +67,7 @@
                                         <label for="value">Traducción para la clave {{$tag->key}} del grupo {{$tag->group}}</label>
                                     </div>
                                     <div class="input-container">    
-                                        <input type="text" class="input" name="locale[value.{{$localization->alias}}]" value="{{isset($tag["value.$localization->alias"]) ? $tag["value.$localization->alias"] : ''}}" >
+                                        <input type="text" class="input" name="tag[value.{{$localization->alias}}]" value="{{isset($tag["value.$localization->alias"]) ? $tag["value.$localization->alias"] : ''}}" >
                                     </div>    
                                 </div>
                             </div>
@@ -82,25 +90,19 @@
     
     
     <table class="table-info">
+        <thead >    
+            <tr class="touch">    
+                <th>Group</th>
+                <th>Key</th>
+            </tr>
+        </thead>
+
         @foreach($tags as $tag_element)
-
-            <thead >
-                <tr class="touch">
-                    <th> Group {{$tag_element->group}}</th>
-                    <th> Key {{$tag_element->key}}</th>
-                </tr>
-            </thead>
-
+            <tr class="table-row" data-group="{{$tag_element->group}}" data-key="{{$tag_element->key}}">
+                <td>{{$tag_element->group}}</td>
+                <td>{{$tag_element->key}}</td>
+            </tr>
         @endforeach
-        {{-- <tbody>
-            @foreach($tags as $tag_element)
-                <tr class="table-row">
-                    <td>{{$tag_element->group}}</td>
-                    <td>{{$tag_element->key}}</td>
-                    <td>{{ Carbon\Carbon::parse($tag_element->created_at)->format('d-m-Y') }}</td>
-                </tr>
-            @endforeach
-        </tbody> --}}
 
         <div class="buttons">
 
@@ -114,10 +116,9 @@
    
             @include('admin.layout.partials.pagination', ['items' => $tags])
             
-        </div>   
+        </div> 
     </table>
    
-    
 
 @endsection
 

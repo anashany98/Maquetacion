@@ -60,6 +60,8 @@ export let renderForm = () => {
 
                 try {
                     await axios.post(url, data).then(response => {
+                       
+                       if( response.data.id)
                         form.id.value = response.data.id;
                         table.innerHTML = response.data.table;
                         
@@ -116,8 +118,18 @@ export let renderTable = () => {
     tableRows.forEach(tableRow => {
 
         tableRow.addEventListener("click", () => {
-            editButton.dataset.elementId = tableRow.id;
-            deleteButton.dataset.elementId = tableRow.id;
+            if(tableRow.id){
+                editButton.dataset.elementId = tableRow.id;
+                deleteButton.dataset.elementId = tableRow.id;
+            }else{
+                editButton.dataset.group = tableRow.dataset.group;
+                editButton.dataset.key = tableRow.dataset.key;
+
+                if(deleteButton){
+                    deleteButton.dataset.group = tableRow.dataset.group;
+                    deleteButton.dataset.key = tableRow.dataset.key;
+                }
+            }
         });
     });
 
@@ -127,23 +139,30 @@ export let renderTable = () => {
 
             if(editButton.dataset.elementId != null){
 
-                let url = editButton.dataset.url + '/' + editButton.dataset.elementId;
+                var url = editButton.dataset.url + '/' + editButton.dataset.elementId;
 
-                let sendEditRequest = async () => {
-        
-                    try {
-                        await axios.get(url).then(response => {
-                            form.innerHTML = response.data.form;
-                            renderForm();
-                        });
-                        
-                    } catch (error) {
-                        console.error(error);
-                    }
-                };
-        
-                sendEditRequest();
+            }else{
+
+                var url = editButton.dataset.url + '/' + editButton.dataset.group + '/' + editButton.dataset.key;
             }
+
+            console.log(url);
+            
+            let sendEditRequest = async () => {
+    
+                try {
+                    await axios.get(url).then(response => {
+                        form.innerHTML = response.data.form;
+                        renderForm();
+                    });
+                    
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+    
+            sendEditRequest();
+        
         });
     }    
     
@@ -173,6 +192,8 @@ export let renderTable = () => {
         });
     }
 
+
+
     function sortTableByColumn(tables, column, asc = true)  {
     
         const dirModifier = asc ? 1 : -1;
@@ -183,14 +204,13 @@ export let renderTable = () => {
             const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
             const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
     
-            return aColText > bColText ?  ( 1 * dirModifier) : (-1 * dirModifier);
-            
-       });
-    
-       while (tBody.firstChild) {
-            tBody.removeChild(tBody.firstChild);
-       }
-    
+            return aColText > bColText ?  ( 1 * dirModifier) : (-1 * dirModifier); 
+        });
+        
+        while (tBody.firstChild) {
+                tBody.removeChild(tBody.firstChild);
+        }
+        
         tBody.append(...sortedRows);
     
         table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
@@ -216,7 +236,7 @@ export let renderTable = () => {
         })
     
     })
-
+        
     
     paginationButtons.forEach(paginationButton => {
 

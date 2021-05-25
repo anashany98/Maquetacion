@@ -68,37 +68,7 @@ class LocaleTagController extends Controller
 
         return $view;
     }
-    
-    public function destroy(LocaleTag $tags)
-    {    
-    }
-
-
-    public function store(LocaleTag $tags)
-    {            
-        $tags = $this->tags->updateOrCreate([
-            'id' => request('id')],[
-            'name' => request('name'),
-            'entity' => request('entity'),
-            'visible'=> 1,
-            'active' => 1,
-        ]);
-
-        $view = View::make('admin.tags.index')
-        ->with('tags', $this->slider->where('active', 1)->paginate(9))
-        ->with('tag', $slider)
-        ->renderSections();        
-
-        return response()->json([
-            'table' => $view['table'],
-            'form' => $view['form'],
-            'advisor' => $advisor,
-            'id' => $slider->id,
-        ]);
-    }
-
-    
-
+     
     public function store(Request $request)
     {    
     
@@ -126,7 +96,6 @@ class LocaleTagController extends Controller
         ->where('group', 'not like', 'front/seo')
         ->paginate($this->paginate);  
 
-        $message = \Lang::get('admin/tags.tag-update');
 
         $view = View::make('admin.tags.index')
         ->with('tags', $tags)
@@ -135,8 +104,7 @@ class LocaleTagController extends Controller
 
         return response()->json([
             'table' => $view['table'],
-            'form' => $view['form'],
-            'message' => $message,
+            'form' => $view['form']
         ]);
     }
 
@@ -175,7 +143,6 @@ class LocaleTagController extends Controller
     public function importTags()
     {
         $this->manager->importTranslations();  
-        $message =  \Lang::get('admin/tags.tag-import');
 
         $tags = $this->locale_tag
         ->select('group', 'key')
@@ -193,10 +160,44 @@ class LocaleTagController extends Controller
             $sections = $view->renderSections(); 
     
             return response()->json([
-                'table' => $sections['table'],
-                'message' => $message,
+                'table' => $sections['table']
             ]); 
         }
+    }
+
+    public function filter(Request $request, $filters = null){
+
+        $filters = json_decode($request->input('filters'));
+        
+        $query = $this->locale_tag->query();
+
+        if($filters != null){
+
+            $query->when($filters->parent, function ($q, $parent) {
+
+                if($parent == 'all'){
+                    return $q;
+                }
+                else{
+                    return $q->where('group', $parent);
+                }
+            });
+        }
+    
+        $tags = $query->select('group', 'key')
+                ->groupBy('group', 'key')
+                ->where('group', 'not like', 'admin/%')
+                ->where('group', 'not like', 'front/seo')
+                ->paginate($this->paginate)
+                ->appends(['filters' => json_encode($filters)]);  
+
+        $view = View::make('admin.tags.index')
+            ->with('tags', $tags)
+            ->renderSections();
+
+        return response()->json([
+            'table' => $view['table'],
+        ]);
     }
 
 }

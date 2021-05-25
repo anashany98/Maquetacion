@@ -23,6 +23,11 @@ class ViewComposerServiceProvider extends ServiceProvider
             'admin.*'], 
             'App\Http\ViewComposer\Admin\LocaleLanguage'
         );
+
+        view()->composer(
+            'admin.tags.index', 
+            'App\Http\ViewComposer\Admin\LocaleGroups'
+        );
     }
 
     public function register()

@@ -5,7 +5,7 @@
 </div>
 
 <div class="filter-container" id="filter-container">
-    <form class="filter-form" id="filter-form" action="{{route("faqs_filter")}}" autocomplete="off">             
+    <form class="filter-form" id="filter-form" action="{{route("tags_filter")}}" autocomplete="off">             
 
         {{ csrf_field() }}
 
@@ -18,10 +18,10 @@
                     <label for="category_id" class="label-highlight">Filter by</label>
                 </div>
                 <div class="form-input">
-                    <select name="category_id" data-placeholder="Select a category" class="input-highlight">
+                    <select name="parent" data-placeholder="Select a category" class="input-highlight">
                         <option value="all"}}>All</option>
                         @foreach($items as $item)
-                            <option value="{{$item->id}}"}}>{{ $item->name }}</option>
+                            <option value="{{$item}}"}}>{{ $item}}</option>
                         @endforeach
                     </select>    
                 </div>

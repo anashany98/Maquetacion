@@ -9,4 +9,6 @@ require('./tabs');
 require('./tabs_locale');
 require('./uploadImage');
 require('./modalImage');
+require('./tags');
+
 // require('./touch');

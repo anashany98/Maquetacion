@@ -80,6 +80,10 @@ body {
   width: 10%;
   cursor: pointer;
 }
+.button .import-button {
+  width: 10%;
+  cursor: pointer;
+}
 
 #sendbutton {
   cursor: pointer;
