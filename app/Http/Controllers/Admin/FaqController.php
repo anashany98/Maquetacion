@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\FaqRequest;
 use Jenssegers\Agent\Agent;
 use App\Vendor\Locale\Locale;
+use App\Vendor\Locale\LocaleSlugSeo;
 use App\Vendor\Image\Image;
 use App\Models\DB\Faq;
 use Debugbar;
@@ -19,14 +20,16 @@ class FaqController extends Controller
     protected $faq;
     protected $agent;
     protected $locale;
+    protected $locale_slug_seo;
     protected $paginate;
     protected $image;
 
-    function __construct(Faq $faq, Agent $agent, Locale $locale, Image $image)
+    function __construct(Faq $faq, Agent $agent, Locale $locale, Image $image, LocaleSlugSeo $locale_slug_seo)
     {
         // $this->middleware('auth');
         $this->agent = $agent;
         $this->locale = $locale;
+        $this->locale_slug_seo = $locale_slug_seo;
         $this->image = $image;
         $this->faq = $faq;
 
@@ -39,6 +42,7 @@ class FaqController extends Controller
         }
 
         $this->locale->setParent('faqs');
+        $this->locale_slug_seo->setParent('faqs');
         $this->image->setEntity('faqs');
     }
 
@@ -90,7 +94,7 @@ class FaqController extends Controller
     public function store(FaqRequest $request)
     {          
         
-        Debugbar::info(request('images')); 
+        Debugbar::info(request('seo')); 
 
         $faq = $this->faq->updateOrCreate([
             'id' => request('id')],[
@@ -105,6 +109,10 @@ class FaqController extends Controller
 
         if(request('images')){
             $images = $this->image->store(request('images'), $faq->id);
+        }
+
+        if(request('seo')){
+            $seo = $this->locale_slug_seo->store(request('seo'), $faq->id, 'front_faq');
         }
 
         if (request('id')){
@@ -129,9 +137,12 @@ class FaqController extends Controller
     public function edit(Faq $faq)
     {
         $locale = $this->locale->show($faq->id);
+        $seo = $this->locale_slug_seo->show($faq->id);
+
 
         $view = View::make('admin.faqs.index')
         ->with('locale', $locale)
+        ->with('seo', $seo)
         ->with('faq', $faq)
         ->with('faqs', $this->faq->where('active', 1)->orderBy('created_at', 'desc')->paginate($this->paginate));        
         

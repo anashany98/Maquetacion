@@ -4,6 +4,9 @@ import {startWait, stopWait} from './loading';
 import {renderFilterTable} from './filter';
 import {renderUploadImage} from './uploadImage';
 import {renderLocaleTabs}  from './tabs_locale';
+import {renderLocaleSeo} from './localeSeo';
+import {renderGoogleBot} from './googleBot';
+import {renderSitemap} from './sitemap';
 import {renderTabs} from './tabs'
 
 import axios from 'axios';
@@ -104,6 +107,9 @@ export let renderForm = () => {
     renderUploadImage();
     renderLocaleTabs();
     renderTabs();
+    renderLocaleSeo();
+    renderGoogleBot();
+    renderSitemap();
 
 };
 
@@ -146,6 +152,11 @@ export let renderTable = () => {
                 var url = editButton.dataset.url + '/' + editButton.dataset.group + '/' + editButton.dataset.key;
             }
 
+            if(editButton.dataset.group != null){
+
+                var url = editButton.dataset.url + '/' + editButton.dataset.key;
+            }    
+            
             console.log(url);
             
             let sendEditRequest = async () => {

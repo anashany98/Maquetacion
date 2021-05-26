@@ -1,31 +1,36 @@
-export let renderBlockParameters = () =>{
+export let block = () =>{
 
-    let blockParameters = document.querySelectorAll('.block-parameters');
+    let blockInputs = document.querySelectorAll(".block-input");
 
-    if(blockParameters){
+    if(blockInputs){
+        
+        blockInputs.forEach(blockInput => {
 
-        blockParameters.forEach(blockParameter =>{
+            let originalInput = blockInput.value.match(/\{.*?\}/g)
+            let setInput = ""
 
-            blockParameter.addEventListener('keydown', () =>{
+            if (originalInput){
 
-                let slug = blockParameter.nodeValue.match(/\{.*?\}/g);
+                blockInput.addEventListener("keydown", () =>{
+                    setInput = blockInput.value;
+    
+                });   
 
+                blockInput.addEventListener("keyup", () =>{
+                    let finalInput = blockInput.value.match(/\{.*?\}/g)
 
-            })
+                    if (finalInput){
+                        if(originalInput.toString() != finalInput.toString()){
+                            blockInput.value = setInput;
+                        }
 
-
-            blockParameter.addEventListener('keyup', () =>{
-
-                let slug = blockParameter.nodeValue.match(/\{.*?\}/g);
-
-                
-            })
-
-
+                    }else{
+                        blockInput.value = setInput;
+                    }
+                    
+                    setInput = blockInput.value
+                })
+            }  
         })
-
-
     }
-
-
 }

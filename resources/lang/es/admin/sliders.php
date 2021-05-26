@@ -2,7 +2,7 @@
 
 return [
     'parent_section' => "Slider",
-    'slider-create' => "Slider creada",
-    'slider-update' => "Slider actualizada",
-    'slider-delete' => "Slider eliminada"
+    'slide-create' => "Slider creado",
+    'slide-update' => "Slider actualizado",
+    'slide-delete' => "Slider eliminado",
 ];

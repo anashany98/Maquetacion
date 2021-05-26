@@ -28,7 +28,11 @@
 
                         <li class="tab-item" data-tab="images">
                             Images
-                        </li>        
+                        </li>   
+                        
+                        <li class="tab-item" data-tab="seo">
+                            Seo
+                        </li>  
                     </ul>
                 </div>
                 
@@ -95,7 +99,7 @@
                                         <label for="title">Titulo:</label>
                                     </div>
                                     <div class="input-container">    
-                                        <input type="text" class="input" name="locale[title.{{$localization->alias}}]" value="{{isset($locale["title.$localization->alias"]) ? $locale["title.$localization->alias"] : ''}}" >
+                                        <input type="text" class="input" name="seo[title.{{$localization->alias}}]" value="{{isset($locale["title.$localization->alias"]) ? $locale["title.$localization->alias"] : ''}}" >
                                     </div>    
                                 </div>
                             </div>
@@ -172,6 +176,40 @@
                 @endcomponent
             
             </div>
+
+            @component('admin.layout.partials.locale', ['tab' => 'seo'])
+
+            @foreach ($localizations as $localization)
+
+                <div class="tab-language-panel {{ $loop->first ?'tab-translate-active':'' }}" data-tab="seo" data-localetab="{{$localization->alias}}">
+                    <div class="two-columns">
+                        <div class="form-group">
+                            <div class="label-container">
+                                <label for="title">Keywords:</label>
+                            </div>
+                            <div class="input-container">    
+                                <input type="text" class="input" name="seo[title.{{$localization->alias}}]" value="{{isset($seo["title.$localization->alias"]) ? $locale["title.$localization->alias"] : ''}}" >
+                            </div>    
+                        </div>
+                    </div>
+
+                    <div class="one-column">
+                        <div class="form-group">   
+                            <div class="label-container">
+                                <label for="description">Descripcion:</label>
+                            </div>
+                            <div class="input-container">    
+                                <textarea  type="text" name="seo[description.{{$localization->alias}}]" >{{isset($seo["description.$localization->alias"]) ? $locale["description.$localization->alias"] : ''}} 
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            @endforeach
+
+
+        @endcomponent
                 
         </form> 
         

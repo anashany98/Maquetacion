@@ -9,6 +9,9 @@ require('./tabs');
 require('./tabs_locale');
 require('./uploadImage');
 require('./modalImage');
+require('./sitemap')
+require('./googlebot')
+require('./localeSeo')
+require('./block')
 require('./tags');
 
-// require('./touch');

@@ -1,5 +1,5 @@
 <?php
 
 return array (
-  'faq-create' => NULL,
+  'title' => 'FAQS',
 );
