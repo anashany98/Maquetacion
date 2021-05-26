@@ -30,6 +30,11 @@ td ,th{
     table-layout:fixed;
 }
 
+th{
+    background-color: #62daca;
+
+}
+
 tr{
     border: 0.1em solid #000000;
     font-size: 1em; 
@@ -39,80 +44,44 @@ tr{
     table-layout:fixed;
 }
 
-tr:hover{
-
-    background-color: hsl(172, 62%, 62%)
-
-
-}
-
-.buttons{
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
-    justify-content: space-between;
-    margin-top: 1em;
-    flex-direction: row;
-    width: 100%;
-}
 
 .crud-buttons{
 
     display: flex;
-    width: 15%;
+    flex-direction: row;
+    width:100%;
+    
 
     .edit-button {
-        width: 50%;
-        height: 50%;
-        color:#0044ff;
-        text-transform: uppercase;
-        background: transparent;
-        cursor: pointer;
-        margin-right: 1em;
-        border-radius: 0.3em;
-        padding: 0;
-        border: none;
-        background: none;
+        background-color: hsl(0, 0%, 100%);
+        border:none;
+        width:100%;
+        cursor:pointer;
+        svg{
+            color: hsl(204, 100%, 50%);
+            width: 1.3em;
+            height: 1em ;
+        }
     }
+    
          
     
     .delete-button{
-        width: 50%;
-        height: 50%;
-        color: #ff0000;
-        background: transparent;
-        cursor: pointer;
-        border-radius: 0.3em;
-        padding: 0;
+        background-color: hsl(0, 0%, 100%);
         border: none;
-        background: none;
+        width: 100%;
+        cursor:pointer;
+        svg{
+            color: hsl(0, 100%, 50%);
+            width: 1.3em;
+            height: 1em ;
+        }
     }
+    
 
     
     
 
 }
 
-.table-info th {
-    cursor: pointer;
-}
-  
-.table-info .th-sort-asc::after {
-content: "\25b4";
-}
-
-.table-info .th-sort-desc::after {
-content: "\25be";
-}
-
-.table-info .th-sort-asc::after,
-.table-info .th-sort-desc::after {
-margin-left: 5px;
-}
-
-.table-info .th-sort-asc,
-.table-info .th-sort-desc {
-background: rgba(0, 0, 0, 0.1);
-}
-  
   

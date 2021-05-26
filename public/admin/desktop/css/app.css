@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Lora);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
-@charset "UTF-8";
 body {
   background: linear-gradient(0deg, white 0%, #f35d5c 98%);
 }
@@ -322,6 +321,10 @@ td, th {
   table-layout: fixed;
 }
 
+th {
+  background-color: #62daca;
+}
+
 tr {
   border: 0.1em solid #000000;
   font-size: 1em;
@@ -331,69 +334,32 @@ tr {
   table-layout: fixed;
 }
 
-tr:hover {
-  background-color: #62daca;
-}
-
-.buttons {
+.crud-buttons {
   display: flex;
-  flex-direction: row;
-  cursor: pointer;
-  justify-content: space-between;
-  margin-top: 1em;
   flex-direction: row;
   width: 100%;
 }
-
-.crud-buttons {
-  display: flex;
-  width: 15%;
-}
 .crud-buttons .edit-button {
-  width: 50%;
-  height: 50%;
-  color: #0044ff;
-  text-transform: uppercase;
-  background: transparent;
-  cursor: pointer;
-  margin-right: 1em;
-  border-radius: 0.3em;
-  padding: 0;
+  background-color: white;
   border: none;
-  background: none;
+  width: 100%;
+  cursor: pointer;
+}
+.crud-buttons .edit-button svg {
+  color: #0099ff;
+  width: 1.3em;
+  height: 1em;
 }
 .crud-buttons .delete-button {
-  width: 50%;
-  height: 50%;
-  color: #ff0000;
-  background: transparent;
-  cursor: pointer;
-  border-radius: 0.3em;
-  padding: 0;
+  background-color: white;
   border: none;
-  background: none;
-}
-
-.table-info th {
+  width: 100%;
   cursor: pointer;
 }
-
-.table-info .th-sort-asc::after {
-  content: "▴";
-}
-
-.table-info .th-sort-desc::after {
-  content: "▾";
-}
-
-.table-info .th-sort-asc::after,
-.table-info .th-sort-desc::after {
-  margin-left: 5px;
-}
-
-.table-info .th-sort-asc,
-.table-info .th-sort-desc {
-  background: rgba(0, 0, 0, 0.1);
+.crud-buttons .delete-button svg {
+  color: red;
+  width: 1.3em;
+  height: 1em;
 }
 
 .sidebar {

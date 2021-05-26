@@ -116,77 +116,51 @@ export let renderForm = () => {
 
 export let renderTable = () => {
 
-    let deleteButton = document.getElementById("delete-button");
-    let editButton = document.getElementById("edit-button");
+    let deleteButtons = document.getElementById("delete-button");
+    let editButtons = document.getElementById("edit-button");
     let tableRows = document.querySelectorAll(".table-row");
     let paginationButtons = document.querySelectorAll('.pagination-table-button');
 
-    tableRows.forEach(tableRow => {
 
-        tableRow.addEventListener("click", () => {
-            if(tableRow.id){
-                editButton.dataset.elementId = tableRow.id;
-                deleteButton.dataset.elementId = tableRow.id;
-            }else{
-                editButton.dataset.group = tableRow.dataset.group;
-                editButton.dataset.key = tableRow.dataset.key;
+    if(editButtons){
 
-                if(deleteButton){
-                    deleteButton.dataset.group = tableRow.dataset.group;
-                    deleteButton.dataset.key = tableRow.dataset.key;
-                }
-            }
+        editButtons.forEach(editButton => {
+
+            editButton.addEventListener("click", () => {
+    
+                let url = editButton.dataset.url;
+    
+                let sendEditRequest = async () => {
+    
+                    try {
+                        await axios.get(url).then(response => {
+                            form.innerHTML = response.data.form;
+                            renderForm();
+                        });
+                        
+                    } catch (error) {
+                        console.error(error);
+                    }
+                };
+    
+                sendEditRequest();
+            });
         });
-    });
 
-    if(editButton){
+    }
 
-        editButton.addEventListener("click", () => {
-
-            if(editButton.dataset.elementId != null){
-
-                var url = editButton.dataset.url + '/' + editButton.dataset.elementId;
-
-            }else{
-
-                var url = editButton.dataset.url + '/' + editButton.dataset.group + '/' + editButton.dataset.key;
-            }
-
-            if(editButton.dataset.group != null){
-
-                var url = editButton.dataset.url + '/' + editButton.dataset.key;
-            }    
-            
-            console.log(url);
-            
-            let sendEditRequest = async () => {
     
-                try {
-                    await axios.get(url).then(response => {
-                        form.innerHTML = response.data.form;
-                        renderForm();
-                    });
-                    
-                } catch (error) {
-                    console.error(error);
-                }
-            };
+
+    if(deleteButtons){
+
+        deleteButtons.forEach(deleteButton => {
+
+            deleteButton.addEventListener("click", () => {
     
-            sendEditRequest();
-        
-        });
-    }    
+                let url = deleteButton.dataset.url;
     
-    if(deleteButton){
-
-        deleteButton.addEventListener("click", () => {
-
-            if(deleteButton.dataset.elementId != null){
-
-                let url = deleteButton.dataset.url + '/' + deleteButton.dataset.elementId;
-
                 let sendDeleteRequest = async () => {
-        
+    
                     try {
                         await axios.delete(url).then(response => {
                             table.innerHTML = response.data.table;
@@ -197,11 +171,13 @@ export let renderTable = () => {
                         console.error(error);
                     }
                 };
-        
+    
                 sendDeleteRequest();
-            }
+            });
         });
+
     }
+    
 
 
 
