@@ -50,17 +50,18 @@ tr{
     display: flex;
     flex-direction: row;
     width:100%;
-    
+    margin: auto;
+
 
     .edit-button {
         background-color: hsl(0, 0%, 100%);
         border:none;
         width:100%;
-        cursor:pointer;
         svg{
             color: hsl(204, 100%, 50%);
             width: 1.3em;
-            height: 1em ;
+            cursor:pointer;
+
         }
     }
     
@@ -70,11 +71,11 @@ tr{
         background-color: hsl(0, 0%, 100%);
         border: none;
         width: 100%;
-        cursor:pointer;
         svg{
             color: hsl(0, 100%, 50%);
             width: 1.3em;
-            height: 1em ;
+            cursor:pointer;
+
         }
     }
     

@@ -338,28 +338,27 @@ tr {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin: auto;
 }
 .crud-buttons .edit-button {
   background-color: white;
   border: none;
   width: 100%;
-  cursor: pointer;
 }
 .crud-buttons .edit-button svg {
   color: #0099ff;
   width: 1.3em;
-  height: 1em;
+  cursor: pointer;
 }
 .crud-buttons .delete-button {
   background-color: white;
   border: none;
   width: 100%;
-  cursor: pointer;
 }
 .crud-buttons .delete-button svg {
   color: red;
   width: 1.3em;
-  height: 1em;
+  cursor: pointer;
 }
 
 .sidebar {

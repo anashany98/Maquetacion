@@ -116,8 +116,8 @@ export let renderForm = () => {
 
 export let renderTable = () => {
 
-    let deleteButtons = document.getElementById("delete-button");
-    let editButtons = document.getElementById("edit-button");
+    let deleteButtons = document.querySelectorAll(".delete-button");
+    let editButtons = document.querySelectorAll(".edit-button");
     let tableRows = document.querySelectorAll(".table-row");
     let paginationButtons = document.querySelectorAll('.pagination-table-button');
 

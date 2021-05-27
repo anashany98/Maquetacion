@@ -19,6 +19,8 @@ $localizationseo = new LocalizationSeo();
 
 Route::group(['prefix' => 'admin'], function () {
     
+
+
     
     Route::get('/seo/sitemap', 'App\Http\Controllers\Admin\LocaleSeoController@getSitemaps')->name('create_sitemap');
     Route::get('/seo/import', 'App\Http\Controllers\Admin\LocaleSeoController@importSeo')->name('seo_import');
@@ -38,6 +40,22 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/tags', 'App\Http\Controllers\Admin\LocaleTagController@index')->name('tags');
     Route::post('/tags', 'App\Http\Controllers\Admin\LocaleTagController@store')->name('tags_store');
 
+
+
+
+    Route::resource('coins', 'App\Http\Controllers\Admin\CoinController', [
+        'parameters' => [
+            'coins' => 'coin', 
+        ],
+        'names' => [
+            'index' => 'coins',
+            'create' => 'coins_create',
+            'edit' => 'coins_edit',
+            'store' => 'coins_store',
+            'destroy' => 'coins_destroy',
+            'show' => 'coins_show',
+        ]
+    ]);
 
 
     Route::resource('sliders', 'App\Http\Controllers\Admin\SliderController', [
