@@ -15,7 +15,7 @@ class TCoinValueHistory extends Migration
     {
         Schema::create('t_coin_value_history', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 255)->nullable(true);
+            $table->string('name_coin', 255)->nullable(true);
             $table->decimal('price_now', 18)->nullable(true);
             $table->decimal('price_24h', 18)->nullable(true);
             $table->decimal('price_7days', 18)->nullable(true);

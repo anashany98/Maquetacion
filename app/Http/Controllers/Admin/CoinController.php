@@ -87,18 +87,20 @@ class CoinController extends Controller
         ->renderSections();
 
         return response()->json([
-            'form' => $view['form']
+            'table' => $sections['table'],
         ]);
     }
 
     public function store(FaqRequest $request)
     {          
         
-        Debugbar::info(request('seo')); 
 
         $coin = $this->coin->updateOrCreate([
             'id' => request('id')],[
-            'name' => request('name'),
+            'name_coin' => request('name_coin'),
+            'symbol' => request('symbol'),
+            'price' => request('price'),
+            'description' => request('description'),
             'active' => 1,
         ]);
 
@@ -114,7 +116,7 @@ class CoinController extends Controller
             $seo = $this->locale_slug_seo->store(request('seo'), $coin->id, 'front_coin');
         }
 
-        if (request('id')){
+        if(request('id')){
             $advisor = \Lang::get('admin/coins.coin-update');
         }else{
             $advisor = \Lang::get('admin/coins.coin-create');

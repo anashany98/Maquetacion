@@ -140,6 +140,8 @@ Route::group(['prefix' => $localizationseo->setLocale(),
 
     Route::get($localizationseo->transRoute('routes.front_faqs'), 'App\Http\Controllers\Front\FaqController@index')->name('front_faqs');
     Route::get($localizationseo->transRoute('routes.front_faq'), 'App\Http\Controllers\Front\FaqController@show')->name('front_faq');
+    Route::get($localizationseo->transRoute('routes.front_coins'), 'App\Http\Controllers\Front\CoinController@index')->name('front_coins');
+    Route::get($localizationseo->transRoute('routes.front_coin'), 'App\Http\Controllers\Front\CoinController@show')->name('front_coin');
 });
 
 

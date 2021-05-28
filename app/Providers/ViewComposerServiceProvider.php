@@ -28,6 +28,11 @@ class ViewComposerServiceProvider extends ServiceProvider
             'admin.tags.index', 
             'App\Http\ViewComposer\Admin\LocaleGroups'
         );
+
+        // view()->composer(
+        //     'admin.coins.index', 
+        //     'App\Http\ViewComposer\Admin\coins'
+        // );
     }
 
     public function register()

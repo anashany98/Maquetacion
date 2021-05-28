@@ -17,6 +17,16 @@ class Coin extends DBModel
         return $this->hasOne(LocaleSlugSeo::class, 'key')->where('rel_parent', 'coins')->where('language', App::getLocale());
     }
 
+    public function locale()
+    {
+        return $this->hasMany(Locale::class, 'key')->where('rel_parent', 'faqs')->where('language', App::getLocale());
+    }
+
+    // public function price()
+    // {
+    //     return $this->hasOne(price::class, 'price')->where( 'price')->where('language', App::getLocale());
+    // }
+
     public function images_featured_preview()
     {
         return $this->hasMany(ImageResized::class, 'entity_id')->where('grid', 'preview')->where('content', 'featured')->where('entity', 'coins');
