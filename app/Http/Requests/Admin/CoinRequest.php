@@ -28,10 +28,9 @@ class CoinRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name_coin' => 'required',
             'symbol' => 'required',
             'price' => 'required',
-            'description' => 'required',
 
         ];
     }
@@ -39,10 +38,9 @@ class CoinRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El Nombre es obligatorio',
-            'symbol' => 'El symbol es obligatorio',
-            'price' => 'El precio es obligatorio',
-            'description' => 'El precio es obligatorio',
+            'name_coin.required' => 'El Nombre es obligatorio',
+            'symbol.required' => 'El symbol es obligatorio',
+            'price.required' => 'El precio es obligatorio',
 
         ];
     }

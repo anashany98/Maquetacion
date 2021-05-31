@@ -15,10 +15,9 @@ class TCoinValue extends Migration
     {
         Schema::create('t_coin_value', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name_coin', 255)->nullable(true);
-            $table->string('symbol', 255)->nullable(true);
-            $table->decimal('price', 18)->nullable(true);
-            $table->string('description', 255)->nullable(true);
+            $table->string('name_coin', 255);
+            $table->string('symbol', 255);
+            $table->decimal('price', $precision = 9, $scale = 2 );
             $table->boolean('active');
             $table->timestamps();
         });

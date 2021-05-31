@@ -53,15 +53,15 @@ class LocaleSlugSeo
                 'key' => $key],[
                 'parent_slug' => isset($seo['parent.'. $language]) ? $seo['parent.'. $language] : null,
                 'locale_seo_id' => $locale_seo->id,
-                'slug' => slug_helper($seo['name_coin.'. $language]),
-                'name_coin' => $seo['name_coin.'. $language] ,
-                'description' => isset($seo['description.'. $language])? $seo['description.'. $language] : '' ,
+                'slug' => slug_helper($seo['title.'. $language]),
+                'title' => $seo['title.'. $language] ,
+                'title' => isset($seo['title.'. $language])? $seo['title.'. $language] : '' ,
                 'keywords' => isset($seo['keywords.'. $language])? $seo['keywords.'. $language] : '' ,
             ]);
         }
 
         foreach($locale_slug_seo as $value){
-            $seo['name_coin.'.$value->language] = $value->name_coin;
+            $seo['title.'.$value->language] = $value->title;
             $seo['description.'.$value->language] = $value->description;
             $seo['keywords.'.$value->language] = $value->keywords;
         }
@@ -75,7 +75,7 @@ class LocaleSlugSeo
         $values =  DBLocaleSlugSeo::getValues($this->rel_parent, $key)->get();   
 
         foreach($values as $value){
-            $seo['name_coin.'.$value->language] = $value->name_coin;
+            $seo['title.'.$value->language] = $value->title;
             $seo['description.'.$value->language] = $value->description;
             $seo['keywords.'.$value->language] = $value->keywords;
         }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\FaqRequest;
+use App\Http\Requests\Admin\CoinRequest;
 use Jenssegers\Agent\Agent;
 use App\Vendor\Locale\Locale;
 use App\Vendor\Locale\LocaleSlugSeo;
@@ -91,16 +91,14 @@ class CoinController extends Controller
         ]);
     }
 
-    public function store(FaqRequest $request)
+    public function store(CoinRequest $request)
     {          
         
-
         $coin = $this->coin->updateOrCreate([
             'id' => request('id')],[
             'name_coin' => request('name_coin'),
             'symbol' => request('symbol'),
             'price' => request('price'),
-            'description' => request('description'),
             'active' => 1,
         ]);
 
