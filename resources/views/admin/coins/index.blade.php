@@ -186,7 +186,7 @@
                                         <label for="name_coin">Keywords:</label>
                                     </div>
                                     <div class="input-container">    
-                                        <input type="text" class="input" name="seo[name_coin.{{$localization->alias}}]" value="{{isset($seo["name_coin.$localization->alias"]) ? $locale["name_coin.$localization->alias"] : ''}}" >
+                                        <input type="text" class="input" name="seo[name_coin.{{$localization->alias}}]" value="{{isset($seo["name_coin.$localization->alias"]) ? $seo["name_coin.$localization->alias"] : ''}}" >
                                     </div>    
                                 </div>
                             </div>
@@ -197,7 +197,8 @@
                                         <label for="description">Descripcion:</label>
                                     </div>
                                     <div class="input-container">    
-                                        <textarea  type="text" name="seo[locale.{{$localization->alias}}]" >{{isset($seo["locale.$localization->alias"]) ? $locale["locale.$localization->alias"] : ''}} 
+                                        <textarea  type="text" name="locale[description.{{$localization->alias}}]" >{{isset($locale["description.$localization->alias"]) ? $locale["description.$localization->alias"] : ''}} 
+                                            {{isset($coin->description) ? $coin->description : ''}}
                                         </textarea>
                                     </div>
                                 </div>

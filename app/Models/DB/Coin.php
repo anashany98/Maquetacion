@@ -11,6 +11,8 @@ class Coin extends DBModel
 {
 
     protected $table = 't_coin_value';
+    protected $with = ['seo'];
+
 
     public function seo()
     {
@@ -19,12 +21,12 @@ class Coin extends DBModel
 
     public function locale()
     {
-        return $this->hasMany(Locale::class, 'key')->where('rel_parent', 'faqs')->where('language', App::getLocale());
+        return $this->hasMany(Locale::class, 'key')->where('rel_parent', 'coins')->where('language', App::getLocale());
     }
 
     // public function price()
     // {
-    //     return $this->hasOne(price::class, 'price')->where( 'price')->where('language', App::getLocale());
+    //     return $this->belongsTo(price::class);
     // }
 
     public function images_featured_preview()

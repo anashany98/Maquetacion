@@ -87,7 +87,7 @@ class CoinController extends Controller
         ->renderSections();
 
         return response()->json([
-            'table' => $sections['table'],
+            'form' => $sections['form'],
         ]);
     }
 
@@ -101,6 +101,7 @@ class CoinController extends Controller
             'price' => request('price'),
             'active' => 1,
         ]);
+                
 
         if(request('locale')){
             $locale = $this->locale->store(request('locale'), $coin->id);

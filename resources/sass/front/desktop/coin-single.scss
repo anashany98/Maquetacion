@@ -1,0 +1,57 @@
+
+.coin-top{  
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.coin-1{
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    align-content: center;
+
+
+    .coin-logo-image{
+        height: 1.5em;
+    }
+   
+    .coin-title{
+        height: 2em;
+        font-size: 2em; 
+    }
+
+    .symbol-coin{
+        font-size: 1em;
+    }
+
+
+    .star {
+        visibility:hidden;
+        font-size:30px;
+        cursor:pointer;
+    }
+    .star:before {
+       content: "\2605";
+       position: absolute;
+       visibility:visible;
+       color: hsl(59, 82%, 47%);
+    }
+    .star:checked:before {
+       content: "\2606";
+       position: absolute;
+       color: black;  
+    }
+
+    .price-coin{
+        position: relative;
+        left: 32em;
+        font-size:  1.5em;
+        height: 1em;
+        bottom: -0.4em
+    }
+}
+
+
+
