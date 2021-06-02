@@ -63,6 +63,13 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+
+        'coins' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/coins'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
     ],
 
     /*

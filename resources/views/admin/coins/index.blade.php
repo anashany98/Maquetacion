@@ -75,7 +75,7 @@
                                 <label for="symbol">Symbol Coin:</label>
                             </div>
                             <div class="input-container">    
-                                <input type="text" class="input" name="name" value="{{isset($coin->symbol) ? $coin->symbol : ''}}" >
+                                <input type="text" class="input" name="symbol" value="{{isset($coin->symbol) ? $coin->symbol : ''}}" >
                             </div>  
                             <div class="label-container">
                                 <label for="price">Price:</label>
@@ -92,13 +92,24 @@
                     @foreach ($localizations as $localization)
 
                         <div class="tab-language-panel {{ $loop->first ?'tab-translate-active':'' }}" data-tab="content" data-localetab="{{$localization->alias}}">
+                            <div class="two-columns">
+                                <div class="form-group">
+                                    <div class="label-container">
+                                        <label for="title">Titulo:</label>
+                                    </div>
+                                    <div class="input-container">    
+                                        <input type="text" class="input" name="seo[title.{{$localization->alias}}]" value="{{isset($locale["title.$localization->alias"]) ? $locale["title.$localization->alias"] : ''}}" >
+                                    </div>    
+                                </div>
+                            </div>
+                
                             <div class="one-column">
                                 <div class="form-group">   
                                     <div class="label-container">
                                         <label for="description">Description:</label>
                                     </div>
                                     <div class="input-container">    
-                                        <textarea class="ckeditor" type="text" name="locale[description.{{$localization->alias}}]"{{isset($locale["description.$localization->alias"]) ? $lcoale["description.$localization->alias"] : '' }}>
+                                        <textarea class="ckeditor" type="text" name="locale[description.{{$localization->alias}}]"{{isset($locale["description.$localization->alias"]) ? $locale["description.$localization->alias"] : '' }}>
                                         </textarea>
                                     </div>
                                 </div>
@@ -175,7 +186,7 @@
                                         <label for="name_coin">Keywords:</label>
                                     </div>
                                     <div class="input-container">    
-                                        <input type="text" class="input" name="seo[name_coin.{{$localization->alias}}]" value="{{isset($seo["name_coin.$localization->alias"]) ? $locale["name_coin.$localization->alias"] : ''}}" >
+                                        <input type="text" class="input" name="seo[name_coin.{{$localization->alias}}]" value="{{isset($seo["name_coin.$localization->alias"]) ? $seo["name_coin.$localization->alias"] : ''}}" >
                                     </div>    
                                 </div>
                             </div>
@@ -186,7 +197,8 @@
                                         <label for="description">Descripcion:</label>
                                     </div>
                                     <div class="input-container">    
-                                        <textarea  type="text" name="seo[locale.{{$localization->alias}}]" >{{isset($seo["locale.$localization->alias"]) ? $locale["locale.$localization->alias"] : ''}} 
+                                        <textarea  type="text" name="locale[description.{{$localization->alias}}]" >{{isset($locale["description.$localization->alias"]) ? $locale["description.$localization->alias"] : ''}} 
+                                            {{isset($coin->description) ? $coin->description : ''}}
                                         </textarea>
                                     </div>
                                 </div>
@@ -220,7 +232,7 @@
         <tbody>
             @foreach($coins as $coin_element)
                 <tr class="table-row" id="{{$coin_element->id}}">
-                    <td>{{$coin_element->name}}</td>
+                    <td>{{$coin_element->name_coin}}</td>
                     <td>{{$coin_element->symbol}}</td>
                     <td>{{$coin_element->price}}</td>
                     <td>

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\FaqRequest;
+use App\Http\Requests\Admin\CoinRequest;
 use Jenssegers\Agent\Agent;
 use App\Vendor\Locale\Locale;
 use App\Vendor\Locale\LocaleSlugSeo;
@@ -87,22 +87,21 @@ class CoinController extends Controller
         ->renderSections();
 
         return response()->json([
-            'table' => $sections['table'],
+            'form' => $sections['form'],
         ]);
     }
 
-    public function store(FaqRequest $request)
+    public function store(CoinRequest $request)
     {          
         
-
         $coin = $this->coin->updateOrCreate([
             'id' => request('id')],[
             'name_coin' => request('name_coin'),
             'symbol' => request('symbol'),
             'price' => request('price'),
-            'description' => request('description'),
             'active' => 1,
         ]);
+                
 
         if(request('locale')){
             $locale = $this->locale->store(request('locale'), $coin->id);
@@ -177,6 +176,8 @@ class CoinController extends Controller
 
     public function destroy(coin $coin)
     {
+        $this->locale->delete($coin->id);
+        $this->locale_slug_seo->delete($coin->id);
         $coin->active = 0;
         $coin->save();
 
