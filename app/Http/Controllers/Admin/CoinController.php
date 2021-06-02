@@ -176,6 +176,8 @@ class CoinController extends Controller
 
     public function destroy(coin $coin)
     {
+        $this->locale->delete($coin->id);
+        $this->locale_slug_seo->delete($coin->id);
         $coin->active = 0;
         $coin->save();
 
