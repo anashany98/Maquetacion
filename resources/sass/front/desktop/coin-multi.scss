@@ -1,0 +1,100 @@
+.coin-wrap{
+    background-color: #f8fafd
+
+}
+
+.coins-set{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+    margin: 2em ;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+
+.coins{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    border: 1px solid  black;
+    border-radius: 16px;
+    box-shadow: #828486 2px 5px 6px 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+  
+
+.coin-container{
+    display:flex;
+    flex-direction: row;
+    
+}
+
+
+.price-coin-set{
+    display:flex;
+    flex-direction:row;
+
+}
+
+.symbol-coin{
+    font-size: 0.8em;
+
+}
+
+    // .button-buy{
+    //     border: 1px solid  black;
+    //     border-radius: 0.4em;
+    //     position: relative;
+    //     left: 3em;
+    //     width: 2em;
+    //     background-color: hsl(0, 0%, 100%);
+    //     cursor: pointer;
+    //     bottom: 0.2em;
+
+    // }
+
+
+.star {
+    visibility:hidden;
+    font-size:30px;
+    cursor:pointer;
+}
+.star:before {
+   content: "\2605";
+   position: absolute;
+   visibility:visible;
+   color: hsl(59, 100%, 52%);
+}
+.star:checked:before {
+   content: "\2606";
+   position: absolute;
+   color: black;  
+}
+
+
+.coin-description{
+    display: flex;
+    flex-direction: row;
+    position: static;
+}
+
+
+.favourite-coin{
+    position: relative;
+    margin-block: -1em;
+    left: 2em;
+}
+
+.price-change{
+    position: relative;
+    border-radius: 0.4em;
+    background-color: #1ce296;
+    height: 3vh;
+        .p{
+            color: rgb(255, 255, 255);
+
+
+        }
+}

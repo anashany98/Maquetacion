@@ -152,6 +152,7 @@ h1 {
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+  padding: 1em;
 }
 .coin-top .coin-1 .coin-top-left {
   display: flex;
@@ -163,6 +164,7 @@ h1 {
 .coin-top .coin-1 .coin-top-left .coin-title {
   height: 2em;
   font-size: 2em;
+  font-family: "Ubuntu", sans-serif;
 }
 .coin-top .coin-1 .coin-top-left .symbol-coin {
   font-size: 1em;
@@ -183,13 +185,16 @@ h1 {
   position: absolute;
   color: black;
 }
-.coin-top .coin-1 .price-coin {
+.coin-top .coin-1 .coin-top-right {
+  display: flex;
+}
+.coin-top .coin-1 .coin-top-right .price-coin {
   position: relative;
   font-size: 2.5em;
   height: 1.5em;
   bottom: 0.2em;
   border-bottom: 1px solid black;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .coin-middle {
@@ -198,18 +203,47 @@ h1 {
   height: 65vh;
   width: 100%;
 }
+.coin-middle .coin-exchange {
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.coin-middle .coin-exchange .coin-input {
+  border: none;
+  text-align: right;
+}
+.coin-middle .coin-exchange .fiat-input {
+  border: none;
+  text-align: right;
+}
+.coin-middle .coin-exchange .buy-coin {
+  text-align: center;
+  width: 30%;
+  content: center;
+  border: 1px solid;
+  cursor: pointer;
+}
 .coin-middle .statistisc {
   width: 25%;
   height: 60vh;
 }
+.coin-middle .statistisc .statistisc-box-tittle {
+  border-bottom: 1px solid;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+  font-size: 2em;
+}
 .coin-middle .statistisc .statistisc-box {
   height: 7.3vh;
   border-bottom: 1px solid;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Ubuntu", sans-serif;
   text-align: center;
 }
 .coin-middle .statistisc .statistisc-box .interior-statistisc-box {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Ubuntu", sans-serif;
   padding: 1em;
 }
 .coin-middle .graph {
@@ -246,13 +280,7 @@ h1 {
   justify-content: space-between;
 }
 .coin-bottom .coin-description {
-  width: 75%;
-  font-family: "IBM Plex Mono", monospace;
-}
-.coin-bottom .coin-buy {
-  width: 25%;
-  border: 1px solid;
-  border-radius: 16px black;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .coin-wrap {
@@ -260,4 +288,82 @@ h1 {
   flex-direction: column;
   width: 100%;
   height: 100vh;
+}
+
+.coin-wrap {
+  background-color: #f8fafd;
+}
+
+.coins-set {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+  margin: 2em;
+  font-family: "Roboto", sans-serif;
+}
+
+.coins {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 16px;
+  box-shadow: #828486 2px 5px 6px 0px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.coin-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.price-coin-set {
+  display: flex;
+  flex-direction: row;
+}
+
+.symbol-coin {
+  font-size: 0.8em;
+}
+
+.star {
+  visibility: hidden;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.star:before {
+  content: "★";
+  position: absolute;
+  visibility: visible;
+  color: #fffb0a;
+}
+
+.star:checked:before {
+  content: "☆";
+  position: absolute;
+  color: black;
+}
+
+.coin-description {
+  display: flex;
+  flex-direction: row;
+  position: static;
+}
+
+.favourite-coin {
+  position: relative;
+  margin-block: -1em;
+  left: 2em;
+}
+
+.price-change {
+  position: relative;
+  border-radius: 0.4em;
+  background-color: #1ce296;
+  height: 3vh;
+}
+.price-change .p {
+  color: white;
 }

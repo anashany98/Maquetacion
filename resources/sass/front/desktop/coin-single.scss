@@ -12,6 +12,7 @@
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
+        padding: 1em;
 
 
 
@@ -26,6 +27,7 @@
             .coin-title{
                 height: 2em;
                 font-size: 2em; 
+                font-family: 'Ubuntu', sans-serif;
             }
         
             .symbol-coin{
@@ -51,15 +53,21 @@
             }
         
         }
-        
-        .price-coin{
-            position: relative;
-            font-size: 2.5em;
-            height: 1.5em;
-            bottom: 0.2em;
-            border-bottom: 1px solid rgb(0, 0, 0);
-            font-family: 'IBM Plex Mono', monospace;        
+
+        .coin-top-right{
+            display: flex;
+
+            .price-coin{
+                position: relative;
+                font-size: 2.5em;
+                height: 1.5em;
+                bottom: 0.2em;
+                border-bottom: 1px solid rgb(0, 0, 0);
+                font-family: 'Ubuntu', sans-serif;       
+            }
         }
+        
+        
     }
 
 }
@@ -69,19 +77,65 @@
     flex-direction: row;
     height: 65vh;
     width: 100%;
+
+        .coin-exchange{
+            border: 1px solid;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid black;
+                
+            
+                .coin-input{
+                    border: none;
+                    text-align: right;
+                
+                }
+            
+                .fiat-input{
+                    border:none;
+                    text-align: right;
+
+                }
+
+                .buy-coin{
+                    text-align: center;
+                    width: 30%;
+                    content: center;
+                    border: 1px solid;
+                    cursor: pointer;
+
+
+                }
+
+        }
+
+
     
         .statistisc{
-        width: 25%;
-        height: 60vh;
+             width: 25%;
+            height: 60vh;
+
+
+        
+        .statistisc-box-tittle{
+            border-bottom: 1px solid;
+            font-family: 'Ubuntu', sans-serif;      
+            text-align: center;
+            font-size: 2em;
+            
+        
+        }
     
         .statistisc-box{
             height: 7.3vh;
             border-bottom: 1px solid;
-            font-family: 'IBM Plex Mono', monospace;       
+            font-family: 'Ubuntu', sans-serif;     
             text-align: center;
             
             .interior-statistisc-box{
-                font-family: 'IBM Plex Mono', monospace;   
+                font-family: 'Ubuntu', sans-serif;   
                 padding: 1em;
 
             }
@@ -126,20 +180,13 @@
     justify-content: space-between;
 
         .coin-description{
-            width: 75%;
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'Ubuntu', sans-serif;
 
         }
 
 
 
-        .coin-buy{
-            width: 25%;
-            border: 1px solid;
-            border-radius: 16px black;
-
-        }
-
+        
 
 }
 
