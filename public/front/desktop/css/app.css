@@ -16,6 +16,8 @@ body {
 }
 
 #masterHeader {
+  display: flex;
+  flex-direction: row;
   font-family: "Roboto", sans-serif;
   background: #18181b;
   overflow: hidden;
@@ -33,6 +35,10 @@ h1 {
   line-height: 3em;
   margin-left: 5%;
   text-transform: uppercase;
+}
+
+.dark-mode svg {
+  background: white;
 }
 
 .title {
@@ -226,6 +232,15 @@ h1 {
   border: 1px solid;
   cursor: pointer;
 }
+.coin-middle .coin-exchange .coin {
+  display: none;
+}
+.coin-middle .coin-exchange .coin.exchange-active {
+  display: block;
+}
+.coin-middle .coin-exchange .exhange-active {
+  cursor: pointer;
+}
 .coin-middle .statistisc {
   width: 25%;
   height: 60vh;
@@ -294,6 +309,10 @@ h1 {
   background-color: #f8fafd;
 }
 
+.coin-wrap.active-dark {
+  background-color: #020d1c;
+}
+
 .coins-set {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -311,6 +330,10 @@ h1 {
   box-shadow: #828486 2px 5px 6px 0px;
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.coins.active-dark {
+  background: #171f2b;
 }
 
 .coin-container {

@@ -10,8 +10,13 @@ require('./tabs_locale');
 require('./uploadImage');
 require('./modalImage');
 require('./sitemap')
+require('./localeTags')
 // require('./googlebot')
 require('./localeSeo')
 require('./block')
 require('./tags');
+require('./menuItems');
+require('./sortable');
+require('./selects');
+require('./modalMenuItem');
 

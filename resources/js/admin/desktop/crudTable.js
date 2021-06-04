@@ -6,6 +6,7 @@ import {renderUploadImage} from './uploadImage';
 import {renderLocaleTabs}  from './tabs_locale';
 import {renderLocaleSeo} from './localeSeo';
 import {renderGoogleBot} from './googleBot';
+import {renderLocaleTags} from './localeTags';
 import {renderSitemap} from './sitemap';
 import {renderTabs} from './tabs'
 
@@ -110,6 +111,7 @@ export let renderForm = () => {
     renderLocaleSeo();
     renderGoogleBot();
     renderSitemap();
+    renderLocaleTags();
 
 };
 

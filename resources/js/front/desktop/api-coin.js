@@ -13,86 +13,86 @@ const btcData = async () => {
     }
 }
 
-let createBtcChart
+  let createBtcChart
 
-async function printBtcChart() {
-    let { times, prices } = await btcData()
-  
-    let btcChart = document.getElementById('btcChart').getContext('2d');
-  
-    let gradient = btcChart.createLinearGradient(0, 0, 0, 400);
-  
-    gradient.addColorStop(0, 'rgba(35,136,204,1)');
-    gradient.addColorStop(.425, 'rgba(255,193,119,0)');
-  
-  
-    createBtcChart = new Chart(btcChart, {
-      type: 'line',
-      data: {
-        labels: times,
-        datasets: [{
-          label: 'BTC',
-          data: prices,
-          backgroundColor: gradient,
-          borderColor: 'rgba(35,136,204,1)',
-          borderJoinStyle: 'round',
-          borderCapStyle: 'round',
-          borderWidth: 3,
-          pointRadius: 0,
-          pointHitRadius: 10,
-          lineTension: .2,
-        }]
-      },
-  
-      options: {
-        title: {
-          display: false,
-          text: 'Bitcoin',
-          fontSize: 35
-        },
-  
-        legend: {
-          display: false
-        },
-  
-        layout: {
-          padding: {
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0
-          }
-        },
-  
-        scales: {
-          xAxes: [{
-            display: false,
-            gridLines: {}
-          }],
-          yAxes: [{
-            display: false,
-            gridLines: {}
+  async function printBtcChart() {
+      let { times, prices } = await btcData()
+    
+      let btcChart = document.getElementById('btcChart').getContext('2d');
+    
+      let gradient = btcChart.createLinearGradient(0, 0, 0, 400);
+    
+      gradient.addColorStop(0, 'rgba(35,136,204,1)');
+      gradient.addColorStop(.425, 'rgba(255,193,119,0)');
+    
+    
+      createBtcChart = new Chart(btcChart, {
+        type: 'line',
+        data: {
+          labels: times,
+          datasets: [{
+            label: 'BTC',
+            data: prices,
+            backgroundColor: gradient,
+            borderColor: 'rgba(35,136,204,1)',
+            borderJoinStyle: 'round',
+            borderCapStyle: 'round',
+            borderWidth: 3,
+            pointRadius: 0,
+            pointHitRadius: 10,
+            lineTension: .2,
           }]
         },
-  
-        tooltips: {
-          callbacks: {
-            //This removes the tooltip title
-            title: function() {}
-         },
-          //this removes legend color
-          displayColors: false,
-          yPadding: 10,
-          xPadding: 10,
-          position: 'nearest',
-          caretSize: 10,
-          backgroundColor: 'rgba(255,255,255,.9)',
-          bodyFontSize: 15,
-          bodyFontColor: '#303030' 
+    
+        options: {
+          title: {
+            display: false,
+            text: 'Bitcoin',
+            fontSize: 70
+          },
+    
+          legend: {
+            display: false
+          },
+    
+          layout: {
+            padding: {
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0
+            }
+          },
+    
+          scales: {
+            xAxes: [{
+              display: false,
+              gridLines: {}
+            }],
+            yAxes: [{
+              display: false,
+              gridLines: {}
+            }]
+          },
+    
+          tooltips: {
+            callbacks: {
+              //This removes the tooltip title
+              title: function() {}
+          },
+            //this removes legend color
+            displayColors: false,
+            yPadding: 10,
+            xPadding: 10,
+            position: 'nearest',
+            caretSize: 10,
+            backgroundColor: 'rgba(255,255,255,.9)',
+            bodyFontSize: 15,
+            bodyFontColor: '#303030' 
+          }
         }
-      }
-    });
-  }
+      });
+    }
 
 
   async function updateBitcoinPrice() {
@@ -101,10 +101,6 @@ async function printBtcChart() {
   
     document.getElementById("btc-price").innerHTML = "$" + currentPrice;
   }
-  
-  initWebSocket(btcData);
-
-  setInterval(update, 1000)
-  
+    
   updateBitcoinPrice()
   printBtcChart()

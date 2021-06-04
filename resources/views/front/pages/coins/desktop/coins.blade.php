@@ -1,4 +1,4 @@
-<div class="coins-wrap">
+<div class="coins-wrap" id="coin-wrap">
 
     <div class="coins-title">
         <h3>Crypto Coins</h3>
@@ -7,7 +7,7 @@
     <div class="coins-set">
         @foreach ($coins as $coin)
 
-            <div class="coins" data-content="{{$loop->iteration}}">
+            <div class="coins" data-content="{{$loop->iteration}}" >
                
                 <div class="price-coin-set">
                     <div class="price-coin" style="color: #58667e">

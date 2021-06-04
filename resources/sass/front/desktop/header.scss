@@ -18,6 +18,8 @@ body {
 }
 
 #masterHeader {
+  display: flex;
+  flex-direction:row;
   font-family: 'Roboto', sans-serif;
   background: hsl(240, 6%, 10%);
   overflow: hidden;
@@ -36,4 +38,12 @@ h1 {
   line-height: 3em;
   margin-left: 5%;
   text-transform: uppercase;
+}
+
+.dark-mode{
+
+  svg{
+    background: white;
+  }
+
 }

@@ -1,7 +1,7 @@
 require('../../bootstrap');
 require('./faqs');
 require('./fingerprint');
-// require('./coin');
+require('./exchange-coin');
 require('./api-coin');
 
 

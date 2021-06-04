@@ -105,10 +105,19 @@
                     content: center;
                     border: 1px solid;
                     cursor: pointer;
-
-
                 }
 
+                .coin{
+                    display: none;
+                }
+
+                .coin.exchange-active{
+                    display: block;
+                }
+
+                .exhange-active{
+                    cursor: pointer;
+                }
         }
 
 
