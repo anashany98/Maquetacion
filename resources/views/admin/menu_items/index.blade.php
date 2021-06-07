@@ -3,10 +3,10 @@
 @endphp
 
 <div id="menu-item-modal-container">
-    @include('admin.components.modal_menu_item', ['menu' => $menu])
+    @include('admin.layout.partials.modal_menu_item', ['menu' => $menu])
 </div>
 
-@component('admin.components.locale', ['tab' => 'content'])
+@component('admin.layout.partials.locale', ['tab' => 'content'])
 
     @foreach ($localizations as $localization)
 
@@ -25,7 +25,7 @@
             @if($menu->parent_items->count() > 0)
                 <div class="one-column">
                     <div class="form-group">
-                        @include('admin.components.items_nestables', [
+                        @include('admin.layout.partials.items_nestables', [
                             'language' => $localization->alias,
                             'item' => $menu->id,
                             'route' => 'menus_item_index', 

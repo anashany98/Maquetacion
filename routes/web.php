@@ -20,7 +20,8 @@ $localizationseo = new LocalizationSeo();
 Route::group(['prefix' => 'admin'], function () {
     
 
-
+    Route::get('/informacion-de-la-empresa', 'App\Http\Controllers\Admin\BusinessInformationController@index')->name('business_information');
+    Route::post('/informacion-de-la-empresa', 'App\Http\Controllers\Admin\BusinessInformationController@store')->name('business_information_store');
     
     Route::get('/seo/sitemap', 'App\Http\Controllers\Admin\LocaleSeoController@getSitemaps')->name('create_sitemap');
     Route::get('/seo/import', 'App\Http\Controllers\Admin\LocaleSeoController@importSeo')->name('seo_import');
@@ -53,7 +54,7 @@ Route::group(['prefix' => 'admin'], function () {
             'create' => 'menus_create',
             'store' => 'menus_store',
             'destroy' => 'menus_destroy',
-            'edit' => 'menus_edit',
+            'show' => 'menus_show',
         ]
     ]);
 
@@ -166,6 +167,8 @@ Route::post('/fingerprint', 'App\Http\Controllers\Front\FingerprintController@st
 
 Route::get('/login', 'App\Http\Controllers\Front\LoginController@index')->name('front_login');
 Route::post('/login', 'App\Http\Controllers\Front\LoginController@login')->name('front_login_submit');
+
+Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@send')->name('front_contact_form');
 
 Route::get('/', 'App\Http\Controllers\Front\HomeController@index')->name('home_front');
 Route::get('/faqs', 'App\Http\Controllers\Front\FaqController@index')->name('faqs_front');;

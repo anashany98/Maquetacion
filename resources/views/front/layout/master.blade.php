@@ -34,6 +34,8 @@
 
     <body>
         @include("front.layout.partials.header")
+        {{-- @include('front.layout.partials.topbar') --}}
+
 
         <div class="main-content">
             @yield("content")
@@ -41,7 +43,9 @@
 
         </div>
 
-
+        @include("front.layout.partials.footer")
+        @include("front.layout.partials.bottombar")
+        
         @include("front.layout.partials.js")
     </body>
 

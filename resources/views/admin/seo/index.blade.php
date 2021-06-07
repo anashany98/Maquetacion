@@ -148,28 +148,26 @@
         <thead >    
             <tr class="touch">    
                 <th>Key</th>
+                <th></th>
             </tr>
         </thead>
 
-        @foreach($seos as $seo_element)
-            <tr class="table-row" data-group="{{$seo_element->key}}" data-key="{{$seo_element->key}}">
-                <td>{{$seo_element->key}}</td>
-            </tr>
-        @endforeach
-
-        <div class="buttons">
-
-            <div class="crud-buttons">
-                <div id="edit-button" class="edit-button" data-url="{{route('seo_edit', ['key'])}}"> 
-                    <svg  viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                    </svg>
-                </div>
-            </div>      
-   
-            @include('admin.layout.partials.pagination', ['items' => $seos])
-            
-        </div> 
+        <tbody>
+            @foreach($seos as $seo_element)
+                <tr class="table-row" data-group="{{$seo_element->key}}" data-key="{{$seo_element->key}}">
+                    <td>{{$seo_element->key}}</td>
+                    <td>
+                        <div class="crud-buttons">
+                            <div id="edit-button" class="edit-button" data-url="{{route('tags')}}"> 
+                                <svg  viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </td>   
+                </tr>
+            @endforeach
+        </tbody>
     </table>
    
 
@@ -177,3 +175,10 @@
 
 
 
+<div class="crud-buttons">
+    <div id="edit-button" class="edit-button" data-url="{{route('seo_edit', ['key'])}}"> 
+        <svg  viewBox="0 0 24 24">
+            <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+        </svg>
+    </div>
+</div>      
