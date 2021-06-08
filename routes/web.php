@@ -159,6 +159,8 @@ Route::group(['prefix' => $localizationseo->setLocale(),
     Route::get($localizationseo->transRoute('routes.front_faq'), 'App\Http\Controllers\Front\FaqController@show')->name('front_faq');
     Route::get($localizationseo->transRoute('routes.front_coins'), 'App\Http\Controllers\Front\CoinController@index')->name('front_coins');
     Route::get($localizationseo->transRoute('routes.front_coin'), 'App\Http\Controllers\Front\CoinController@show')->name('front_coin');
+    Route::get($localizationseo->transRoute('routes.front_contact'), 'App\Http\Controllers\Front\ContactController@index')->name('front_contact');
+    Route::get($localizationseo->transRoute('routes.front_about_us'), 'App\Http\Controllers\Front\AboutUsController@index')->name('front_about_us');
 });
 
 
@@ -168,7 +170,7 @@ Route::post('/fingerprint', 'App\Http\Controllers\Front\FingerprintController@st
 Route::get('/login', 'App\Http\Controllers\Front\LoginController@index')->name('front_login');
 Route::post('/login', 'App\Http\Controllers\Front\LoginController@login')->name('front_login_submit');
 
-Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@send')->name('front_contact_form');
+Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
 
 Route::get('/', 'App\Http\Controllers\Front\HomeController@index')->name('home_front');
 Route::get('/faqs', 'App\Http\Controllers\Front\FaqController@index')->name('faqs_front');;

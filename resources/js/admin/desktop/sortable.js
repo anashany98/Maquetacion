@@ -1,4 +1,4 @@
-import NestedSort from 'nested-sort';
+// import NestedSort from 'nested-sort';
 import {renderMenuItems} from './menuItems';
 
 export let renderNestedSortables = () => {

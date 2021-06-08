@@ -702,3 +702,67 @@ Horizon started successfully.
 Horizon started successfully.
 Horizon started successfully.
 Horizon started successfully.
+Horizon started successfully.
+Horizon started successfully.
+Horizon started successfully.
+Horizon started successfully.
+Horizon started successfully.
+[2021-06-08 13:36:49][e6699af2-7914-4158-b0d4-2151d5b38cec] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:36:50][e6699af2-7914-4158-b0d4-2151d5b38cec] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:36:50][e6699af2-7914-4158-b0d4-2151d5b38cec] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:36:50][e6699af2-7914-4158-b0d4-2151d5b38cec] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:36:59][b4c6a53d-8480-4a27-8463-5727c6b2051c] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:36:59][b4c6a53d-8480-4a27-8463-5727c6b2051c] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:36:59][b4c6a53d-8480-4a27-8463-5727c6b2051c] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:36:59][b4c6a53d-8480-4a27-8463-5727c6b2051c] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:37:01][f8aa9766-c4ab-4a52-9c03-f3cbdc84daa1] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:37:01][f8aa9766-c4ab-4a52-9c03-f3cbdc84daa1] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:37:01][f8aa9766-c4ab-4a52-9c03-f3cbdc84daa1] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:37:01][f8aa9766-c4ab-4a52-9c03-f3cbdc84daa1] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:37:35][9417614b-e193-4ced-8429-927185054653] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:37:35][9417614b-e193-4ced-8429-927185054653] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:37:35][9417614b-e193-4ced-8429-927185054653] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:37:35][9417614b-e193-4ced-8429-927185054653] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:39:29][01c7c653-9e5a-4943-b24f-6a9a9261c9f4] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:39:29][01c7c653-9e5a-4943-b24f-6a9a9261c9f4] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:39:29][01c7c653-9e5a-4943-b24f-6a9a9261c9f4] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:39:29][01c7c653-9e5a-4943-b24f-6a9a9261c9f4] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:39:32][e9902771-3176-4d75-b795-92ccea8762d1] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:39:32][e9902771-3176-4d75-b795-92ccea8762d1] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:39:32][e9902771-3176-4d75-b795-92ccea8762d1] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:39:32][e9902771-3176-4d75-b795-92ccea8762d1] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:39:35][1a572e72-9f72-4f0e-9205-a638e3a9203e] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:39:35][1a572e72-9f72-4f0e-9205-a638e3a9203e] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:39:35][1a572e72-9f72-4f0e-9205-a638e3a9203e] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:39:35][1a572e72-9f72-4f0e-9205-a638e3a9203e] Failed:     App\Jobs\ContactEmail
+Horizon started successfully.
+[2021-06-08 13:46:45][aa732412-1e90-4914-9d23-1d51823b3958] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:46:45][aa732412-1e90-4914-9d23-1d51823b3958] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:46:45][aa732412-1e90-4914-9d23-1d51823b3958] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:46:45][aa732412-1e90-4914-9d23-1d51823b3958] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:48:48][b3c0b12b-a161-417e-aa71-2bc306619741] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:48:50][b3c0b12b-a161-417e-aa71-2bc306619741] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:48:50][b3c0b12b-a161-417e-aa71-2bc306619741] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:48:50][b3c0b12b-a161-417e-aa71-2bc306619741] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:49:20][a3a060d7-65e7-4c99-9bc1-fe302f3161b0] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:49:20][a3a060d7-65e7-4c99-9bc1-fe302f3161b0] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:49:20][a3a060d7-65e7-4c99-9bc1-fe302f3161b0] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:49:20][a3a060d7-65e7-4c99-9bc1-fe302f3161b0] Failed:     App\Jobs\ContactEmail
+Horizon started successfully.
+[2021-06-08 13:51:57][543a0da2-7b73-4fce-9133-22634dabc793] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:51:57][543a0da2-7b73-4fce-9133-22634dabc793] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:51:58][543a0da2-7b73-4fce-9133-22634dabc793] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:51:58][543a0da2-7b73-4fce-9133-22634dabc793] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:52:15][f039c02a-3572-4f74-9b06-d40ea8e5a254] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:52:15][f039c02a-3572-4f74-9b06-d40ea8e5a254] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:52:15][f039c02a-3572-4f74-9b06-d40ea8e5a254] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:52:15][f039c02a-3572-4f74-9b06-d40ea8e5a254] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:53:55][1c3bd4fc-a271-40a4-b83f-0ad7e60964a6] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:53:55][1c3bd4fc-a271-40a4-b83f-0ad7e60964a6] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:53:55][1c3bd4fc-a271-40a4-b83f-0ad7e60964a6] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:53:55][1c3bd4fc-a271-40a4-b83f-0ad7e60964a6] Failed:     App\Jobs\ContactEmail
+[2021-06-08 13:57:19][403f43f7-1ee6-4f49-bbd4-c1e95ab09629] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:57:19][403f43f7-1ee6-4f49-bbd4-c1e95ab09629] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:57:19][403f43f7-1ee6-4f49-bbd4-c1e95ab09629] Processing: App\Jobs\ContactEmail
+[2021-06-08 13:57:19][403f43f7-1ee6-4f49-bbd4-c1e95ab09629] Failed:     App\Jobs\ContactEmail
+Horizon started successfully.

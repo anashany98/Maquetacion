@@ -8,6 +8,8 @@ import {renderLocaleSeo} from './localeSeo';
 import {renderGoogleBot} from './googleBot';
 import {renderLocaleTags} from './localeTags';
 import {renderSitemap} from './sitemap';
+import {renderMenuItems} from './menuItems';
+import {renderSelects} from './selects';
 import {renderTabs} from './tabs'
 
 import axios from 'axios';
@@ -112,6 +114,8 @@ export let renderForm = () => {
     renderGoogleBot();
     renderSitemap();
     renderLocaleTags();
+    renderMenuItems();
+    renderSelects();
 
 };
 
