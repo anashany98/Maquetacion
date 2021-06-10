@@ -520,6 +520,55 @@ h1 {
   display: flex;
 }
 
+.menu-inline {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  z-index: 1001;
+}
+.menu-inline li {
+  margin: 0.5em;
+  cursor: pointer;
+  display: inline-flex;
+}
+.menu-inline li .menu-item.menu-item-selected h4,
+.menu-inline li .menu-item.menu-item-selected a h4 {
+  color: #00a7b0;
+}
+.menu-inline li span h4,
+.menu-inline li a h4 {
+  color: #253786;
+  font-size: 1em;
+}
+.menu-inline li:hover a h4, .menu-inline li:hover span h4 {
+  color: #00a7b0;
+}
+.menu-inline:hover .menu {
+  opacity: 1;
+  top: 5vh;
+  transition: all 0.7s;
+}
+
+.menu-vertical li {
+  margin: 0.5em 0;
+}
+
+.menu {
+  display: flex;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.7s;
+  top: 0;
+}
+.menu li {
+  margin: 1em 0.5em;
+}
+
 .two-contact-columns {
   display: flex;
   flex-direction: row;
@@ -593,6 +642,47 @@ contact-input:focus ~ contact-label, input:valid ~ label {
   top: -20px;
   font-size: 14px;
   color: #5264AE;
+}
+
+.localization {
+  cursor: pointer;
+  position: relative;
+  width: 1.5em;
+}
+.localization:hover {
+  box-shadow: 0px 7px 10px rgba(223, 238, 243, 0.3);
+}
+
+.modal-localization {
+  display: flex;
+  left: 0;
+  margin: auto;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  top: -40vh;
+  transition: opacity 0.5s;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  z-index: 5000;
+}
+.modal-localization.modal-active {
+  opacity: 1;
+  top: 40vh;
+}
+.modal-localization .localization-option {
+  cursor: pointer;
+  margin: 1em;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.modal-localization .localization-option:hover {
+  box-shadow: 0px 7px 10px rgba(223, 238, 243, 0.3);
+}
+.modal-localization .localization-option svg {
+  width: 10em;
 }
 
 /*Contents*/

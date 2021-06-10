@@ -32,7 +32,7 @@
 
    
     <div class="coin-middle">
-        <div class="graph">
+        <div class="graph" id="graph">
             <canvas id="btcChart" width="100%" height="57vh"></canvas>
         </div>  
         <div class="statistisc">

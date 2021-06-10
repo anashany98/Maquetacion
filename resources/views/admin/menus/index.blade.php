@@ -15,7 +15,7 @@
             {{ csrf_field() }}
                 
             <input autocomplete="false" name="hidden" type="text" style="display:none;">
-            <input type="hidden" name="id" value="{{isset($faq->id) ? $faq->id : ''}}"> 
+            <input type="hidden" name="id" value="{{isset($menu->id) ? $menu->id : ''}}"> 
 
 
             <div class="tabs-container">
@@ -85,9 +85,7 @@
 
     @isset($menus)
 
-         
         <table class="table-info">
-        
             <thead >
                 <tr class="touch">
                     <th>Name</th>

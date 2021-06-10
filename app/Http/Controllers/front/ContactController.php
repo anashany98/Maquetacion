@@ -34,7 +34,16 @@ class ContactController extends Controller
 
         $view = View::make('front.pages.contact.index')->with('seo', $seo );
         
-        return $view;
+        if(request()->ajax()) {
+
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'view' => $sections['content'],
+            ]); 
+        }
+    
+            return $view;
     }
 
     public function store(ContactRequest $request)

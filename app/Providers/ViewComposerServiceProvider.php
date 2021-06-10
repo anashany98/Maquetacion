@@ -29,6 +29,14 @@ class ViewComposerServiceProvider extends ServiceProvider
             'App\Http\ViewComposer\Admin\LocaleGroups'
         );
 
+        view()->composer([
+            'admin.*',
+            'front.layout.partials.desktop.localization',
+            'front.layout.partials.modal_localization'], 
+            'App\Http\ViewComposer\Admin\LocaleLanguage'
+        );
+
+
         // view()->composer(
         //     'admin.coins.index', 
         //     'App\Http\ViewComposer\Admin\coins'

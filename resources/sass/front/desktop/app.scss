@@ -20,8 +20,13 @@
 
 @import "./topbar";
 
+@import "./menu";
+
 @import "./contact-form";
 
+@import "./localization";
+
+@import "./modal_localization";
 
 @import "../base/variables";
 
@@ -30,6 +35,5 @@
 @import "../base/contents";
 
 @import "../base/normalize";
-
 
 @import "../base/typography";

@@ -6,13 +6,14 @@
         </svg>
     </div>
 
-    {{-- <div class="header-menu">
+    <div class="header-menu">
         {{display_menu('principal','horizontal')}}
 
-        <div class="booking-button">
-            <button>
-                @lang('front/header.booking')
-            </button>
-        </div>
-    </div> --}}
+    </div>
+
+    <div class="lenguage">
+        @include("front.layout.partials.localization")
+
+    </div>
+
 </header>

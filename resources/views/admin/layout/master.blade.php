@@ -16,7 +16,7 @@
 
     <body>
         
-        @include("front.layout.partials.header")
+        @include("admin.layout.partials.header")
         
       
         <div class="wrap">

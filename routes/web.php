@@ -151,6 +151,20 @@ Route::group(['prefix' => 'admin'], function () {
     ]);
 });
 
+
+
+Route::post('/fingerprint', 'App\Http\Controllers\Front\FingerprintController@store')->name('front_fingerprint');
+Route::get('/traduccion/{language}/{parent}/{slug?}', 'App\Http\Controllers\Front\LocalizationController@show')->name('front_localization');
+
+
+Route::get('/login', 'App\Http\Controllers\Front\LoginController@index')->name('front_login');
+Route::post('/login', 'App\Http\Controllers\Front\LoginController@login')->name('front_login_submit');
+
+Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
+
+Route::get('/', 'App\Http\Controllers\Front\HomeController@index')->name('home_front');
+Route::get('/faqs', 'App\Http\Controllers\Front\FaqController@index')->name('faqs_front');;
+
 Route::group(['prefix' => $localizationseo->setLocale(),
               'middleware' => [ 'localize' ]
             ], function () use ($localizationseo) {
@@ -163,14 +177,3 @@ Route::group(['prefix' => $localizationseo->setLocale(),
     Route::get($localizationseo->transRoute('routes.front_about_us'), 'App\Http\Controllers\Front\AboutUsController@index')->name('front_about_us');
 });
 
-
-Route::post('/fingerprint', 'App\Http\Controllers\Front\FingerprintController@store')->name('front_fingerprint');
-
-
-Route::get('/login', 'App\Http\Controllers\Front\LoginController@index')->name('front_login');
-Route::post('/login', 'App\Http\Controllers\Front\LoginController@login')->name('front_login_submit');
-
-Route::post('/contacto', 'App\Http\Controllers\Front\ContactController@store')->name('front_contact_form');
-
-Route::get('/', 'App\Http\Controllers\Front\HomeController@index')->name('home_front');
-Route::get('/faqs', 'App\Http\Controllers\Front\FaqController@index')->name('faqs_front');;

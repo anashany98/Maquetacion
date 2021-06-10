@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lora);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 body {
-  background: linear-gradient(0deg, white 0%, #f35d5c 98%);
+  background: white;
 }
 
 .wrap {
@@ -500,7 +500,7 @@ body {
 
 #masterHeader {
   font-family: "Roboto", sans-serif;
-  background: #f35e5e;
+  background: black;
   overflow: hidden;
   margin: 0;
   padding: 0;

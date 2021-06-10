@@ -55,11 +55,19 @@ class CoinController extends Controller
             return $coin;
         });
 
-        $view = View::make('front.pages.coins.index')
-                ->with('coins', $coins) 
-                ->with('seo', $seo );
+        $view = View::make('front.pages.coins.index')->with('coins', $coins);
+
+        if(request()->ajax()) {
+
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'view' => $sections['content'],
+            ]); 
+        }
         
         return $view;
+
     }
 
     public function show($slug)
@@ -90,6 +98,15 @@ class CoinController extends Controller
 
             $view = View::make('front.pages.coins.single')->with('coin', $coin);
 
+            if(request()->ajax()) {
+
+                $sections = $view->renderSections(); 
+        
+                return response()->json([
+                    'view' => $sections['content'],
+                ]); 
+            }
+            
             return $view;
 
         }else{

@@ -34,6 +34,16 @@ class AboutUsController extends Controller
             ->with('seo', $seo )
             ->with('business', $this->business->first());
         
+        if(request()->ajax()) {
+
+            $sections = $view->renderSections(); 
+    
+            return response()->json([
+                'view' => $sections['content'],
+            ]); 
+        }
+        
         return $view;
+
     }
 }

@@ -55,7 +55,7 @@ class LocaleSlugSeo
                 'locale_seo_id' => $locale_seo->id,
                 'slug' => slug_helper($seo['title.'. $language]),
                 'title' => $seo['title.'. $language] ,
-                'title' => isset($seo['title.'. $language])? $seo['title.'. $language] : '' ,
+                'description' => isset($seo['description.'. $language])? $seo['description.'. $language] : '' ,
                 'keywords' => isset($seo['keywords.'. $language])? $seo['keywords.'. $language] : '' ,
             ]);
         }
@@ -104,8 +104,16 @@ class LocaleSlugSeo
         return  DBLocaleSlugSeo::getIdByKey($rel_parent, $language, $key)->first()->id;
     }
 
+    public function getLanguageByKey($key){ 
+        return  DBLocaleSlugSeo::getLanguageByKey($this->language, $key)->first();
+    }
+
     public function getByKey($key){ 
         return  DBLocaleSeo::getByKey($this->language, $key)->first();
+    }
+
+    public function getKeyBySlug($slug){ 
+        return  DBLocaleSlugSeo::getKeyBySlug($slug)->first()->key;
     }
 }
     
