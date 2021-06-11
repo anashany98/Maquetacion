@@ -34,12 +34,6 @@
                         </svg>
                     </div>
 
-                    <div class="import-button" id="import-button" data-url="{{route('seo_import')}}">
-                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M1,12H10.76L8.26,9.5L9.67,8.08L14.59,13L9.67,17.92L8.26,16.5L10.76,14H1V12M19,3C20.11,3 21,3.9 21,5V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V16H5V19H19V7H5V10H3V5A2,2 0 0,1 5,3H19Z" />
-                        </svg>
-                    </div>
-
                     <div class="switcher">
                         <label class="switch">
                           <input type="checkbox" checked>
@@ -154,31 +148,27 @@
 
         <tbody>
             @foreach($seos as $seo_element)
-                <tr class="table-row" data-group="{{$seo_element->key}}" data-key="{{$seo_element->key}}">
+                <tr class="table-row">
                     <td>{{$seo_element->key}}</td>
                     <td>
-                        <div class="crud-buttons">
-                            <div id="edit-button" class="edit-button" data-url="{{route('tags')}}"> 
-                                <svg  viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                                </svg>
-                            </div>
+                    <div class="crud-buttons">
+                        <div id="edit-button" class="edit-button" data-url="{{route('seo_edit', ['key' => $seo_element->key ])}}">
+                            <svg  viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                            </svg>
                         </div>
-                    </td>   
+                    </td>
+                    @php
+                      Debugbar::info($seo_element);
+                    @endphp
                 </tr>
             @endforeach
         </tbody>
+        @include('admin.layout.partials.pagination', ['items' => $seos])
     </table>
-   
 
 @endsection
 
 
 
-<div class="crud-buttons">
-    <div id="edit-button" class="edit-button" data-url="{{route('seo_edit', ['key'])}}"> 
-        <svg  viewBox="0 0 24 24">
-            <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-        </svg>
-    </div>
-</div>      
+ 

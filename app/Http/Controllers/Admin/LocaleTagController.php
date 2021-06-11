@@ -21,7 +21,7 @@ class LocaleTagController extends Controller
 
     function __construct(Agent $agent, LocaleTag $locale_tag, LocaleLanguage $language, Manager $manager)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->agent = $agent;
         $this->locale_tag = $locale_tag;
         $this->language = $language;
@@ -33,7 +33,7 @@ class LocaleTagController extends Controller
         }
 
         if ($this->agent->isDesktop()) {
-            $this->paginate = 6;
+            $this->paginate = 10;
         }
     }
 

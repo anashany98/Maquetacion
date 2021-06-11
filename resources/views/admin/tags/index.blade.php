@@ -142,5 +142,6 @@
 
     </table>
    
+    @include('admin.layout.partials.pagination', ['items' => $tags])
 
 @endsection

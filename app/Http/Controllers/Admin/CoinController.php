@@ -26,7 +26,7 @@ class CoinController extends Controller
 
     function __construct(coin $coin, Agent $agent, Locale $locale, Image $image, LocaleSlugSeo $locale_slug_seo)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->agent = $agent;
         $this->locale = $locale;
         $this->locale_slug_seo = $locale_slug_seo;

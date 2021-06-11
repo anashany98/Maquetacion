@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Vendor\Locale\LocalizationSeo;
+use App\Http\Controllers\Front\CoinController;
 
 $localizationseo = new LocalizationSeo();
     

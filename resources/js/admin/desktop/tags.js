@@ -1,9 +1,9 @@
 import {renderTable} from './crudTable';
 
-export let renderLocaleTags = () => {
+export let renderTags = () => {
 
     let table = document.getElementById("table");
-    let importTags = document.getElementById('import-button');
+    let importTags = document.getElementById('tags.import');
 
     if(importTags){
 
@@ -11,6 +11,7 @@ export let renderLocaleTags = () => {
 
             let url = importTags.dataset.url;
         
+
             let sendEditRequest = async () => {
 
                 try {
@@ -29,5 +30,4 @@ export let renderLocaleTags = () => {
         });
     }
 }
-
-renderLocaleTags();
+renderTags();
